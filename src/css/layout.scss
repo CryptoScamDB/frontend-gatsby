@@ -1,0 +1,119 @@
+// The main design rules for cryptoscamdb
+
+@import 'variables';
+@import 'reset';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+    background: $backgroundColor;
+    color: $fontColor;
+
+    background: url("../images/logo/robot-and-bg.png") no-repeat;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+
+    a {
+        color: $linkColor;
+        text-decoration: none;
+    }
+
+    #header {
+        padding: 2em 5em 2em 5em;
+
+        &--container {
+            width: 100%;
+            display: flex;
+
+            &-brand {
+                flex: 0 0 55%;
+            }
+
+            &-navigation {
+                flex: 1;
+                text-align: right;
+                ul {
+                    text-align: right;
+                    list-style-type: none;
+                    display: inline;
+
+                    li {
+                        display: inline-block;
+                        padding-left: 2em;
+                    }
+                }
+
+                a {
+                    &:active {
+                        padding-bottom: 1em;
+                        border-bottom: 1px solid $fontColor;
+                    }
+            
+                    &:hover {
+                        padding-bottom: 1em;
+                        border-bottom: 1px solid $fontColor;
+                    }
+                }
+            }
+        }
+    }
+
+    #main-view {
+
+        &--container {
+            margin-top: 2em;
+            padding: 5em;
+        }
+
+        #blurb {
+            border-left: 1px solid $fontColor;
+            padding-left: 1em;
+            width: 30%;
+            margin-bottom: 3em;
+
+            &--extra {
+                margin-top: 5em;
+                width: 40%;
+                display: flex;
+
+                h3 {
+                    text-decoration: underline;
+                    font-weight: normal;
+                }
+
+                p {
+                    width: 70%;
+                }
+
+                &-opensource {
+                    flex: 0 0 50%;
+                }
+
+                &-donate {
+                    flex: 1;
+
+                    ul {
+                        list-style-type: none;
+                        display: inline;
+
+                        li {
+                            display: inline-block;
+                            padding: 1em;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        margin-top: 5em;
+        background: url("../images/logo/powered-by-mycrypto.svg");
+        background-repeat: no-repeat;
+        background-position: left;
+        height: 2.5em;
+        width: 50%;
+        bottom: 2.5em;
+    }
+}
