@@ -4,6 +4,9 @@ import { Link } from 'gatsby'
 import Layout from '../components/layout'
 import Image from '../components/image'
 import SEO from '../components/seo'
+import LogoEthereum from "../images/coins/ethereum.png";
+import LogoBitcoin from "../images/coins/bitcoin.png";
+import LogoMonero from "../images/coins/monero.png";
 
 const IndexPage = () => (
   <Layout id="main-view">
@@ -68,9 +71,9 @@ const IndexPage = () => (
           to one of our cryptocurrency addresses.
         </p>
         <ul>
-          <li><img src="/images/coins/ethereum.png" /></li>
-          <li><img src="/images/coins/bitcoin.png" /></li>
-          <li><img src="/images/coins/monero.png" /></li>
+          <li><img src={LogoEthereum} /></li>
+          <li><img src={LogoBitcoin} /></li>
+          <li><img src={LogoMonero} /></li>
         </ul>
       </div>      
     </div>
