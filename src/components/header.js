@@ -25,6 +25,7 @@ const Header = ({ siteTitle, siteLogo }) => (
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
+  siteLogo: PropTypes.string
 }
 
 Header.defaultProps = {

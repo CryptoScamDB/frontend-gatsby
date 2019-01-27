@@ -17,7 +17,6 @@ const Layout = ({ id, children }) => (
       }
     `}
     render={data => (
-      <>
         <div id={id}>
           <Header siteTitle={data.site.siteMetadata.title} />
             <div id={id +"--container"}>
@@ -27,7 +26,6 @@ const Layout = ({ id, children }) => (
               </footer>
             </div>
         </div>
-      </>
     )}
   />
 )

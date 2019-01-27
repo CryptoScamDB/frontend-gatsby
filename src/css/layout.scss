@@ -7,9 +7,6 @@
 body {
     background: $backgroundColor;
     color: $fontColor;
-
-    background: url("../images/logo/robot-and-bg.png") no-repeat;
-    background-size: cover;
     height: 100%;
     width: 100%;
     font-family: 'Roboto', sans-serif;
@@ -61,6 +58,9 @@ body {
 
     #main-view {
 
+        background: url("../images/logo/robot-and-bg.png") no-repeat;
+        background-size: cover;
+
         &--container {
             margin-top: 2em;
             padding: 5em;
@@ -104,6 +104,14 @@ body {
                     }
                 }
             }
+        }
+    }
+
+    #scams-view {
+
+        &--container {
+            margin-top: 2em;
+            padding: 5em;
         }
     }
 

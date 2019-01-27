@@ -7,7 +7,7 @@ import SEO from '../components/seo'
 
 const IndexPage = () => (
   <Layout id="main-view">
-    <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+    <SEO title="Home" keywords={[`ethereum`,`cryptoscamdb`,`mycrypto`]} />
 
     <h1>Stay Safe.</h1>
     <h1>Let us help you.</h1>
@@ -68,9 +68,9 @@ const IndexPage = () => (
           to one of our cryptocurrency addresses.
         </p>
         <ul>
-          <li><img src="/../images/coins/ethereum.png" /></li>
-          <li><img src="../images/coins/bitcoin.png" /></li>
-          <li><img src="../images/coins/monero.png" /></li>
+          <li><img src="/images/coins/ethereum.png" /></li>
+          <li><img src="/images/coins/bitcoin.png" /></li>
+          <li><img src="/images/coins/monero.png" /></li>
         </ul>
       </div>      
     </div>
