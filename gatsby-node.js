@@ -6,72 +6,44 @@ const {
     generateNodeId,
     generateTypeName
 } = createNodeHelpers({
-    typePrefix: "TestData"
+    typePrefix: "Csdb"
 })
 
-const IssueNode = createNodeFactory('TestIssue');
-const TestNode = createNodeFactory('TestNode');
+const DataNode = createNodeFactory('Data');
+const DomainNode = createNodeFactory('Domains');
 
  exports.sourceNodes = async ({ actions: { createNode } }) => {
 
-    const testData = [
-        {
-            "id": 0,
-            "name": "Harry",
-            "domain": "buterinpromo.cn",
-            "likes": [
-                "cocaine",
-                "hookers",
-                "blackjack"
-            ]
-        },
-        {
-            "id": 1,
-            "name": "Santa",
-            "domain": "dexchainlaunchpad.com",
-            "likes": [
-                "elves",
-                "pussy",
-                "gatorade"
-            ]
-        },
-        {
-            "id": 2,
-            "name": "Easter Bunny",
-            "likes": [
-                "eggs"
-            ]
-        },
-    ];
+    const objScams = await axios.get("https://api.cryptoscamdb.org/v1/scams");
 
-    await Promise.all(testData.map(async data => {
-        if(data.domain) {
-            const objResponse = await axios.get(`https://api.cryptoscamdb.org/v1/domain/${data.domain}`);
+    if(objScams.data.success) {
+        await Promise.all(
+            objScams.data.result.map(async data => {
+                if(data.name) {
+                    const objResponse = await axios.get(`https://api.cryptoscamdb.org/v1/domain/${data.name}`);
+                    if(objResponse.data && objResponse.data.success) {
+                        const objLookup = objResponse.data.result;
 
-            // @todo - error handling
+                        data = objLookup.map(lookup => {
+                            const objData = DataNode(lookup, {
+                                parent: generateNodeId("DomainNode", data.id)
+                            });
+                            
+                            createNode(objData);
 
-            if(objResponse.data && objResponse.data.result) {
-                const issues = objResponse.data.result;
-                // data.CsdbEntry = CsdbEntry;
+                            return objData;
+                        });
+                    } else {
+                        console.log(`\r\nBUILD ERROR: Cannot get specific scam: ${data.name}`);
+                    }
+                }
 
-                data.issues = issues.map(issue => {
-                    const issueNode = IssueNode(issue, {
-                        parent: generateNodeId("TestNode", data.id)
-                    });
-                    
-                    createNode(issueNode);
-
-                    return issueNode;
-                });
-            }
-         }
-
-         const testNode = TestNode(data);
-         createNode(testNode);
-
-         
-
-     }));
-
-     return;
+                const objDomainNode = DomainNode(data);
+                createNode(objDomainNode);         
+            })
+        );
+    } else {
+        console.log("\r\nBUILD ERROR: Cannot get scams");
+        console.log(objScams);
+    } 
  }
