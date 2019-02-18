@@ -158,9 +158,12 @@ body {
                 text-transform: uppercase;
                 color: $table-th-color;
                 font-weight: 800;
+                padding-right: 0.5em;
 
                 &--sub {
                     color: $fontColor;
+                    font-weight: 800;
+                    padding-right: 0.5em;
                 }
             }
 
@@ -173,6 +176,11 @@ body {
                     padding: 1em;
                 }
             }
+        }
+
+        &--details-container {
+            display: flex;
+            border: 2px solid red;
         }
     }
 
