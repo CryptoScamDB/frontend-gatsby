@@ -45,7 +45,7 @@ export default function ScamPage({data}) {
 
                         return(
                             <tr key={scam.node.id}>
-                                <td><Link to={"/domain/"+scam.node.name} role="link">{scam.node.name}</Link></td>
+                                <td><Link to={"/domain/"+scam.node.csdbId} role="link">{scam.node.name}</Link></td>
                                 <td className={statusClass}>{scam.node.status}</td>
                                 <td>{scam.node.category}</td>
                                 <td>{scam.node.subcategory}</td>
@@ -73,6 +73,7 @@ export const pageQuery = graphql`
             edges {
                 node {
                     id
+                    csdbId
                     name
                     status
                     category
