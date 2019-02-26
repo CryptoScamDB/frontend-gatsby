@@ -8,9 +8,9 @@ export default function ScamPage({data}) {
     <Layout id="scams-view">
         <SEO title="Scams" keywords={[`ethereum`,`scams`,`mycrypto`]} />
 
-        <span id="heading">See Scams</span>
-        <pre>SEARCH BOX</pre>
-        <pre>PAGINATION</pre>
+        <h2 id="heading">See Scams</h2>
+
+        <br />
 
         <table>
             <thead>
@@ -20,7 +20,7 @@ export default function ScamPage({data}) {
                 <th>Subcategory</th>
             </thead>
             <tbody>
-                {data.allCsdbDomains.edges.map(scam => {
+                {data.allCsdbScamDomains.edges.map(scam => {
 
                     if([scam.node.name,scam.node.category,scam.node.subcategory].indexOf(null) === -1) {
                         scam.node.name = scam.node.name.toLowerCase()
@@ -57,10 +57,10 @@ export default function ScamPage({data}) {
         </table>
 
         <ul id="stats">
-            <li><p>{data.allCsdbDomains.totalCount} TOTAL SCAMS</p></li>
-            <li><p>x ACTIVE SCAMS</p></li>
-            <li><p>x ADDRESSES REGISTERED</p></li>
-            <li><p>X INACTIVE SCAMS</p></li>
+            <li><p>{data.allCsdbStats.edges[0].node.scams} TOTAL SCAMS</p></li>
+            <li><p>{data.allCsdbStats.edges[0].node.actives} ACTIVE SCAMS</p></li>
+            <li><p>{data.allCsdbStats.edges[0].node.addresses} ADDRESSES REGISTERED</p></li>
+            <li><p>{data.allCsdbStats.edges[0].node.inactives} INACTIVE SCAMS</p></li>
         </ul>
     </Layout>
   )
@@ -68,7 +68,7 @@ export default function ScamPage({data}) {
 
 export const pageQuery = graphql`
     query GetPaginatedScams {
-        allCsdbDomains {
+        allCsdbScamDomains {
             totalCount
             edges {
                 node {
@@ -78,6 +78,20 @@ export const pageQuery = graphql`
                     status
                     category
                     subcategory
+                }
+            }
+        }
+        allCsdbStats {
+            totalCount
+            edges {
+                node {
+                    scams
+                    verified
+                    featured
+                    addresses
+                    ips
+                    actives
+                    inactives
                 }
             }
         }
