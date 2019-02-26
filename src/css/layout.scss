@@ -116,8 +116,8 @@ body {
             #heading {
                 color: $table-th-color;
                 text-transform: uppercase;
-                font-weight: 800;
                 margin: auto auto;
+                margin-left: 15%;
             }
 
             #stats {
@@ -181,6 +181,20 @@ body {
         &--details-container {
             display: flex;
             border: 2px solid red;
+        }
+    }
+
+    #verified-view {
+        &--container {
+            margin-top: 2em;
+            padding: 5em;
+
+            #heading {
+                color: $table-th-color;
+                text-transform: uppercase;
+                margin: auto auto;
+                margin-left: 15%;
+            }
         }
     }
 
