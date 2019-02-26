@@ -8,13 +8,12 @@ import LinkedinLogo from "../images/social/linkedin.svg";
 
 export default function DomainPage({data}) {
     // @todo - Can I do this any tidier?
-    const {allCsdbDomains: scam} = data;
+    const {allCsdbScamDomains: scam} = data;
     const s = scam.edges[0].node;
 
     return (
     <Layout id="domain-view">
         <SEO title="Heading" keywords={[`cryptoscamdb`,`mycrypto`]} />
-        
         <div id="domain-view--details-container left">
             <div>
                 <span className="heading">Name:</span>
@@ -104,7 +103,7 @@ export default function DomainPage({data}) {
 
 export const pageQuery = graphql`
     query($slug: String) {
-        allCsdbDomains(filter: {csdbId: {eq: $slug}}) {
+        allCsdbScamDomains(filter: {csdbId: {eq: $slug}}) {
         edges {
             node {
                 id
@@ -141,5 +140,4 @@ export const pageQuery = graphql`
         }
     }
   }
-  
 `
