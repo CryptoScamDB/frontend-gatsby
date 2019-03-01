@@ -13,7 +13,7 @@ export default function DomainPage({data}) {
 
     return (
     <Layout id="domain-view">
-        <SEO title="Heading" keywords={[`cryptoscamdb`,`mycrypto`]} />
+        <SEO title={s.name} keywords={[`cryptoscamdb`,`mycrypto`]} />
         <div id="domain-view--details-container left">
             <div>
                 <span className="heading">Name:</span>
