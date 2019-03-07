@@ -2,13 +2,14 @@ import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Image from '../components/image'
+import siteLogo from "../images/logo/csdb-logo.svg"
 
-const Header = ({ siteTitle, siteLogo }) => (
+const Header = ({ siteTitle }) => (
   <div id="header">
     <div id="header--container">
       <div id="header--container-brand">
         <Link to="/">
-          <img src="icons/icon-144x144.png" />
+          <img title={siteTitle} src={siteLogo} />
         </Link>
       </div>
       <div id="header--container-navigation">
@@ -29,8 +30,7 @@ Header.propTypes = {
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
-  siteLogo: `images/logo/csdb-logo.svg`
+  siteTitle: ``
 }
 
 export default Header

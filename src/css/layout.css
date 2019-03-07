@@ -1,0 +1,245 @@
+/****************************
+ ******* T A B L E S ********
+ ****************************/
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+html,
+body,
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #000d15;
+  color: #FFF;
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+body a {
+  color: #3A5F78;
+  text-decoration: none;
+}
+
+body #header {
+  padding: 2em 5em 2em 5em;
+}
+
+body #header--container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body #header--container-brand {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 55%;
+          flex: 0 0 55%;
+}
+
+body #header--container-navigation {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  text-align: right;
+}
+
+body #header--container-navigation ul {
+  text-align: right;
+  list-style-type: none;
+  display: inline;
+}
+
+body #header--container-navigation ul li {
+  display: inline-block;
+  padding-left: 2em;
+}
+
+body #header--container-navigation a:active {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #FFF;
+}
+
+body #header--container-navigation a:hover {
+  padding-bottom: 1em;
+  border-bottom: 1px solid #FFF;
+}
+
+body #main-view {
+  background: url("../images/logo/robot-and-bg.png") no-repeat;
+  background-size: cover;
+}
+
+body #main-view--container {
+  margin-top: 2em;
+  padding: 5em;
+}
+
+body #main-view #blurb {
+  border-left: 1px solid #FFF;
+  padding-left: 1em;
+  width: 30%;
+  margin-bottom: 3em;
+}
+
+body #main-view #blurb--extra {
+  margin-top: 5em;
+  width: 40%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body #main-view #blurb--extra h3 {
+  text-decoration: underline;
+  font-weight: normal;
+}
+
+body #main-view #blurb--extra p {
+  width: 70%;
+}
+
+body #main-view #blurb--extra-opensource {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+}
+
+body #main-view #blurb--extra-donate {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+body #main-view #blurb--extra-donate ul {
+  list-style-type: none;
+  display: inline;
+}
+
+body #main-view #blurb--extra-donate ul li {
+  display: inline-block;
+  padding: 1em;
+}
+
+body #scams-view--container {
+  margin-top: 2em;
+  padding: 5em;
+}
+
+body #scams-view--container #heading {
+  color: #ebc561;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin: auto auto;
+}
+
+body #scams-view--container #stats {
+  list-style-type: none;
+  display: inline;
+}
+
+body #scams-view--container #stats li {
+  margin: 2em;
+  display: inline-block;
+  text-transform: uppercase;
+  background: radial-gradient(ellipse at center, #000d15 0%, #002d48 37%, #004c7b 57%, #006cae 77%, #008be1 97%);
+  height: 340px;
+  width: 340px;
+  border-radius: 170px;
+  vertical-align: middle;
+}
+
+body #scams-view--container #stats li p {
+  margin-top: 170px;
+  margin-left: auto;
+  text-align: center;
+}
+
+body #domain-view--container {
+  margin-top: 2em;
+  padding: 5em;
+}
+
+body #domain-view--container .heading {
+  text-transform: uppercase;
+  color: #ebc561;
+  font-weight: 800;
+  padding-right: 0.5em;
+}
+
+body #domain-view--container .heading--sub {
+  color: #FFF;
+  font-weight: 800;
+  padding-right: 0.5em;
+}
+
+body #domain-view--container #social {
+  list-style-type: none;
+  display: inline;
+}
+
+body #domain-view--container #social li {
+  display: inline-block;
+  padding: 1em;
+}
+
+body #domain-view--details-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border: 2px solid red;
+}
+
+body footer {
+  margin-top: 5em;
+  background: url("../images/logo/powered-by-mycrypto.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  height: 2.5em;
+  width: 50%;
+  bottom: 2.5em;
+}
+
+body table {
+  width: 80%;
+  margin: auto auto;
+  color: #FFF;
+  background: #0B2E45;
+  border-radius: 0.4em;
+}
+
+body table a {
+  color: #FFF;
+}
+
+body table tr:hover {
+  background: #0f3d5b;
+}
+
+body table th {
+  color: #ebc561;
+  padding: 1em 0 1em 1em;
+  width: 25%;
+  text-align: left;
+}
+
+body table td {
+  border-bottom: 1px solid #2086c9;
+  padding: 1em;
+}
+
+body table td:nth-child(2), body table td:nth-child(3), body table td:nth-child(4) {
+  border-left: 1px solid #2086c9;
+}
+
+body table td .scam--active {
+  color: #8A3030;
+}
+
+body table td .scam--offline {
+  color: #30608A;
+}
+/*# sourceMappingURL=layout.css.map */
