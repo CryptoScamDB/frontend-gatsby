@@ -31,7 +31,7 @@ class Faq extends Component {
                 </div>
                 <div className={this.state.expanded ? "body" : "body hidden"}>
                     <ul>
-                        {this.props.answer.map(e => `<li>${e}</li>`)}
+                        {this.props.answer.map(e => <li>{e}</li>)}
                     </ul>
                 </div>
             </div>

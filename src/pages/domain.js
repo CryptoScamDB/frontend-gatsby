@@ -64,7 +64,7 @@ export default function DomainPage({data}) {
                 <ul>
                     {
                         s.nameservers
-                            ? s.nameservers.map(ns => `<li>${ns}</li>`)
+                            ? s.nameservers.map(ns => <li>{ns}</li>)
                             : `No Nameservers found (domain not resolving at lookup time)`
                     }
                 </ul>
@@ -77,7 +77,7 @@ export default function DomainPage({data}) {
                 <ul>
                 {
                     s.addresses
-                        ? s.addresses.map(ns => `<li>${ns}</li>`)
+                        ? s.addresses.map(ns => <li>{ns}</li>)
                         : `No Addresses`
                 }
                 </ul>
