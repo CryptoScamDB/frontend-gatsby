@@ -90,6 +90,16 @@ const ScreenshotImages = styled.div`
     -moz-user-select: none;
 `
 
+const NoScreenshot = styled.div`
+    color: #001D2F;
+    font-size: 22pt;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
+
 /**
  * The container for the thumbnails
  */
@@ -167,41 +177,49 @@ class ScreenshotArea extends Component {
                     </LeftAndRightArrows>
                     <ScreenshotImages>
                         {
-                            this.props.images.map((r, index) => 
-                                <Screenshot 
-                                    image={r} 
-                                    alt="Screenshot" 
-                                    index={++index} 
-                                    active={
-                                        this.state.currentImage === index 
-                                            ? true 
-                                            : false
-                                    }>
-                                </Screenshot>
-                            )
+                            this.props.images.length
+                                ?
+                                    this.props.images.map((r, index) => 
+                                        <Screenshot 
+                                            image={r} 
+                                            alt="Screenshot" 
+                                            index={++index} 
+                                            active={
+                                                this.state.currentImage === index 
+                                                    ? true 
+                                                    : false
+                                            }>
+                                        </Screenshot>
+                                    )
+                                :
+                                    <NoScreenshot>No screenshots available</NoScreenshot>
+                            
                         }
                     </ScreenshotImages>
                 </ScreenshotContainer>
-                <Thumbnails>
-                    {
-                        this.props.images.map((r, index) => 
-                            <Thumbnail 
-                                image={r} 
-                                alt="Screenshot" 
-                                index={++index} 
-                                active={
-                                    this.state.currentImage === index 
-                                        ? true 
-                                        : false
+                {
+                    this.props.images.length
+                        ?
+                            <Thumbnails>
+                                {
+                                    this.props.images.map((r, index) => 
+                                        <Thumbnail 
+                                            image={r} 
+                                            alt="Screenshot" 
+                                            index={++index} 
+                                            active={
+                                                this.state.currentImage === index 
+                                                    ? true 
+                                                    : false
+                                            }
+                                            onClick={this.jumpToImage}>
+                                        </Thumbnail>
+                                    )
                                 }
-                                onClick={this.jumpToImage}>
-                            </Thumbnail>
-                        )
-                    }
-                </Thumbnails>
-                <div>
-                    <small>Screenshots served by URLScan.io</small>
-                </div>
+                            </Thumbnails>
+                        :
+                            ``
+                }
             </div>
         )
     }

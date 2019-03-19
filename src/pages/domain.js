@@ -109,7 +109,7 @@ export default function DomainPage({data}) {
                                 </ScreenshotArea>
                             :
                                 // No screenshots available
-                                ``
+                                <ScreenshotArea images={[]}></ScreenshotArea>
                     }
                 </div>
             </div>
