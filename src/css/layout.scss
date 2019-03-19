@@ -180,7 +180,17 @@ body {
 
         &--details-container {
             display: flex;
-            border: 2px solid red;
+
+            
+            &-left {
+                flex-direction: column;
+                flex: 1;
+            }
+
+            &-right {
+                flex-direction: column;
+                flex: 1;
+            }
         }
     }
 
