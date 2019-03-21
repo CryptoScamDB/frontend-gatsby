@@ -266,37 +266,5 @@ body {
         a {
             color: $fontColor;
         }
-
-        tr {
-            &:hover {
-                background: lighten($table-background, 5%);
-            }
-        }
-
-        th {
-            color: $table-th-color;
-            padding: 1em 0 1em 1em;
-            width: 25%;
-            text-align: left;
-        }
-
-        td {
-            border-bottom: 1px solid lighten($table-background, 30%);
-            padding: 1em;
-
-            &:nth-child(2),
-            &:nth-child(3),
-            &:nth-child(4) {
-                border-left: 1px solid lighten($table-background, 30%);
-            }
-
-            .scam--active {
-                color: $table-td-scam-active;
-            }
-
-            .scam--offline {
-                color: $table-td-scam-inactive;
-            }
-        }
     }
 }
