@@ -1,7 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
 import TableData from './table-data'
 import TableHeader from './table-header'
+
+const _TableRow = styled.tr`
+
+    &:hover {
+        background: ${props => props.type === "td" ? "#0f3d5b" : ""}
+    }
+`
 
 class TableRow extends Component
 {
@@ -16,15 +25,15 @@ class TableRow extends Component
             case 'td':
             default:
                 return(
-                    <tr>
+                    <_TableRow type="td">
                         {this.props.data.map(d => <TableData data={d} />)}
-                    </tr>
+                    </_TableRow>
                 )
             case 'th':
             return(
-                <tr>
+                <_TableRow>
                     {this.props.data.map(d => <TableHeader data={d} />)}
-                </tr>
+                </_TableRow>
             )
         }
     }
@@ -32,12 +41,14 @@ class TableRow extends Component
 
 TableRow.propTypes = {
   data: PropTypes.array,
-  type: PropTypes.string
+  type: PropTypes.string,
+  link: PropTypes.string
 }
 
 TableRow.defaultProps = {
   data: [],
-  type: "td"
+  type: "td",
+  link: ""
 }
 
 export default TableRow

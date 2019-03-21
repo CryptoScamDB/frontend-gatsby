@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+const _TableData = styled.td`
+  padding: 1em;
+`
 
 class TableData extends Component
 {
@@ -11,9 +16,9 @@ class TableData extends Component
     render()
     {
         return(
-            <td>
+            <_TableData>
               {this.props.data}
-            </td>
+            </_TableData>
         )
     }
 }
