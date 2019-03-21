@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 
 import Pagination from './pagination';
 import {TableRow } from '../table/table';
@@ -44,7 +43,8 @@ class PaginatedTable extends Component
                 <table>
                     <TableRow data={this.props.tableHeaders} type="th"/>
                     {
-                        this.props.tableData.slice((this.state.currentPage-1)*this.props.recordsPerPage, this.props.recordsPerPage*this.state.currentPage)
+                        this.props.tableData
+                            .slice((this.state.currentPage-1)*this.props.recordsPerPage, this.props.recordsPerPage*this.state.currentPage)
                             .map(row => <TableRow data={Object.values(row)} type="td" />)
                     }
                 </table>
