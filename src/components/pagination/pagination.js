@@ -3,6 +3,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
+import ArrowLeft from '../../images/navigation/left.svg'
+import ArrowRight from '../../images/navigation/right.svg'
+
 const PageUnit = styled.div`
     padding: 0.5em;
     display: inline-block;
@@ -82,7 +85,7 @@ class Pagination extends Component
                 <PageUnit
                     onClick={this.movePage}
                     value={this.state.currentPage-1}
-                >&laquo;</PageUnit>
+                >&lt;</PageUnit>
                 {
                     arrPages.map(page => <PageUnit 
                                             currentPage={this.state.currentPage == page ? true: false} 
@@ -94,7 +97,7 @@ class Pagination extends Component
                 <PageUnit
                     onClick={this.movePage}
                     value={this.state.currentPage+1}
-                >&raquo;</PageUnit>
+                >&gt;</PageUnit>
             </div>
         )
     }
