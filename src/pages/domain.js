@@ -2,9 +2,9 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import FacebookLogo from "../images/social/facebook.svg";
-import TwitterLogo from "../images/social/twitter.svg";
-import LinkedinLogo from "../images/social/linkedin.svg";
+import FacebookShare from "../components/icons/socials/facebook";
+import TwitterShare from "../components/icons/socials/twitter";
+import LinkedinShare from "../components/icons/socials/linkedin";
 
 export default function DomainPage({data}) {
     // @todo - Can I do this any tidier?
@@ -92,9 +92,15 @@ export default function DomainPage({data}) {
         <div>
             <span className="heading--sub">Warn your friends</span>
             <ul id="social">
-                <li><img src={TwitterLogo} /></li>
-                <li><img src={FacebookLogo} /></li>
-                <li><img src={LinkedinLogo} /></li>
+                <li><TwitterShare 
+                        tweet={"⚠️ Watchout for this #"+ s.category.toLowerCase() +" scam ("+ s.subcategory.toLowerCase() +") - "+ s.url.replace(".", "[.]") +"\r\n#cryptoscamdb"}
+                    ></TwitterShare></li>
+                <li><FacebookShare 
+                        tweet={"⚠️ Watchout for this #"+ s.category.toLowerCase() +" scam ("+ s.subcategory.toLowerCase() +") - "+ s.url.replace(".", "[.]") +"\r\n#cryptoscamdb"}
+                    ></FacebookShare></li>
+                <li><LinkedinShare 
+                        tweet={"⚠️ Watchout for this #"+ s.category.toLowerCase() +" scam ("+ s.subcategory.toLowerCase() +") - "+ s.url.replace(".", "[.]") +"\r\n#cryptoscamdb"}
+                    ></LinkedinShare></li>
             </ul>
         </div>
     </Layout>
