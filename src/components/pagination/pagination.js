@@ -84,6 +84,10 @@ class Pagination extends Component
             <div>
                 <PageUnit
                     onClick={this.movePage}
+                    value={1}
+                >&laquo;</PageUnit>
+                <PageUnit
+                    onClick={this.movePage}
                     value={this.state.currentPage-1}
                 >&lt;</PageUnit>
                 {
@@ -98,6 +102,10 @@ class Pagination extends Component
                     onClick={this.movePage}
                     value={this.state.currentPage+1}
                 >&gt;</PageUnit>
+                <PageUnit
+                    onClick={this.movePage}
+                    value={this.state.totalPages}
+                >&raquo;</PageUnit>
             </div>
         )
     }
