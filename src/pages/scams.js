@@ -20,7 +20,7 @@ export default function ScamPage({data}) {
         scam = scam.node
 
         if([scam.name,scam.category,scam.subcategory].indexOf(null) === -1) {
-            objRecord.title = scam.name.toLowerCase()
+            objRecord.title = <Link to={"/domain/"+scam.csdbId} role="link">{scam.name.toLowerCase()}</Link>
 
             objRecord.status = scam.status
             if(scam.status == null) {
