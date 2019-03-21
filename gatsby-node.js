@@ -34,8 +34,8 @@ exports.sourceNodes = async ({ actions: { createNode } }) =>
         let arrResults = objScams.data.result;
 
         if(DEVELOPMENT) {
-            console.log(`\r\n\t[+] Development mode so only getting the most recent 100 records`);
-            arrResults = objScams.data.result.reverse().slice(1,100);
+            console.log(`\r\n\t[+] Development mode so only getting the most recent 250 records`);
+            arrResults = objScams.data.result.reverse().slice(1,250);
         }
 
         await Promise.all(
