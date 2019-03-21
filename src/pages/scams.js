@@ -3,6 +3,12 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import PaginatedTable from '../components/pagination/paginated-table';
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+const ScamStatus = styled.span`
+    color: ${props => ["active"].indexOf(props.status.toLowerCase()) ? "#5194A2" : "#FF303E"}
+`
 
 export default function ScamPage({data}) {
 
@@ -26,6 +32,16 @@ export default function ScamPage({data}) {
             if(scam.status == null) {
                 objRecord.status = "Unknown";
             }
+            switch(objRecord.status.toLowerCase()) {
+                case 'active' :
+                    objRecord.status = <ScamStatus status="active">Active</ScamStatus>
+                    break;
+                default:
+                case 'offline':
+                case 'suspended':
+                    objRecord.status = <ScamStatus status="inactive">{objRecord.status}</ScamStatus>
+                    break;
+            }
 
             objRecord.category = scam.category
             objRecord.subcategory = scam.subcategory
@@ -44,7 +60,7 @@ export default function ScamPage({data}) {
             totalRecords={data.allCsdbScamDomains.edges.length}
             recordsPerPage={10}
             tableData={arrTableData}
-            tableHeaders={["title", "status", "category", "subcategory"]}
+            tableHeaders={["Title", "Status", "Category", "Subcategory"]}
         />
 
         <ul id="stats">
