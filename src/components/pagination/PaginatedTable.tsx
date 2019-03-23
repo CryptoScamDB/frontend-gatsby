@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Pagination from './pagination';
-import { TableRow } from '../table/table';
+import { TableRow } from '../table';
 
 const Container = styled.div`
 
