@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import DonateBitcoin from '../../src/components/icons/donate/DonateBitcoin';
+import 'jest-styled-components';
 
 describe('DonateBitcoin', () => {
   it('renders correctly', () => {

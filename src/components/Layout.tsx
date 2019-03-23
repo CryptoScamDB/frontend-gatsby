@@ -1,6 +1,6 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import Header from './header';
+import Header from './Header';
 import '../css/layout.scss';
 
 interface Props {
@@ -20,13 +20,13 @@ const Layout: React.StatelessComponent<Props> = ({ id, children }: Props) => (
       }
     `}
     render={data => (
-        <div id={id}>
-          <Header siteTitle={data.site.siteMetadata.title} />
-            <div id={id +"--container"}>
-              {children}
-              <footer />
-            </div>
+      <div id={id}>
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <div id={id + '--container'}>
+          {children}
+          <footer />
         </div>
+      </div>
     )}
   />
 );

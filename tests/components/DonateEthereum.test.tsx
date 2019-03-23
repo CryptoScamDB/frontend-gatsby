@@ -1,6 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import DonateEthereum from '../../src/components/icons/donate/DonateEthereum';
+import 'jest-styled-components';
 
 describe('DonateEthereum', () => {
   it('renders correctly', () => {
