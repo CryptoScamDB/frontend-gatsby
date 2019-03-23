@@ -74,7 +74,7 @@ exports.sourceNodes = async ({ actions: { createNode } }) =>
                         objBuildStats.success += 1;
 
                         //Add the CSDB ID to it - hack until included in the GET /v1/domain/<domain>
-                        objResponse.data.result[0].csdbId = data.csdbId;
+                        objResponse.data.result[0].id = data.name;
                         // Normalise the record @todo make this much prettier, maybe using a data model?
                         if(!objResponse.data.result[0].hasOwnProperty("description")) {
                             objResponse.data.result[0].description = "";
