@@ -1,9 +1,29 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import PaginatedTable from '../components/pagination/paginated-table';
 
 export default function VerifiedPage({data}) {
+
+    // Sort out the table data
+    let arrTableData = [];
+    data.allCsdbFeaturedDomain.edges.map(domain => {
+
+        let objRecord = {
+            "name": "",
+            "url": "",
+            "description": ""
+        };
+
+
+        objRecord.name = domain.node.name
+        objRecord.url = domain.node.url
+        objRecord.description = domain.node.description
+
+        arrTableData.push(objRecord)
+    });
+
     return (
     <Layout id="verified-view">
         <SEO title="Verified Domains" keywords={[`ethereum`,`verified`,`mycrypto`]} />
@@ -12,24 +32,13 @@ export default function VerifiedPage({data}) {
 
         <br />
         
-        <table>
-            <thead>
-                <th>Name</th>
-                <th>URL</th>
-                <th>Description</th>
-            </thead>
-            <tbody>
-            {data.allCsdbFeaturedDomain.edges.map(domain => {
-                  return(
-                    <tr key={domain.node.name}>
-                        <td>{domain.node.name}</td>
-                        <td>{domain.node.url}</td>
-                        <td>{domain.node.description}</td>
-                    </tr>
-                )
-            })}
-            </tbody>
-        </table>
+        <PaginatedTable
+            totalRecords={data.allCsdbFeaturedDomain.edges.length}
+            recordsPerPage={10}
+            tableData={arrTableData}
+            tableHeaders={["Name", "URL", "Description"]}
+        />
+
       </Layout> 
     )
 }

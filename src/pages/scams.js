@@ -2,59 +2,66 @@ import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
+import PaginatedTable from '../components/pagination/paginated-table';
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+const ScamStatus = styled.span`
+    color: ${props => ["active"].indexOf(props.status.toLowerCase()) ? "#5194A2" : "#FF303E"}
+`
 
 export default function ScamPage({data}) {
+
+    // Sort out the table data
+    let arrTableData = [];
+    data.allCsdbScamDomains.edges.map(scam => {
+
+        let objRecord = {
+            "title": "",
+            "status": "",
+            "category": "",
+            "subcategory": ""
+        };
+
+        scam = scam.node
+
+        if([scam.name,scam.category,scam.subcategory].indexOf(null) === -1) {
+            objRecord.title = <Link to={"/domain/"+scam.csdbId} role="link">{scam.name.toLowerCase()}</Link>
+
+            objRecord.status = scam.status
+            if(scam.status == null) {
+                objRecord.status = "Unknown";
+            }
+            switch(objRecord.status.toLowerCase()) {
+                case 'active' :
+                    objRecord.status = <ScamStatus status="active">Active</ScamStatus>
+                    break;
+                default:
+                case 'offline':
+                case 'suspended':
+                    objRecord.status = <ScamStatus status="inactive">{objRecord.status}</ScamStatus>
+                    break;
+            }
+
+            objRecord.category = scam.category
+            objRecord.subcategory = scam.subcategory
+
+            arrTableData.push(objRecord)
+        }
+    });
+
     return (
     <Layout id="scams-view">
         <SEO title="Scams" keywords={[`ethereum`,`scams`,`mycrypto`]} />
 
         <h2 id="heading">See Scams</h2>
 
-        <br />
-
-        <table>
-            <thead>
-                <th>Title</th>
-                <th>Status</th>
-                <th>Category</th>
-                <th>Subcategory</th>
-            </thead>
-            <tbody>
-                {data.allCsdbScamDomains.edges.map(scam => {
-
-                    if([scam.node.name,scam.node.category,scam.node.subcategory].indexOf(null) === -1) {
-                        scam.node.name = scam.node.name.toLowerCase()
-
-                        if(scam.node.status == null) {
-                            scam.node.status = "Unknown";
-                        }
-
-                        let statusClass;
-                        switch(scam.node.status.toLowerCase()) {
-                            case 'active':
-                                statusClass = "scam--active";
-                                break;
-                            case 'offline':
-                                statusClass = "scam--inactive";
-                                break;
-                            default: 
-                            case 'Unknown':
-                                statusClass = "scam--unknown";
-                                break;
-                        }
-
-                        return(
-                            <tr key={scam.node.id}>
-                                <td><Link to={"/domain/"+scam.node.csdbId} role="link">{scam.node.name}</Link></td>
-                                <td className={statusClass}>{scam.node.status}</td>
-                                <td>{scam.node.category}</td>
-                                <td>{scam.node.subcategory}</td>
-                            </tr>
-                        )
-                    }
-                })}
-            </tbody>
-        </table>
+        <PaginatedTable
+            totalRecords={data.allCsdbScamDomains.edges.length}
+            recordsPerPage={10}
+            tableData={arrTableData}
+            tableHeaders={["Title", "Status", "Category", "Subcategory"]}
+        />
 
         <ul id="stats">
             <li><p>{data.allCsdbStats.edges[0].node.scams} TOTAL SCAMS</p></li>
@@ -97,22 +104,3 @@ export const pageQuery = graphql`
         }
     }
 `
-
-/**
-export const pageQuery = graphql`
-    query GetPaginatedScams($skip:Int! $limit:Int!) {
-        allCsdbDomains(skip:$skip, limit:$limit) {
-            totalCount
-            edges {
-                node {
-                    id
-                    name
-                    status
-                    category
-                    subcategory
-                }
-            }
-        }
-    }
-`
-*/
