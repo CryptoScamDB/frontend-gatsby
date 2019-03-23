@@ -42,7 +42,7 @@ class Pagination extends Component
 
     movePage(event)
     {
-        let intNewPage = parseInt(event.target.getAttribute("value"));
+        let intNewPage = parseInt(event.target.getAttribute("value"), 10);
         if(intNewPage <= 0 || intNewPage > this.state.totalPages) {
             return;
         }

@@ -150,8 +150,8 @@ class ScreenshotArea extends Component {
 
     jumpToImage(event)
     {
-        let intJumpTo = event.target.dataset["index"] ? event.target.dataset["index"] : 1;
-        intJumpTo = parseInt(intJumpTo);
+        let intJumpTo = event.target.dataset.index ? event.target.dataset.index : 1;
+        intJumpTo = parseInt(intJumpTo, 10);
         if(intJumpTo > 0 && intJumpTo <= this.state.totalImages) {
             this.setState({ currentImage: intJumpTo });
         }
