@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, MouseEvent } from 'react';
 import styled from 'styled-components';
 import Left from '../../images/navigation/left.svg';
 import Right from '../../images/navigation/right.svg';
@@ -112,12 +112,17 @@ interface Props {
     images: any[];
 }
 
-export default class ScreenshotArea extends Component<Props> {
+interface State {
+    currentImage: number;
+    totalImages: number;
+}
+
+export default class ScreenshotArea extends Component<Props, State> {
     static defaultProps = {
         images: []
     }
     
-    constructor(props) {
+    constructor(props: Props) {
         super(props);
     
         this.nextImage = this.nextImage.bind(this);
@@ -152,10 +157,11 @@ export default class ScreenshotArea extends Component<Props> {
         this.setState({ currentImage: nextImage });
     }
 
-    jumpToImage(event) {
+    jumpToImage(event: MouseEvent<HTMLElement>) {
         const { totalImages } = this.state;
-        let intJumpTo = event.target.dataset.index ? event.target.dataset.index : 1;
-        intJumpTo = parseInt(intJumpTo, 10);
+        const { target } = event;
+        const { index } = (target as HTMLElement).dataset;
+        const intJumpTo = parseInt((index && typeof index !== 'undefined') ? index : '1', 10);
         if(intJumpTo > 0 && intJumpTo <= totalImages) {
             this.setState({ currentImage: intJumpTo });
         }
@@ -186,7 +192,7 @@ export default class ScreenshotArea extends Component<Props> {
                                         <Screenshot 
                                             image={r} 
                                             alt="Screenshot" 
-                                            index={++index} 
+                                            index={index.toString()} 
                                             key={index}
                                             active={
                                                 currentImage === index 
@@ -210,7 +216,7 @@ export default class ScreenshotArea extends Component<Props> {
                                         <Thumbnail 
                                             image={r} 
                                             alt="Screenshot" 
-                                            index={++index} 
+                                            index={index.toString()} 
                                             key={index}
                                             active={
                                                 currentImage === index 

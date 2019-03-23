@@ -1,13 +1,19 @@
-import React, { Component } from 'react';
+import React, { Component, MouseEvent } from 'react';
 import styled from 'styled-components';
+
+interface PageUnitProps {
+    currentPage?: boolean;
+    onClick: any;
+    value: number;
+}
 
 const PageUnit = styled.div`
     padding: 0.5em;
     display: inline-block;
 
     border-radius: 0.25em;
-    border: ${props => props.currentPage ? "1px solid #FFD166" : ""}
-    color: ${props => props.currentPage ? "#FFD166" : "#FFF"}
+    border: ${(props: PageUnitProps) => props.currentPage ? "1px solid #FFD166" : ""}
+    color: ${(props: PageUnitProps) => props.currentPage ? "#FFD166" : "#FFF"}
 
     
     user-select: none;
@@ -20,20 +26,25 @@ const PageUnit = styled.div`
     &:hover {
         cursor: pointer;
     }
-`
+`;
 
-interface Props {
+interface PaginationProps {
     currentPage: number;
     totalPages: number;
+    onClick: any;
 }
 
-export default class Pagination extends Component<Props> {
+interface PaginationState {
+    currentPage: number;
+}
+
+export default class Pagination extends Component<PaginationProps, PaginationState> {
     static defaultProps = {
         currentPage: 1,
         totalPages: 1
     }
     
-    constructor(props) {
+    constructor(props: PaginationProps) {
         super(props);
         this.movePage = this.movePage.bind(this);
         this.state = {
@@ -41,9 +52,10 @@ export default class Pagination extends Component<Props> {
         }
     }
 
-    movePage(event) {
+    movePage(event: MouseEvent<HTMLElement>) {
         const { totalPages } = this.props;
-        const intNewPage = parseInt(event.target.getAttribute("value"), 10);
+        const { target } = event;
+        const intNewPage = parseInt((target as HTMLElement).getAttribute("value") || "", 10);
         if(intNewPage <= 0 || intNewPage > totalPages) {
             return;
         }

@@ -3,19 +3,23 @@ import styled from 'styled-components';
 import TableData from './TableData';
 import TableHeader from './TableHeader';
 
+interface TableRowBaseProps {
+    type?: string;
+}
+
 const TableRowBase = styled.tr`
     &:hover {
-        background: ${props => props.type === "td" ? "#0f3d5b" : ""}
+        background: ${(props: TableRowBaseProps) => props.type === "td" ? "#0f3d5b" : ""}
     }
 `;
 
-interface Props {
+interface TableRowProps {
     data: any[];
     type: string;
     link: string;
 }
 
-export default class TableRow extends Component<Props> {
+export default class TableRow extends Component<TableRowProps> {
     static defaultProps = {
         data: [],
         type: "td",

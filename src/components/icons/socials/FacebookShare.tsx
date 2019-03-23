@@ -7,7 +7,7 @@ interface Props {
     url: string;
 }
 
-export default ({ text, url }: Props) => (
+const FacebookShare: React.StatelessComponent<Props> = ({ text, url }: Props) => (
     <a href={"https://www.facebook.com/sharer.php?u=" + encodeURIComponent(url) + "&quote=" + encodeURIComponent(text)} target="_blank" rel="noopener noreferrer">
         <Icon 
             src={LogoFacebook}
@@ -15,4 +15,6 @@ export default ({ text, url }: Props) => (
             alt="Facebook Logo" 
         />
     </a>
-) as React.StatelessComponent<Props>;
+);
+
+export default FacebookShare;

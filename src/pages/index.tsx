@@ -5,7 +5,7 @@ import SEO from '../components/SEO';
 import DonateEthereum from '../components/icons/donate/DonateEthereum';
 import DonateBitcoin from '../components/icons/donate/DonateBitcoin';
 
-export default () => (
+const Index: React.StatelessComponent = () => (
   <Layout id="main-view">
     <SEO title="Home" keywords={[`ethereum`,`cryptoscamdb`,`mycrypto`]} />
 
@@ -75,4 +75,6 @@ export default () => (
     </div>
 
   </Layout>
-) as React.StatelessComponent;
+);
+
+export default Index;

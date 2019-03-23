@@ -8,11 +8,14 @@ const DONATION_ADDR = {
     "EXPLORER": "https://blockchain.info/address/32oirLEzZRhi33RCXDF9WHJjEb8RsrSss3"
 }
 
-export default () => (
+const DonateBitcoin: React.StatelessComponent = () => (
     <a href={DONATION_ADDR.EXPLORER} target="_blank" rel="noopener noreferrer">
         <Icon 
             title={DONATION_ADDR.HUMAN} 
             src={LogoBitcoin} 
+            alt="Donate Bitcoin"
         />
     </a>
-) as React.StatelessComponent;
+);
+
+export default DonateBitcoin;

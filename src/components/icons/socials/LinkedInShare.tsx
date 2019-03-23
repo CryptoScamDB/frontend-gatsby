@@ -6,7 +6,7 @@ interface Props {
     url: string;
 }
 
-export default ({ url }: Props) => (
+const LinkedInShare: React.StatelessComponent<Props> = ({ url }: Props) => (
     <a href={"https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(url)} target="_blank" rel="noopener noreferrer">
         <Icon 
             src={LogoLinkedin}
@@ -14,4 +14,6 @@ export default ({ url }: Props) => (
             alt="Linkedin Logo"
         />
     </a>
-) as React.StatelessComponent<Props>;
+);
+
+export default LinkedInShare;

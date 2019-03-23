@@ -17,11 +17,13 @@ interface Props {
     active: boolean;
 }
 
-export default ({ image, alt, index, active }: Props) => (
+const Screenshot: React.StatelessComponent<Props> = ({ image, alt, index, active }: Props) => (
     <ScreenshotImage 
         alt={alt} 
         src={image} 
         data-index={index}
         style={{display: active ? "inline" : "none"}}
     />
-) as React.StatelessComponent<Props>;
+);
+
+export default Screenshot;

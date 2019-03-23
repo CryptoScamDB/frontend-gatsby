@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import Arrow from '../images/navigation/top-gold.svg';
 
@@ -7,13 +6,17 @@ interface Props {
     answer: any[];
 }
 
-export default class Faq extends Component {
+interface State {
+    expanded: boolean;
+}
+
+export default class Faq extends Component<Props, State> {
     static defaultProps = {
         question: "",
         answer: []
     }
 
-    constructor(props) {
+    constructor(props: Props) {
         super(props);
 
         this.toggleFaq = this.toggleFaq.bind(this);

@@ -28,7 +28,7 @@ interface Props {
     onClick: any;
 }
 
-export default ({ image, alt, index, active, onClick }: Props) => (
+const Thumbnail: React.StatelessComponent<Props> = ({ image, alt, index, active, onClick }: Props) => (
     <ThumbnailScreenshot 
         alt={alt} 
         src={image} 
@@ -36,4 +36,6 @@ export default ({ image, alt, index, active, onClick }: Props) => (
         style={{outline: active ? "5px solid #FFD166" : ""}}
         onClick={onClick}
     />
-) as React.StatelessComponent<Props>;
+);
+
+export default Thumbnail;

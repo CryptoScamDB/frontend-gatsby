@@ -4,11 +4,11 @@ import Header from './header';
 import '../css/layout.scss';
 
 interface Props {
-  id: any;
+  id?: any;
   children: any;
 }
 
-export default ({ id, children }: Props) => (
+const Layout: React.StatelessComponent<Props> = ({ id, children }: Props) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -29,4 +29,6 @@ export default ({ id, children }: Props) => (
         </div>
     )}
   />
-) as React.StatelessComponent<Props>;
+);
+
+export default Layout;

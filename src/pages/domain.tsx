@@ -7,7 +7,11 @@ import TwitterShare from '../components/icons/socials/TwitterShare';
 import LinkedinShare from '../components/icons/socials/LinkedInShare';
 import ScreenshotArea from '../components/domain/ScreenshotArea';
 
-export default ({ data }) => {
+interface Props {
+    data: any;
+}
+
+const Domain: React.StatelessComponent<Props> = ({ data }: Props) => {
     // @todo - Can I do this any tidier?
     const {allCsdbScamDomains: scam} = data;
     const s = scam.edges[0].node;
@@ -50,8 +54,8 @@ export default ({ data }) => {
                         {
                             s.lookups && s.lookups.URLScan && s.lookups.URLScan.results.length > 0 && s.lookups.URLScan.results[0].page.ip
                                 ? s.lookups.URLScan.results
-                                    .map(urlscan => urlscan.page.ip)
-                                    .filter((ip, index, arr) => arr.indexOf(ip) === index)
+                                    .map((urlscan: any) => urlscan.page.ip)
+                                    .filter((ip: any, index: number, arr: any) => arr.indexOf(ip) === index)
                                     .sort()
                                     .join(", ")
                                 : `No IP (domain not resolving)`
@@ -66,7 +70,7 @@ export default ({ data }) => {
                     <ul>
                         {
                             s.nameservers
-                                ? s.nameservers.map((ns, i) => <li key={i}>{ns}</li>)
+                                ? s.nameservers.map((ns: string, i: number) => <li key={i}>{ns}</li>)
                                 : `No Nameservers found (domain not resolving at lookup time)`
                         }
                     </ul>
@@ -79,7 +83,7 @@ export default ({ data }) => {
                     <ul>
                     {
                         s.addresses
-                            ? s.addresses.map((ns, i) => <li key={i}>{ns}</li>)
+                            ? s.addresses.map((ns: string, i: number) => <li key={i}>{ns}</li>)
                             : `No Addresses`
                     }
                     </ul>
@@ -110,9 +114,9 @@ export default ({ data }) => {
                     {
                         s.lookups && s.lookups.URLScan && s.lookups.URLScan.results 
                             ?
-                                <ScreenshotArea images={s.lookups.URLScan.results.map(r => r._id)
+                                <ScreenshotArea images={s.lookups.URLScan.results.map((r: any) => r._id)
                                     .filter(Boolean)
-                                    .map(r => `https://urlscan.io/screenshots/${r}.png`)}
+                                    .map((r: string) => `https://urlscan.io/screenshots/${r}.png`)}
                                 />
                             :
                                 // No screenshots available
@@ -124,6 +128,8 @@ export default ({ data }) => {
     </Layout>
   )
 }
+
+export default Domain;
 
 export const pageQuery = graphql`
     query($slug: String) {

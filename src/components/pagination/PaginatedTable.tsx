@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, MouseEvent } from 'react';
 import styled from 'styled-components';
 import Pagination from './pagination';
 import { TableRow } from '../table';
@@ -29,7 +29,12 @@ interface Props {
     tableHeaders: any[];
 }
 
-export default class PaginatedTable extends Component<Props> {
+interface State {
+    currentPage: number;
+    totalPages: number;
+}
+
+export default class PaginatedTable extends Component<Props, State> {
     static defaultProps = {
         totalRecords: 0,
         recordsPerPage: 15,
@@ -37,7 +42,7 @@ export default class PaginatedTable extends Component<Props> {
         tableHeaders: []
     }
 
-    constructor(props) {
+    constructor(props: Props) {
         super(props);
         this.changePage = this.changePage.bind(this);
         const { totalRecords, recordsPerPage } = this.props;
@@ -51,10 +56,12 @@ export default class PaginatedTable extends Component<Props> {
         };
     }
 
-    changePage(event) {
-        const intCurrentPage = event.target.getAttribute("value");
-
-        this.setState({ currentPage: intCurrentPage });
+    changePage(event: MouseEvent<HTMLElement>) {
+        const { target } = event;
+        const intCurrentPage = (target as HTMLElement).getAttribute("value");
+        if(intCurrentPage) {
+            this.setState({ currentPage: parseInt(intCurrentPage, 10) });
+        }
     }
 
     render() {

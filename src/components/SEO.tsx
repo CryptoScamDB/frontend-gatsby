@@ -4,14 +4,14 @@ import Helmet from 'react-helmet';
 import { StaticQuery, graphql } from 'gatsby';
 
 interface Props {
-  description: string;
-  lang: string;
-  meta: any[];
-  keywords: string[];
-  title: string;
+  description?: string;
+  lang?: string;
+  meta?: any[];
+  keywords?: string[];
+  title?: string;
 }
 
-export default ({ description, lang = 'en', meta = [], keywords = [], title }: Props) => (
+const SEO: React.StatelessComponent<Props> = ({ description, lang = 'en', meta = [], keywords = [], title }: Props) => (
     <StaticQuery
       query={detailsQuery}
       render={data => {
@@ -71,7 +71,9 @@ export default ({ description, lang = 'en', meta = [], keywords = [], title }: P
         )
       }}
     />
-) as React.StatelessComponent<Props>;
+);
+
+export default SEO;
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {

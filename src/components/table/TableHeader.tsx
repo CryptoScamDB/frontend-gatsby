@@ -12,8 +12,10 @@ interface Props {
   data: string;
 }
 
-export default ({ data }: Props) => (
+const TableHeader: React.StatelessComponent<Props> = ({ data }: Props) => (
   <TableHeadBase>
     {data}
   </TableHeadBase>
-) as React.StatelessComponent<Props>;
+);
+
+export default TableHeader;

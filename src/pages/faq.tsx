@@ -3,7 +3,7 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import FAQ from '../components/FAQ';
 
-export default () => (
+const FAQ_Page: React.StatelessComponent = () => (
   <Layout id="faq-view">
     <SEO title="FAQ" keywords={[`ethereum`,`faq`,`mycrypto`]} />
 
@@ -47,4 +47,6 @@ export default () => (
       us an email at contact@cryptoscamdb.org.
     </div>
   </Layout>
-) as React.StatelessComponent;
+);
+
+export default FAQ_Page;

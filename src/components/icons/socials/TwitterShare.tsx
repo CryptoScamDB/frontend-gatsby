@@ -7,7 +7,7 @@ interface Props {
     url: string;
 }
 
-export default ({ text, url }: Props) => (
+const TwitterShare: React.StatelessComponent<Props> = ({ text, url }: Props) => (
     <a href={"https://twitter.com/intent/tweet?text=" + encodeURIComponent(text + "\r\n\r\n") + "&url=" + encodeURIComponent(url)} target="_blank" rel="noopener noreferrer">
         <Icon 
             src={LogoTwitter}
@@ -15,4 +15,6 @@ export default ({ text, url }: Props) => (
             alt="Twitter Logo"
         />
     </a>
-) as React.StatelessComponent<Props>;
+);
+
+export default TwitterShare;

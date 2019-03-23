@@ -9,8 +9,10 @@ interface Props {
   data: string;
 }
 
-export default ({ data }: Props) => (
+const TableData: React.StatelessComponent<Props> = ({ data }: Props) => (
   <TableDataBase>
     {data}
   </TableDataBase>
-) as React.StatelessComponent<Props>;
+);
+
+export default TableData;

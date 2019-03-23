@@ -4,10 +4,14 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PaginatedTable from '../components/pagination/PaginatedTable';
 
-export default ({ data }) => {
+interface Props {
+    data: any;
+}
+
+const Verified: React.StatelessComponent<Props> = ({ data }: Props) => {
     // Sort out the table data
-    const arrTableData = [];
-    data.allCsdbFeaturedDomain.edges.forEach(domain => {
+    const arrTableData: any[] = [];
+    data.allCsdbFeaturedDomain.edges.forEach((domain: any) => {
 
         const objRecord = {
             "name": "",
@@ -41,6 +45,8 @@ export default ({ data }) => {
       </Layout> 
     )
 }
+
+export default Verified;
 
 export const pageQuery = graphql`
     query GetVerifiedDomains {

@@ -2,7 +2,11 @@ import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-export default ({ data }) => (
+interface Props {
+  data: any;
+}
+
+const Report: React.StatelessComponent<Props> = ({ data }: Props) => (
   <Layout id="report-view">
     <SEO title="Report a scam" keywords={[`ethereum`,`report`,`mycrypto`]} />
 
@@ -11,4 +15,6 @@ export default ({ data }) => (
     <br />
         
   </Layout> 
-) as React.StatelessComponent;
+);
+
+export default Report;

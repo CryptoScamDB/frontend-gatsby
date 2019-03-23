@@ -13,10 +13,12 @@ interface Props {
     title: string;
 }
 
-export default ({ src, alt, title }: Props) => (
+const Icon: React.StatelessComponent<Props> = ({ src, alt, title }: Props) => (
     <IconImage 
         src={src} 
         alt={alt}
         title={title}
     />
-) as React.StatelessComponent<Props>;
+);
+
+export default Icon;

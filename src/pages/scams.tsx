@@ -5,17 +5,25 @@ import SEO from '../components/SEO';
 import PaginatedTable from '../components/pagination/PaginatedTable';
 import styled from 'styled-components';
 
+interface ScamStatusProps {
+    status: string;
+}
+
 const ScamStatus = styled.span`
-    color: ${props => ["active"].indexOf(props.status.toLowerCase()) ? "#5194A2" : "#FF303E"}
+    color: ${(props: ScamStatusProps) => ["active"].indexOf(props.status.toLowerCase()) ? "#5194A2" : "#FF303E"}
 `;
 
-export default ({ data }) => {
+interface ScamsProps {
+    data: any;
+}
+
+const Scams: React.StatelessComponent<ScamsProps> = ({ data }: ScamsProps) => {
 
     // Sort out the table data
-    const arrTableData = [];
-    data.allCsdbScamDomains.edges.forEach(scam => {
+    const arrTableData: any[] = [];
+    data.allCsdbScamDomains.edges.forEach((scam: any) => {
 
-        const objRecord = {
+        const objRecord: any = {
             "title": "",
             "status": "",
             "category": "",
@@ -71,6 +79,8 @@ export default ({ data }) => {
     </Layout>
   )
 }
+
+export default Scams;
 
 export const pageQuery = graphql`
     query GetPaginatedScams {
