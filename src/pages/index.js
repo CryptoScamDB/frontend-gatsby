@@ -3,8 +3,8 @@ import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import DonateEthereum from "../components/icons/donate/ethereum";
-import DonateBitcoin from "../components/icons/donate/bitcoin";
+import DonateEthereum from "../components/icons/donate/DonateEthereum.tsx";
+import DonateBitcoin from "../components/icons/donate/DonateBitcoin.tsx";
 
 const IndexPage = () => (
   <Layout id="main-view">

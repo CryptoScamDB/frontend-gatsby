@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "author": "CryptoScamDB <contact@cryptoscamdb.org> (https://cryptoscamdb.org)",
   "dependencies": {
+    "@babel/core": "7.4.0",
     "axios": "0.18.0",
     "gatsby": "2.2.8",
     "gatsby-image": "2.0.34",
@@ -13,6 +14,7 @@
     "gatsby-plugin-react-helmet": "3.0.10",
     "gatsby-plugin-sass": "2.0.11",
     "gatsby-plugin-sharp": "2.0.30",
+    "gatsby-plugin-typescript": "2.0.11",
     "gatsby-source-filesystem": "2.0.28",
     "gatsby-transformer-sharp": "2.1.17",
     "node-sass": "4.11.0",
