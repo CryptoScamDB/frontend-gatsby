@@ -30,6 +30,13 @@ interface Props {
 }
 
 export default class PaginatedTable extends Component<Props> {
+    static defaultProps = {
+        totalRecords: 0,
+        recordsPerPage: 15,
+        tableData: [],
+        tableHeaders: []
+    }
+
     constructor(props) {
         super(props);
         this.changePage = this.changePage.bind(this);
@@ -68,17 +75,10 @@ export default class PaginatedTable extends Component<Props> {
                     {
                         tableData
                             .slice((currentPage-1)*recordsPerPage, recordsPerPage*currentPage)
-                            .map(row => <TableRow data={Object.values(row)} type="td" />)
+                            .map((row, i) => <TableRow key={i} data={Object.values(row)} type="td" />)
                     }
                 </Table>
             </Container>
         );
-    }
-
-    static defaultProps = {
-        totalRecords: 0,
-        recordsPerPage: 15,
-        tableData: [],
-        tableHeaders: []
     }
 }

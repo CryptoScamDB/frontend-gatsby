@@ -66,7 +66,7 @@ export default ({ data }) => {
                     <ul>
                         {
                             s.nameservers
-                                ? s.nameservers.map(ns => <li>{ns}</li>)
+                                ? s.nameservers.map((ns, i) => <li key={i}>{ns}</li>)
                                 : `No Nameservers found (domain not resolving at lookup time)`
                         }
                     </ul>
@@ -79,7 +79,7 @@ export default ({ data }) => {
                     <ul>
                     {
                         s.addresses
-                            ? s.addresses.map(ns => <li>{ns}</li>)
+                            ? s.addresses.map((ns, i) => <li key={i}>{ns}</li>)
                             : `No Addresses`
                     }
                     </ul>
@@ -93,14 +93,14 @@ export default ({ data }) => {
                         <li><TwitterShare 
                                 text={"⚠️ Watchout for this #"+ s.category.toLowerCase() +" scam ("+ s.subcategory.toLowerCase() +") - "+ s.url.replace(".", "[.]") +"\r\n#cryptoscamdb"}
                                 url={"https://cryptoscamdb.org/scam/" + s.id} /* TODO: fix id */
-                            ></TwitterShare></li>
+                            /></li>
                         <li><FacebookShare 
                                 text={"⚠️ Watchout for this #"+ s.category.toLowerCase() +" scam ("+ s.subcategory.toLowerCase() +") - "+ s.url.replace(".", "[.]") +"\r\n#cryptoscamdb"}
                                 url={"https://cryptoscamdb.org/scam/" + s.id} /* TODO: fix id */
-                            ></FacebookShare></li>
+                            /></li>
                         <li><LinkedinShare 
                                 url={"https://cryptoscamdb.org/scam/" + s.id} /* TODO: fix id */
-                            ></LinkedinShare></li>
+                            /></li>
                     </ul>
                 </div>
             </div>
@@ -112,11 +112,11 @@ export default ({ data }) => {
                             ?
                                 <ScreenshotArea images={s.lookups.URLScan.results.map(r => r._id)
                                     .filter(Boolean)
-                                    .map(r => `https://urlscan.io/screenshots/${r}.png`)}>
-                                </ScreenshotArea>
+                                    .map(r => `https://urlscan.io/screenshots/${r}.png`)}
+                                />
                             :
                                 // No screenshots available
-                                <ScreenshotArea images={[]}></ScreenshotArea>
+                                <ScreenshotArea images={[]} />
                     }
                 </div>
             </div>

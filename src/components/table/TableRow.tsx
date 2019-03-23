@@ -16,6 +16,12 @@ interface Props {
 }
 
 export default class TableRow extends Component<Props> {
+    static defaultProps = {
+        data: [],
+        type: "td",
+        link: ""
+    }
+    
     render() {
         const { type, data } = this.props;
         switch(type) {
@@ -23,21 +29,15 @@ export default class TableRow extends Component<Props> {
             default:
                 return(
                     <TableRowBase type="td">
-                        {data.map(d => <TableData data={d} />)}
+                        {data.map((d, i) => <TableData key={i} data={d} />)}
                     </TableRowBase>
                 )
             case 'th':
             return(
                 <TableRowBase>
-                    {data.map(d => <TableHeader data={d} />)}
+                    {data.map((d, i) => <TableHeader key={i} data={d} />)}
                 </TableRowBase>
             )
         }
-    }
-
-    static defaultProps = {
-        data: [],
-        type: "td",
-        link: ""
     }
 }

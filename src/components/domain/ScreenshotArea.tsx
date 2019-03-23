@@ -113,6 +113,10 @@ interface Props {
 }
 
 export default class ScreenshotArea extends Component<Props> {
+    static defaultProps = {
+        images: []
+    }
+    
     constructor(props) {
         super(props);
     
@@ -183,12 +187,13 @@ export default class ScreenshotArea extends Component<Props> {
                                             image={r} 
                                             alt="Screenshot" 
                                             index={++index} 
+                                            key={index}
                                             active={
                                                 currentImage === index 
                                                     ? true 
                                                     : false
-                                            }>
-                                        </Screenshot>
+                                            }
+                                        />
                                     )
                                 :
                                     <NoScreenshot>No screenshots available</NoScreenshot>
@@ -206,13 +211,14 @@ export default class ScreenshotArea extends Component<Props> {
                                             image={r} 
                                             alt="Screenshot" 
                                             index={++index} 
+                                            key={index}
                                             active={
                                                 currentImage === index 
                                                     ? true 
                                                     : false
                                             }
-                                            onClick={this.jumpToImage}>
-                                        </Thumbnail>
+                                            onClick={this.jumpToImage}
+                                        />
                                     )
                                 }
                             </Thumbnails>
@@ -221,9 +227,5 @@ export default class ScreenshotArea extends Component<Props> {
                 }
             </div>
         )
-    }
-
-    static defaultProps = {
-        images: []
     }
 }

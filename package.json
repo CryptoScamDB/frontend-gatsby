@@ -49,7 +49,8 @@
     "develop": "gatsby develop",
     "start": "npm run develop",
     "format": "prettier --write \"src/**/*.js\"",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\""
+    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
+    "prettier:diff": "prettier --write --config ./.prettierrc --list-different 'src/**/*.ts' 'src/**/*.tsx' '*.js' 'gatsby/**/*.js'"
   },
   "devDependencies": {
     "@types/node": "11.11.6",

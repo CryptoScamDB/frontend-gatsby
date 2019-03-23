@@ -7,6 +7,9 @@ cache:
   - "$HOME/.cache"
 install:
 - yarn --silent
+script:
+- yarn run prettier:diff
+- yarn run tslint
 before_deploy:
 - yarn run build --prefix-paths
 deploy:

@@ -28,6 +28,11 @@ interface Props {
 }
 
 export default class Pagination extends Component<Props> {
+    static defaultProps = {
+        currentPage: 1,
+        totalPages: 1
+    }
+    
     constructor(props) {
         super(props);
         this.movePage = this.movePage.bind(this);
@@ -52,7 +57,7 @@ export default class Pagination extends Component<Props> {
         const { totalPages } = this.props;
         const { currentPage } = this.state;
         // can probably do this better but it work so ¯\_(ツ)_/¯
-        let arrPages = totalPages > 1
+        const arrPages = totalPages > 1
             ? Array(totalPages)
                 .fill(1)
                 .map((x,y) => x + y)
@@ -84,10 +89,11 @@ export default class Pagination extends Component<Props> {
                     value={currentPage-1}
                 >&lt;</PageUnit>
                 {
-                    arrPages.map(page => <PageUnit 
+                    arrPages.map((page, i) => <PageUnit 
                                             currentPage={currentPage === page ? true: false} 
                                             onClick={this.movePage} 
                                             value={page}
+                                            key={i}
                                         >{page}</PageUnit>
                                 )
                 }
@@ -101,10 +107,5 @@ export default class Pagination extends Component<Props> {
                 >&raquo;</PageUnit>
             </div>
         )
-    }
-
-    static defaultProps = {
-        currentPage: 1,
-        totalPages: 1
     }
 }

@@ -24,9 +24,7 @@ export default ({ id, children }: Props) => (
           <Header siteTitle={data.site.siteMetadata.title} />
             <div id={id +"--container"}>
               {children}
-              <footer>
-                
-              </footer>
+              <footer />
             </div>
         </div>
     )}

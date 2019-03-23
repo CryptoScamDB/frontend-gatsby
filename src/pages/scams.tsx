@@ -12,10 +12,10 @@ const ScamStatus = styled.span`
 export default ({ data }) => {
 
     // Sort out the table data
-    let arrTableData = [];
+    const arrTableData = [];
     data.allCsdbScamDomains.edges.forEach(scam => {
 
-        let objRecord = {
+        const objRecord = {
             "title": "",
             "status": "",
             "category": "",

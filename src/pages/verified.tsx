@@ -6,10 +6,10 @@ import PaginatedTable from '../components/pagination/PaginatedTable';
 
 export default ({ data }) => {
     // Sort out the table data
-    let arrTableData = [];
+    const arrTableData = [];
     data.allCsdbFeaturedDomain.edges.forEach(domain => {
 
-        let objRecord = {
+        const objRecord = {
             "name": "",
             "url": "",
             "description": ""

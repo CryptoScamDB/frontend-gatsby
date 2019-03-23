@@ -8,6 +8,11 @@ interface Props {
 }
 
 export default class Faq extends Component {
+    static defaultProps = {
+        question: "",
+        answer: []
+    }
+
     constructor(props) {
         super(props);
 
@@ -34,15 +39,10 @@ export default class Faq extends Component {
                 </div>
                 <div className={expanded ? "body" : "body hidden"}>
                     <ul>
-                        {answer.map(e => <li>{e}</li>)}
+                        {answer.map((e, i) => <li key={i}>{e}</li>)}
                     </ul>
                 </div>
             </div>
         )
-    }
-
-    static defaultProps = {
-        question: "",
-        answer: []
     }
 }

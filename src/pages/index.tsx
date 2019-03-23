@@ -68,8 +68,8 @@ export default () => (
           to one of our cryptocurrency addresses.
         </p>
         <ul>
-          <li><DonateEthereum></DonateEthereum></li>
-          <li><DonateBitcoin></DonateBitcoin></li>
+          <li><DonateEthereum /></li>
+          <li><DonateBitcoin /></li>
         </ul>
       </div>      
     </div>
