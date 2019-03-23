@@ -45,19 +45,31 @@
   "scripts": {
     "tscheck": "tsc --noEmit --project tsconfig.json",
     "tslint": "tslint --project .",
-    "build": "gatsby build",
-    "develop": "gatsby develop",
+    "build": "rimraf ./.cache && rimraf ./public && gatsby build",
+    "develop": "rimraf ./.cache && gatsby develop",
+    "serve": "gatsby serve",
     "start": "npm run develop",
-    "format": "prettier --write \"src/**/*.js\"",
-    "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
-    "prettier:diff": "prettier --write --config ./.prettierrc --list-different 'src/**/*.ts' 'src/**/*.tsx' '*.js' 'gatsby/**/*.js'"
+    "clean": "rimraf ./.cache && rimraf ./public",
+    "test": "jest --config ./jest/jest.config.js",
+    "prettier:diff": "prettier --write --config ./.prettierrc --list-different 'src/**/*.ts' 'src/**/*.tsx' '*.js'"
   },
   "devDependencies": {
+    "@types/jest": "24.0.11",
     "@types/node": "11.11.6",
     "@types/react": "16.8.8",
     "@types/react-helmet": "5.0.8",
+    "@types/react-test-renderer": "16.8.1",
     "@types/styled-components": "4.1.12",
+    "babel-jest": "24.5.0",
+    "babel-preset-gatsby": "0.1.9",
+    "husky": "1.3.1",
+    "identity-obj-proxy": "3.0.0",
+    "jest": "24.5.0",
+    "lint-staged": "8.1.5",
     "prettier": "1.16.4",
+    "react-test-renderer": "16.8.5",
+    "rimraf": "2.6.3",
+    "ts-jest": "24.0.0",
     "tslint": "5.14.0",
     "tslint-config-prettier": "1.18.0",
     "tslint-microsoft-contrib": "6.1.0",
@@ -74,5 +86,23 @@
   "contributors": [
     "Harry Denley (https://harrydenley.com)",
     "Luit Hollander <luit@hollander.email> (https://luit.me)"
-  ]
+  ],
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write --config ./.prettierrc --config-precedence file-override",
+      "tslint --project .",
+      "git add"
+    ],
+    "*.js": [
+      "prettier --write --config ./.prettierrc --config-precedence file-override",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "post-commit": "git update-index --again",
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run tslint && npm run tscheck && npm run test"
+    }
+  }
 }

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DonateEthereum renders correctly 1`] = `
+<a
+  href="https://etherscan.io/address/0x25a51b3A7163352D4f32D0ED4a012b73fc32C08a"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <img
+    alt="Donate Ethereum"
+    className="sc-bdVaJa DRTkB"
+    src="test-file-stub"
+    title="cryptoscamdb.eth"
+  />
+</a>
+`;
