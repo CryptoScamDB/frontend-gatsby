@@ -129,7 +129,7 @@ exports.createPages = ({ graphql, actions} ) =>
                     console.log(`\tCreating page /domain/${node.csdbId}`)
                     createPage({
                         path: `/domain/${node.csdbId}`,
-                        component: path.resolve(`./src/pages/domain.js`),
+                        component: path.resolve(`./src/pages/domain.tsx`),
                         context: {
                             slug: node.csdbId
                         }

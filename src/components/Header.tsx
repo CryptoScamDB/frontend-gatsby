@@ -1,9 +1,12 @@
-import { Link } from 'gatsby'
-import PropTypes from 'prop-types'
-import React from 'react'
-import siteLogo from "../images/logo/csdb-logo.svg"
+import { Link } from 'gatsby';
+import React from 'react';
+import siteLogo from '../images/logo/csdb-logo.svg';
 
-const Header = ({ siteTitle }) => (
+interface Props {
+  siteTitle: string;
+}
+
+export default ({ siteTitle }: Props) => (
   <div id="header">
     <div id="header--container">
       <div id="header--container-brand">
@@ -21,15 +24,4 @@ const Header = ({ siteTitle }) => (
       </div>
     </div>
   </div>
-)
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-  siteLogo: PropTypes.string
-}
-
-Header.defaultProps = {
-  siteTitle: ``
-}
-
-export default Header
+) as React.StatelessComponent<Props>;

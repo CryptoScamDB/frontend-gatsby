@@ -1,11 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { StaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import { StaticQuery, graphql } from 'gatsby';
+import Header from './header';
+import '../css/layout.scss';
 
-import Header from './header'
-import '../css/layout.scss'
+interface Props {
+  id: any;
+  children: any;
+}
 
-const Layout = ({ id, children }) => (
+export default ({ id, children }: Props) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -28,10 +31,4 @@ const Layout = ({ id, children }) => (
         </div>
     )}
   />
-)
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
-export default Layout
+) as React.StatelessComponent<Props>;

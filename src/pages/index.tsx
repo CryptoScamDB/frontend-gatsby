@@ -1,12 +1,11 @@
-import React from 'react'
-import { Link } from 'gatsby'
+import React from 'react';
+import { Link } from 'gatsby';
+import Layout from '../components/Layout';
+import SEO from '../components/SEO';
+import DonateEthereum from '../components/icons/donate/DonateEthereum';
+import DonateBitcoin from '../components/icons/donate/DonateBitcoin';
 
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import DonateEthereum from "../components/icons/donate/DonateEthereum";
-import DonateBitcoin from "../components/icons/donate/DonateBitcoin";
-
-const IndexPage = () => (
+export default () => (
   <Layout id="main-view">
     <SEO title="Home" keywords={[`ethereum`,`cryptoscamdb`,`mycrypto`]} />
 
@@ -76,6 +75,4 @@ const IndexPage = () => (
     </div>
 
   </Layout>
-)
-
-export default IndexPage
+) as React.StatelessComponent;

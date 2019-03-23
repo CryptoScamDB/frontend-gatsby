@@ -1,10 +1,17 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { StaticQuery, graphql } from 'gatsby';
 
-function SEO({ description, lang, meta, keywords, title }) {
-  return (
+interface Props {
+  description: string;
+  lang: string;
+  meta: any[];
+  keywords: string[];
+  title: string;
+}
+
+export default ({ description, lang = 'en', meta = [], keywords = [], title }: Props) => (
     <StaticQuery
       query={detailsQuery}
       render={data => {
@@ -64,24 +71,7 @@ function SEO({ description, lang, meta, keywords, title }) {
         )
       }}
     />
-  )
-}
-
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  keywords: [],
-}
-
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired,
-}
-
-export default SEO
+) as React.StatelessComponent<Props>;
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
