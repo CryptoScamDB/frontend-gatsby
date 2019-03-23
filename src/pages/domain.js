@@ -5,8 +5,7 @@ import SEO from '../components/seo'
 import FacebookShare from "../components/icons/socials/FacebookShare";
 import TwitterShare from "../components/icons/socials/TwitterShare";
 import LinkedinShare from "../components/icons/socials/LinkedInShare";
-
-import ScreenshotArea from '../components/domain/screenshot-area'
+import ScreenshotArea from '../components/domain/ScreenshotArea';
 
 export default function DomainPage({data}) {
     // @todo - Can I do this any tidier?
