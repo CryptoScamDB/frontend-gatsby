@@ -9,11 +9,6 @@ const IconImage = styled.img`
 
 class Icon extends Component
 {
-    constructor(props)
-    {
-        super(props);
-    }
-
     render()
     {
         return(
@@ -28,8 +23,8 @@ class Icon extends Component
 
 Icon.propTypes = {
     src: PropTypes.string,
-    alt: PropTypes.alt,
-    title: PropTypes.title
+    alt: PropTypes.string,
+    title: PropTypes.string
 }
 
 Icon.defaultProps = {

@@ -6,15 +6,10 @@ import LogoTwitter from "../../../images/social/twitter.svg";
 
 class SocialTwitter extends Component
 {
-    constructor(props)
-    {
-        super(props);
-    }
-
     render()
     {
         return(
-            <a href={"https://twitter.com/intent/tweet?text=" + encodeURIComponent(this.props.tweet + "\r\n\r\n") + "&url=" + this.props.url} target="_blank">
+            <a href={"https://twitter.com/intent/tweet?text=" + encodeURIComponent(this.props.text + "\r\n\r\n") + "&url=" + encodeURIComponent(this.props.url)} target="_blank" rel="noopener noreferrer">
                 <Icon 
                     src={LogoTwitter}
                     title="Share on Twitter"
@@ -26,12 +21,12 @@ class SocialTwitter extends Component
 }
 
 SocialTwitter.propTypes = {
-    tweet: PropTypes.string,
+    text: PropTypes.string,
     url: PropTypes.string
 }
 
 SocialTwitter.defaultProps = {
-    tweet: "",
+    text: "",
     url: "https://cryptoscamdb.org"
 }
 

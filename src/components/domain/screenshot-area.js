@@ -122,7 +122,7 @@ class ScreenshotArea extends Component {
 
         this.state = {
             currentImage: 1,
-            totalImages: null
+            totalImages: this.props.images.length
         }
     }
 
@@ -162,17 +162,15 @@ class ScreenshotArea extends Component {
      */
     render()
     {
-        this.state.totalImages = this.props.images.length;
-
         return(
             <div>
                 <ScreenshotContainer>
                     <LeftAndRightArrows>
                         <RightArrow onClick={this.nextImage}>
-                            <img src={Right} />
+                            <img alt="Next" src={Right} />
                         </RightArrow>
                         <LeftArrow onClick={this.prevImage}>
-                            <img src={Left} />
+                            <img alt="Previous" src={Left} />
                         </LeftArrow>
                     </LeftAndRightArrows>
                     <ScreenshotImages>

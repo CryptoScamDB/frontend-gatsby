@@ -1,5 +1,5 @@
 import React from 'react'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import FacebookShare from "../components/icons/socials/facebook";
@@ -52,7 +52,7 @@ export default function DomainPage({data}) {
                             s.lookups && s.lookups.URLScan && s.lookups.URLScan.results.length > 0 && s.lookups.URLScan.results[0].page.ip
                                 ? s.lookups.URLScan.results
                                     .map(urlscan => urlscan.page.ip)
-                                    .filter((ip, index, arr) => arr.indexOf(ip) == index)
+                                    .filter((ip, index, arr) => arr.indexOf(ip) === index)
                                     .sort()
                                     .join(", ")
                                 : `No IP (domain not resolving)`
@@ -92,13 +92,15 @@ export default function DomainPage({data}) {
                     <span className="heading--sub">Warn your friends</span>
                     <ul id="social">
                         <li><TwitterShare 
-                                tweet={"⚠️ Watchout for this #"+ s.category.toLowerCase() +" scam ("+ s.subcategory.toLowerCase() +") - "+ s.url.replace(".", "[.]") +"\r\n#cryptoscamdb"}
+                                text={"⚠️ Watchout for this #"+ s.category.toLowerCase() +" scam ("+ s.subcategory.toLowerCase() +") - "+ s.url.replace(".", "[.]") +"\r\n#cryptoscamdb"}
+                                url={"https://cryptoscamdb.org/scam/" + s.id} /* TODO: fix id */
                             ></TwitterShare></li>
                         <li><FacebookShare 
-                                tweet={"⚠️ Watchout for this #"+ s.category.toLowerCase() +" scam ("+ s.subcategory.toLowerCase() +") - "+ s.url.replace(".", "[.]") +"\r\n#cryptoscamdb"}
+                                text={"⚠️ Watchout for this #"+ s.category.toLowerCase() +" scam ("+ s.subcategory.toLowerCase() +") - "+ s.url.replace(".", "[.]") +"\r\n#cryptoscamdb"}
+                                url={"https://cryptoscamdb.org/scam/" + s.id} /* TODO: fix id */
                             ></FacebookShare></li>
                         <li><LinkedinShare 
-                                tweet={"⚠️ Watchout for this #"+ s.category.toLowerCase() +" scam ("+ s.subcategory.toLowerCase() +") - "+ s.url.replace(".", "[.]") +"\r\n#cryptoscamdb"}
+                                url={"https://cryptoscamdb.org/scam/" + s.id} /* TODO: fix id */
                             ></LinkedinShare></li>
                     </ul>
                 </div>

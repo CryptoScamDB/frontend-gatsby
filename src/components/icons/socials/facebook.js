@@ -6,15 +6,10 @@ import LogoFacebook from "../../../images/social/facebook.svg";
 
 class SocialFacebook extends Component
 {
-    constructor(props)
-    {
-        super(props);
-    }
-
     render()
     {
         return(
-            <a>
+            <a href={"http://www.facebook.com/sharer.php?u=" + encodeURIComponent(this.props.url) + "&quote=" + encodeURIComponent(this.props.text)} target="_blank" rel="noopener noreferrer">
                 <Icon 
                     src={LogoFacebook}
                     title="Share on Facebook"
@@ -26,12 +21,12 @@ class SocialFacebook extends Component
 }
 
 SocialFacebook.propTypes = {
-    tweet: PropTypes.string,
+    text: PropTypes.string,
     url: PropTypes.string
 }
 
 SocialFacebook.defaultProps = {
-    tweet: "",
+    text: "",
     url: "https://cryptoscamdb.org"
 }
 

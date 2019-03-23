@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import TableData from './table-data'
 import TableHeader from './table-header'
 
-const _TableRow = styled.tr`
+const TableRowBase = styled.tr`
 
     &:hover {
         background: ${props => props.type === "td" ? "#0f3d5b" : ""}
@@ -14,26 +14,21 @@ const _TableRow = styled.tr`
 
 class TableRow extends Component
 {
-    constructor(props)
-    {
-        super(props);
-    }
-
     render()
     {
         switch(this.props.type) {
             case 'td':
             default:
                 return(
-                    <_TableRow type="td">
+                    <TableRowBase type="td">
                         {this.props.data.map(d => <TableData data={d} />)}
-                    </_TableRow>
+                    </TableRowBase>
                 )
             case 'th':
             return(
-                <_TableRow>
+                <TableRowBase>
                     {this.props.data.map(d => <TableHeader data={d} />)}
-                </_TableRow>
+                </TableRowBase>
             )
         }
     }

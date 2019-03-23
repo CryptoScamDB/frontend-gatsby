@@ -12,11 +12,6 @@ const ScreenshotImage = styled.img`
 `;
 
 class Screenshot extends Component {
-    constructor(props)
-    {
-        super(props);
-    }
-
     render()
     {
         return(

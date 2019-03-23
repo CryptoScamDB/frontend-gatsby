@@ -75,8 +75,8 @@ class PaginatedTable extends Component
 }
 
 PaginatedTable.propTypes = {
-    totalRecords: PropTypes.int,
-    recordsPerPage: PropTypes.int,
+    totalRecords: PropTypes.number,
+    recordsPerPage: PropTypes.number,
     tableData: PropTypes.array,
     tableHeaders: PropTypes.array
 }

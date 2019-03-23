@@ -8,7 +8,7 @@ export default function VerifiedPage({data}) {
 
     // Sort out the table data
     let arrTableData = [];
-    data.allCsdbFeaturedDomain.edges.map(domain => {
+    data.allCsdbFeaturedDomain.edges.forEach(domain => {
 
         let objRecord = {
             "name": "",

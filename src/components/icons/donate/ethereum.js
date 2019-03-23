@@ -14,7 +14,7 @@ class DonateEthereum extends Component
     render()
     {
         return(
-            <a href={DONATION_ADDR.EXPLORER} target="_blank">
+            <a href={DONATION_ADDR.EXPLORER} target="_blank" rel="noopener noreferrer">
                 <Icon 
                     title={DONATION_ADDR.HUMAN} 
                     src={LogoEthereum} 

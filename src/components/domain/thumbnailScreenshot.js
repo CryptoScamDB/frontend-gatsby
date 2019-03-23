@@ -13,11 +13,6 @@ const ThumbnailScreenshot = styled.img`
 `;
 
 class Thumbnail extends Component {
-    constructor(props)
-    {
-        super(props);
-    }
-
     render()
     {
         return(

@@ -3,9 +3,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-import ArrowLeft from '../../images/navigation/left.svg'
-import ArrowRight from '../../images/navigation/right.svg'
-
 const PageUnit = styled.div`
     padding: 0.5em;
     display: inline-block;
@@ -71,7 +68,7 @@ class Pagination extends Component
         // buff out the pages if we are on page 1
         if([1,2].indexOf(arrPages.length) > -1 && intTotalPages > 1) {
             // we are missing some pages because we are on the first page
-            if(intTotalPages > 3 && this.state.currentPage != intTotalPages) {
+            if(intTotalPages > 3 && this.state.currentPage !== intTotalPages) {
                 arrPages.push(3)
             }
 
@@ -92,7 +89,7 @@ class Pagination extends Component
                 >&lt;</PageUnit>
                 {
                     arrPages.map(page => <PageUnit 
-                                            currentPage={this.state.currentPage == page ? true: false} 
+                                            currentPage={this.state.currentPage === page ? true: false} 
                                             onClick={this.movePage} 
                                             value={page}
                                         >{page}</PageUnit>
@@ -112,8 +109,8 @@ class Pagination extends Component
 }
 
 Pagination.propTypes = {
-    currentPage: PropTypes.int,
-    totalPages: PropTypes.int
+    currentPage: PropTypes.number,
+    totalPages: PropTypes.number
 }
 
 Pagination.defaultProps = {

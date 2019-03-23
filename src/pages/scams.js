@@ -3,7 +3,6 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
 import PaginatedTable from '../components/pagination/paginated-table';
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const ScamStatus = styled.span`
@@ -14,7 +13,7 @@ export default function ScamPage({data}) {
 
     // Sort out the table data
     let arrTableData = [];
-    data.allCsdbScamDomains.edges.map(scam => {
+    data.allCsdbScamDomains.edges.forEach(scam => {
 
         let objRecord = {
             "title": "",

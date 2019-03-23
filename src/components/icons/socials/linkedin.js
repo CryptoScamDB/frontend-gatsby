@@ -6,15 +6,10 @@ import LogoLinkedin from "../../../images/social/linkedin.svg";
 
 class SocialLinkedin extends Component
 {
-    constructor(props)
-    {
-        super(props);
-    }
-
     render()
     {
         return(
-            <a>
+            <a href={"https://www.linkedin.com/sharing/share-offsite/?url=" + encodeURIComponent(this.props.url)} target="_blank" rel="noopener noreferrer">
                 <Icon 
                     src={LogoLinkedin}
                     title="Share on Linkedin"
@@ -26,12 +21,10 @@ class SocialLinkedin extends Component
 }
 
 SocialLinkedin.propTypes = {
-    tweet: PropTypes.string,
     url: PropTypes.string
 }
 
 SocialLinkedin.defaultProps = {
-    tweet: "",
     url: "https://cryptoscamdb.org"
 }
 

@@ -27,7 +27,7 @@ class Faq extends Component {
             <div className="faq">
                 <div className="head" onClick={this.toggleFaq}>
                     <span>{this.props.question}</span>
-                    <img src={Arrow} />
+                    <img alt="Expand" src={Arrow} />
                 </div>
                 <div className={this.state.expanded ? "body" : "body hidden"}>
                     <ul>
