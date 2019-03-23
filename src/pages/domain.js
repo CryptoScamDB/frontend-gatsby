@@ -2,9 +2,9 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import FacebookShare from "../components/icons/socials/FacebookShare.tsx";
-import TwitterShare from "../components/icons/socials/TwitterShare.tsx";
-import LinkedinShare from "../components/icons/socials/LinkedInShare.tsx";
+import FacebookShare from "../components/icons/socials/FacebookShare";
+import TwitterShare from "../components/icons/socials/TwitterShare";
+import LinkedinShare from "../components/icons/socials/LinkedInShare";
 
 import ScreenshotArea from '../components/domain/screenshot-area'
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import Layout from '../components/layout'
 import SEO from '../components/seo'
-import PaginatedTable from '../components/pagination/paginated-table';
+import PaginatedTable from '../components/pagination/PaginatedTable';
 
 export default function VerifiedPage({data}) {
 
