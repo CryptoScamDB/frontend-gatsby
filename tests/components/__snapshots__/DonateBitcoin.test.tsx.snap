@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DonateBitcoin renders correctly 1`] = `
+.c0 {
+  height: 26px;
+  width: 26px;
+}
+
+<a
+  href="https://blockchain.info/address/32oirLEzZRhi33RCXDF9WHJjEb8RsrSss3"
+  rel="noopener noreferrer"
+  target="_blank"
+>
+  <img
+    alt="Donate Bitcoin"
+    className="c0"
+    src="test-file-stub"
+    title="32oirLEzZRhi33RCXDF9WHJjEb8RsrSss3"
+  />
+</a>
+`;
