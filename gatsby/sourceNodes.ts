@@ -35,10 +35,10 @@ export default async ({ actions: { createNode } }: any) => {
     await Promise.all(
       arrResults.map(async (data: any) => {
         if (data.name) {
-          const objResponse = await axios.get(`${API_ENDPOINT}/domain/${data.name.toLowerCase()}`);
+          const objResponse = await axios.get(`${API_ENDPOINT}/entry/${data.id.toLowerCase()}`);
           if (objResponse.status === 200 && objResponse.data && objResponse.data.success) {
             objBuildStats.success += 1;
-            createNode(ScamDomainNode(objResponse.data.result[0]));
+            createNode(ScamDomainNode(objResponse.data.result));
           } else {
             console.log(`\r\n\t[-] Build error - cannot get domain: ${data.name}`);
             objBuildStats.fail += 1;
