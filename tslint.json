@@ -26,7 +26,8 @@
     "ordered-imports": false,
     "react-anchor-blank-noopener": true,
     "no-http-string": [true, "http://localhost:.*"],
-    "member-access": [true, "no-public"]
+    "member-access": [true, "no-public"],
+    "no-empty": false
   },
   "rulesDirectory": ["node_modules/tslint-microsoft-contrib"]
 }

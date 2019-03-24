@@ -2,11 +2,24 @@ import { API_ENDPOINT } from './config';
 const { NODE_ENV } = process.env;
 
 const createNodeHelpers = require('gatsby-node-helpers').default;
+const Bottleneck = require('bottleneck');
 const axios = require('axios');
 
 const { createNodeFactory, generateNodeId, generateTypeName } = createNodeHelpers({
   typePrefix: 'Csdb'
 });
+
+const limiter = new Bottleneck({
+  maxConcurrent: 100,
+  minTime: 100
+});
+
+const instance = axios.create({
+  baseURL: API_ENDPOINT,
+  timeout: 5000,
+  validateStatus: () => true
+});
+const get = limiter.wrap(instance.get);
 
 const ScamDomainNode = createNodeFactory('ScamDomains');
 const FeaturedDomainNode = createNodeFactory('FeaturedDomain');
@@ -17,7 +30,7 @@ export default async ({ actions: { createNode } }: any) => {
    ********************** G E T   S C A M S **********************
    ***************************************************************/
   console.log(`\r\n\r\n[*] Fetching domains -- ${API_ENDPOINT}/scams`);
-  const objScams = await axios.get(`${API_ENDPOINT}/scams`);
+  const objScams = await get(`/scams`);
 
   const objBuildStats = {
     success: 0,
@@ -35,10 +48,15 @@ export default async ({ actions: { createNode } }: any) => {
     await Promise.all(
       arrResults.map(async (data: any) => {
         if (data.name) {
-          const objResponse = await axios.get(`${API_ENDPOINT}/entry/${data.id.toLowerCase()}`);
-          if (objResponse.status === 200 && objResponse.data && objResponse.data.success) {
+          const objResponse = await get(`/domain/${data.name.toLowerCase()}`).catch(() => {});
+          if (
+            objResponse &&
+            objResponse.status === 200 &&
+            objResponse.data &&
+            objResponse.data.success
+          ) {
             objBuildStats.success += 1;
-            createNode(ScamDomainNode(objResponse.data.result));
+            createNode(ScamDomainNode(objResponse.data.result[0]));
           } else {
             console.log(`\r\n\t[-] Build error - cannot get domain: ${data.name}`);
             objBuildStats.fail += 1;
@@ -55,7 +73,7 @@ export default async ({ actions: { createNode } }: any) => {
    ******************* G E T   V E R I F E D *********************
    ***************************************************************/
   console.log(`\r\n\r\n[+] Fetching CSDB verified/featured`);
-  const objFeatured = await axios.get(`${API_ENDPOINT}/featured`);
+  const objFeatured = await get(`/featured`);
 
   if (objFeatured.status === 200 && objFeatured.data.success) {
     const arrResults = objFeatured.data.result;
@@ -63,8 +81,13 @@ export default async ({ actions: { createNode } }: any) => {
       arrResults.map(async (data: any) => {
         if (data.url) {
           const strDomain = data.url.replace(/https?\:\/\//, '');
-          const objResponse = await axios.get(`${API_ENDPOINT}/domain/${strDomain.toLowerCase()}`);
-          if (objResponse.status === 200 && objResponse.data && objResponse.data.success) {
+          const objResponse = await get(`/domain/${strDomain.toLowerCase()}`).catch(() => {});
+          if (
+            objResponse &&
+            objResponse.status === 200 &&
+            objResponse.data &&
+            objResponse.data.success
+          ) {
             objBuildStats.success += 1;
 
             //Add the CSDB ID to it - hack until included in the GET /v1/domain/<domain>
@@ -91,7 +114,7 @@ export default async ({ actions: { createNode } }: any) => {
    ********************** G E T   S T A T S **********************
    ***************************************************************/
   console.log(`\r\n\r\n[+] Fetching CSDB stats`);
-  const objStats = await axios.get(`${API_ENDPOINT}/stats`);
+  const objStats = await get(`/stats`);
 
   if (objStats.status === 200 && objStats.data.success) {
     const arrResults = objStats.data.result;
