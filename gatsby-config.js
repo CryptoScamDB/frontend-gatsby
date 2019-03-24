@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: `CryptoScamDB`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    author: `@gatsbyjs`
   },
   plugins: [
     'gatsby-plugin-typescript',
@@ -11,8 +11,8 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+        path: `${__dirname}/src/images`
+      }
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -25,8 +25,8 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/logo/csdb-logo.svg`, // This path is relative to the root of the site.
-      },
+        icon: `src/images/logo/csdb-logo.svg` // This path is relative to the root of the site.
+      }
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
@@ -38,6 +38,14 @@ module.exports = {
           camelCase: false
         }
       }
+    },
+    {
+      resolve: 'gatsby-plugin-matomo',
+      options: {
+        siteId: '2',
+        matomoUrl: 'https://analytics.mycryptoapi.com',
+        siteUrl: 'https://cryptoscamdb.org'
+      }
     }
-  ],
-}
+  ]
+};
