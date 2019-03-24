@@ -30,7 +30,9 @@ export default async ({ actions: { createNode } }: any) => {
    ********************** G E T   S C A M S **********************
    ***************************************************************/
   console.log(`\r\n\r\n[*] Fetching domains -- ${API_ENDPOINT}/scams`);
-  const objScams = await get(`/scams`);
+  const objScams = await axios.get(`/scams`);
+  const objFeatured = await axios.get(`/featured`);
+  const objStats = await axios.get(`/stats`);
 
   const objBuildStats = {
     success: 0,
@@ -73,7 +75,6 @@ export default async ({ actions: { createNode } }: any) => {
    ******************* G E T   V E R I F E D *********************
    ***************************************************************/
   console.log(`\r\n\r\n[+] Fetching CSDB verified/featured`);
-  const objFeatured = await get(`/featured`);
 
   if (objFeatured.status === 200 && objFeatured.data.success) {
     const arrResults = objFeatured.data.result;
@@ -114,7 +115,6 @@ export default async ({ actions: { createNode } }: any) => {
    ********************** G E T   S T A T S **********************
    ***************************************************************/
   console.log(`\r\n\r\n[+] Fetching CSDB stats`);
-  const objStats = await get(`/stats`);
 
   if (objStats.status === 200 && objStats.data.success) {
     const arrResults = objStats.data.result;
