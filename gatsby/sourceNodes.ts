@@ -30,9 +30,9 @@ export default async ({ actions: { createNode } }: any) => {
    ********************** G E T   S C A M S **********************
    ***************************************************************/
   console.log(`\r\n\r\n[*] Fetching domains -- ${API_ENDPOINT}/scams`);
-  const objScams = await axios.get(`/scams`);
-  const objFeatured = await axios.get(`/featured`);
-  const objStats = await axios.get(`/stats`);
+  const objScams = await axios.get(`${API_ENDPOINT}/scams`);
+  const objFeatured = await axios.get(`${API_ENDPOINT}/featured`);
+  const objStats = await axios.get(`${API_ENDPOINT}/stats`);
 
   const objBuildStats = {
     success: 0,
