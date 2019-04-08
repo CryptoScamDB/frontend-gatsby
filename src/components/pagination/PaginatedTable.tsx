@@ -36,9 +36,15 @@ interface Props {
   tableHeaders: any[];
 }
 
+interface StateSearching {
+  is: boolean;
+  tableData: any[];
+}
+
 interface State {
   currentPage: number;
   totalPages: number;
+  searching: StateSearching;
 }
 
 export default class PaginatedTable extends Component<Props, State> {
@@ -75,7 +81,7 @@ export default class PaginatedTable extends Component<Props, State> {
     }
   }
 
-  filterResults(event: MouseEvent<HTMLElement>) {
+  filterResults(event: React.KeyboardEvent<HTMLElement>) {
     const { target } = event;
     const strFilterValue = (target as HTMLInputElement).value;
 
@@ -86,9 +92,9 @@ export default class PaginatedTable extends Component<Props, State> {
 
     const { ...objProperties } = this.props;
 
-    const arrFilteredValues = [];
+    const arrFilteredValues: object[] = [];
     for (const objData of objProperties.tableData) {
-      const strDomain;
+      let strDomain;
 
       if (objData.url) {
         strDomain = objData.url;
