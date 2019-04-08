@@ -110,7 +110,7 @@ export default class PaginatedTable extends Component<Props, State> {
 
   render() {
     let { currentPage, totalPages } = this.state;
-    const { searching } = this.state.searching;
+    const { searching } = this.state;
     let { tableData } = this.props;
     const { tableHeaders, recordsPerPage } = this.props;
 
