@@ -14,12 +14,12 @@ const PageButton = styled.div`
   background: transparent;
   padding: 0 1em;
   height: 19px;
-  color: ${(props: isDisabled) => (props.isDisabled ? '#EBEBEB' : '#FFF')}
+  color: ${(props: Props) => (props.isDisabled ? '#EBEBEB' : '#FFF')}
   font-size: 16px;
   letter-spacing: 0.91px;
   line-height: 19px;
   text-align: center;
-  opacity: ${(props: isDisabled) => (props.isDisabled ? '0.5' : '1')}
+  opacity: ${(props: Props) => (props.isDisabled ? '0.5' : '1')}
 
   > img {
     display: inline;
@@ -28,9 +28,10 @@ const PageButton = styled.div`
   }
 
   &:hover {
-    cursor: ${(props: isDisabled) => (props.isDisabled ? 'not-allowed' : 'pointer')}
+    cursor: ${(props: Props) => (props.isDisabled ? 'not-allowed' : 'pointer')}
   }
 `;
+
 interface Props {
   canContinue: boolean;
   changeStep: any;
