@@ -10,6 +10,7 @@ export default {
   plugins: [
     'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-recaptcha',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -46,6 +47,14 @@ export default {
         siteId: '2',
         matomoUrl: 'https://analytics.mycryptoapi.com',
         siteUrl: 'https://cryptoscamdb.org'
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-recaptcha',
+      options: {
+        async: true,
+        defer: false,
+        args: ``
       }
     }
   ]
