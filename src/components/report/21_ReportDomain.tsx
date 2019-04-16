@@ -110,7 +110,7 @@ export default class ReportDomain extends Component<Props, State> {
             onKeyUp={this.validateAddressInput}
             type="text"
             placeholder="fake-mycrypto-fake.com"
-            maxlength={42}
+            maxLength={42}
           />
         </InputContainer>
       </Container>

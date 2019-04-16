@@ -114,7 +114,7 @@ export default class ReportAddress extends Component<Props, State> {
             onKeyUp={this.validateAddressInput}
             type="text"
             placeholder="0x0000000000000000000000000000000000000000"
-            maxlength={42}
+            maxLength={42}
           />
         </InputContainer>
       </Container>
