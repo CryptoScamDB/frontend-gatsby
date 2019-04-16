@@ -121,8 +121,7 @@ export default class ReportAddress extends Component<Props, State> {
             onKeyUp={this.validateAddressInput}
             type="text"
             placeholder="0x0000000000000000000000000000000000000000"
-            maxlength="42"
-            length="42"
+            maxLength={42}
           />
           {/* <InputError ShowError={this.state.inputValid.yourAddress}>Please fill your wallet address</InputError> */}
         </InputContainer>
