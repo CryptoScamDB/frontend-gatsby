@@ -96,7 +96,7 @@ export default class ReportAddress extends Component<Props, State> {
       this.setState({ inputValidated: true });
       this.props.stepCompleted({
         userAddress: strInput,
-        badAddresses: 'Some bad addresses'
+        badAddresses: ''
       });
       return;
     } else {
@@ -123,7 +123,6 @@ export default class ReportAddress extends Component<Props, State> {
             placeholder="0x0000000000000000000000000000000000000000"
             maxlength="42"
             length="42"
-            value=""
           />
           {/* <InputError ShowError={this.state.inputValid.yourAddress}>Please fill your wallet address</InputError> */}
         </InputContainer>
@@ -135,7 +134,7 @@ export default class ReportAddress extends Component<Props, State> {
         </Description>
 
         <InputContainer>
-          <TextareaMoreAddresses rows={10} cols={50} />
+          <TextareaMoreAddresses rows={10} cols={50} name="MoreAddresses" />
         </InputContainer>
       </Container>
     );
