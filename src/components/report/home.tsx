@@ -17,6 +17,8 @@ import Step21 from './21_ReportDomain';
 import Step22 from './22_ReportAddress';
 import Step23 from './23_ReportSomethingElse';
 
+import Step99 from './99_ReportSubmit';
+
 const Container = styled.div`
   background: #0c3153;
   width: 100%;
@@ -330,7 +332,12 @@ export default class Home extends Component<Props, State> {
         );
         break;
       case 99: // They are sending the report
-        return <Container>{JSON.stringify(this.state.userReport)}</Container>;
+        return (
+          <Container>
+            <Step99 />
+            {JSON.stringify(this.state.userReport)}
+          </Container>
+        );
     }
   }
 }
