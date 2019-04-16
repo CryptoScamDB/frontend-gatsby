@@ -17,6 +17,15 @@ const ReportButton = styled.li`
   a {
     color: #ffd166;
   }
+
+  &:hover {
+    background: #ffd166;
+    color: #fff;
+
+    a {
+      color: #000;
+    }
+  }
 `;
 
 const Navigation: React.StatelessComponent = () => (
