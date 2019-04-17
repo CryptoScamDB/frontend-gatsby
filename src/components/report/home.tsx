@@ -334,8 +334,7 @@ export default class Home extends Component<Props, State> {
       case 99: // They are sending the report
         return (
           <Container>
-            <Step99 />
-            {JSON.stringify(this.state.userReport)}
+            <Step99 report={JSON.stringify(this.state.userReport)} />
           </Container>
         );
     }
