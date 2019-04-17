@@ -38,8 +38,6 @@ app.get('/api/heartbeat', (req, res, next) => {
 });
 
 app.post('/api/report', (req, res, next) => {
-  console.log(req.body['g_recaptcha_response']);
-
   if (
     req.body['g_recaptcha_response'] === undefined ||
     req.body['g_recaptcha_response'] === '' ||
@@ -54,8 +52,6 @@ app.post('/api/report', (req, res, next) => {
       process.env.GOOGLE_RECAPTCHA_SECRET_KEY
     }&response=${req.body['g_recaptcha_response']}&remoteip=${req.connection.remoteAddress}`,
     function(error, response, body) {
-      console.log(body);
-      process.exit(0);
       if (body.success !== undefined && !body.success) {
         res.status(403);
         return res.json({ status_code: 403, message: 'Failed captcha' });
