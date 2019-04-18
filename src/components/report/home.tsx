@@ -1,5 +1,6 @@
 import React, { Component, MouseEvent } from 'react';
 import styled from 'styled-components';
+import Axios from 'axios';
 
 import Navigation from './navigation';
 
@@ -59,6 +60,13 @@ const Option = styled.li`
   }
 `;
 
+const SubText = styled.p`
+  color: #fff;
+  text-align: left;
+  padding-left: 25%;
+  width: 50%;
+`;
+
 interface Props {
   reportAddress: string;
   reportDomain: string;
@@ -75,6 +83,7 @@ interface IUserReport {
 }
 
 interface State {
+  isAvailable: boolean;
   currentStep: number;
   canContinue: boolean;
   previousStep: number;
@@ -94,8 +103,10 @@ export default class Home extends Component<Props, State> {
     this.changeStep = this.changeStep.bind(this);
     this.stepCompleted = this.stepCompleted.bind(this);
     this.stepInvalid = this.stepInvalid.bind(this);
+    this.doHealthCheck = this.doHealthCheck.bind(this);
 
     this.state = {
+      isAvailable: false,
       currentStep: 0,
       canContinue: false,
       previousStep: 0,
@@ -107,6 +118,22 @@ export default class Home extends Component<Props, State> {
         badSomethingElse: ''
       }
     };
+  }
+
+  async doHealthCheck() {
+    const blIsHealthy = await Axios.get(`${process.env.CSDB_EXPRESS_ENDPOINT}/api/heartbeat`)
+      .then(response => {
+        if (response.status === 200) {
+          return true;
+        }
+
+        return false;
+      })
+      .catch(error => {
+        return false;
+      });
+
+    this.setState({ isAvailable: blIsHealthy });
   }
 
   changeStep(event: MouseEvent<HTMLElement>) {
@@ -142,6 +169,26 @@ export default class Home extends Component<Props, State> {
   }
 
   render() {
+    this.doHealthCheck();
+
+    if (this.state.isAvailable === false) {
+      return (
+        <Container>
+          <Description>Please try again later</Description>
+          <SubText>
+            Reporting is unavailable right now, sorry about that. Please let us know{' '}
+            <a
+              href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fcryptoscamdb.org%2Freport%2F&via=cryptoscamdb&text=CryptoScamDB%20reporting%20is%20down%21%20cc%3A%20@mycrypto%20@cryptoscamdb"
+              rel="noreferrer"
+              target="_blank"
+            >
+              by Tweeting us
+            </a>
+          </SubText>
+        </Container>
+      );
+    }
+
     /**
      * We are using a number system in the component state to bring in new views.
      * Due to the numbering, each route can have 9 steps after the initial - we
