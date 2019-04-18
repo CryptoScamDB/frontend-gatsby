@@ -120,6 +120,10 @@ export default class Home extends Component<Props, State> {
     };
   }
 
+  componentDidMount() {
+    this.doHealthCheck();
+  }
+
   async doHealthCheck() {
     const blIsHealthy = await Axios.get(`${process.env.CSDB_EXPRESS_ENDPOINT}/api/heartbeat`)
       .then(response => {
@@ -169,8 +173,6 @@ export default class Home extends Component<Props, State> {
   }
 
   render() {
-    this.doHealthCheck();
-
     if (this.state.isAvailable === false) {
       return (
         <Container>
