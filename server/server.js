@@ -1,7 +1,7 @@
 let express = require('express');
 let app = express();
 let bodyParser = require('body-parser');
-let request = require('request');
+let request = require('request').defaults({ strictSSL: false }); //@todo - look at importing the self signed certificate
 const crypto = require('crypto');
 
 const ENV = process.env.NODE_ENV || 'test';
@@ -47,6 +47,7 @@ app.post('/api/report', (req, res, next) => {
     return res.json({ status_code: 403, message: 'Please complete the captcha' });
   }
 
+  // Check the Google ReCAPTCHA is by a human
   request(
     `${process.env.GOOGLE_CAPTCHA_VERIFICATION_URL}?secret=${
       process.env.GOOGLE_RECAPTCHA_SECRET_KEY
@@ -59,9 +60,49 @@ app.post('/api/report', (req, res, next) => {
     }
   );
 
-  res.status(201);
-  res.send(
-    JSON.stringify({ status_code: 201, message: 'Report submitted', report_id: generateUUID() })
+  // Send a report to the actual CSDB API
+  const objReportBody = JSON.parse(req.body['full_report']);
+
+  if (
+    objReportBody.hasOwnProperty('userAddress') === false ||
+    objReportBody.hasOwnProperty('badAddresses') === false ||
+    objReportBody.hasOwnProperty('badDomain') === false ||
+    objReportBody.hasOwnProperty('badPersonalMessage') === false ||
+    objReportBody.hasOwnProperty('badSomethingElse') === false
+  ) {
+    res.status(403);
+    return res.json({ status_code: 400, message: 'Missing report keys' });
+  }
+
+  const strReportId = generateUUID();
+  const objDate = new Date();
+  const strReason = `User Address: ${objReportBody.userAddress}\r\n\r\n
+                     [Bad] Addresses: ${objReportBody.badAddresses}\r\n
+                     [Bad] Domain: ${objReportBody.badDomain}\r\n
+                     [Bad] Personal Message: ${objReportBody.badPersonalMessage}\r\n
+                     [Bad] Other Details: ${objReportBody.badSomethingElse}\r\n\r\n\r\n
+                     Report ID: ${strReportId}
+                     Timestamp: ${objDate.getFullYear()}-${objDate.getMonth()}-${objDate.getDate()}T${objDate.getHours()}:${objDate.getMinutes()}`;
+
+  request(
+    {
+      url: 'https://api/cryptoscamdb.org/v1/report',
+      method: 'POST',
+      form: {
+        reason: strReason
+      }
+    },
+    function(error, httpResponse, body) {
+      if (error === null) {
+        res.status(201);
+        return res.send(
+          JSON.stringify({ status_code: 201, message: 'Report submitted', report_id: strReportId })
+        );
+      }
+
+      res.status(400);
+      return res.json({ status_code: 400, message: 'Something is wrong. Please try again later' });
+    }
   );
 });
 
