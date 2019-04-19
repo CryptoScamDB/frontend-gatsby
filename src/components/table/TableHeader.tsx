@@ -10,6 +10,7 @@ const TableHeadBase = styled.th`
 
 interface Props {
   data: string;
+  n: boolean;
 }
 
 const TableHeader: React.StatelessComponent<Props> = ({ data }: Props) => (
