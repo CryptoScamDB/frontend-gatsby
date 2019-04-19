@@ -60,6 +60,7 @@ body {
 
         background: url("../images/logo/robot-and-bg.png") no-repeat;
         background-size: cover;
+        height: 100vh;
 
         &--container {
             margin-top: 2em;
@@ -78,8 +79,7 @@ body {
                 display: flex;
 
                 h3 {
-                    text-decoration: underline;
-                    font-weight: normal;
+                    font-weight: 600;
                 }
 
                 p {
@@ -224,6 +224,7 @@ body {
                 margin-left: 5%;
                 margin-bottom: 0.5em;
                 width: 751px;	
+                padding: 10px 40px;
 
                 .head {
                     height: 51px;	
