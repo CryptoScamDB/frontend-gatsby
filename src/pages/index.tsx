@@ -7,24 +7,26 @@ import DonateBitcoin from '../components/icons/donate/DonateBitcoin';
 
 const Index: React.StatelessComponent = () => (
   <Layout id="main-view">
-    <SEO title="Home" keywords={[`ethereum`,`cryptoscamdb`,`mycrypto`]} />
+    <SEO title="Home" keywords={[`ethereum`, `cryptoscamdb`, `mycrypto`]} />
 
-    <h1>Stay Safe.</h1>
+    <h1>Stay Safe</h1>
     <h1>Let us help you.</h1>
 
     <div id="blurb">
-      <p>CryptoScamDB is an open-source dataset consisting of 6000+ entries.
-        It is designed to keep track of malicious URLs and their associated
-        addresses that have the intent of deceiving people for financial gains.
+      <p>
+        CryptoScamDB's open-source dataset tracks malicious URLs and their associated addresses to
+        make this entire ecosystem safer for you. It is designed to keep track of malicious URLs and
+        their associated addresses that have the intent of deceiving people for financial gains.
       </p>
 
       <p>
-        We strive to gather and analyze data that can be shared with various
-        projects to prevent and shut down scams and their operators, as well
-        as to protect users in the cryptocurrency ecosystem.
+        Each day, new reports are gathered, analyzed, and added to our quickly growing dataset
+        containing more than 6,000 entries. Various companies and projects use these entries to shut
+        down scams, prevent people from visiting phishing websites, track known malicious operators,
+        and ultimately protect users across the cryptocurrency ecosystem.
       </p>
     </div>
-    
+
     <Link
       to="/scams"
       style={{
@@ -51,29 +53,35 @@ const Index: React.StatelessComponent = () => (
         borderRadius: `0.3em`
       }}
     >
-      Report Scams
+      Report Scam
     </Link>
 
     <div id="blurb--extra">
       <div id="blurb--extra-opensource">
         <h3>Open-Source</h3>
-        <p>The full website is open-source and resources to use for your own
-           application are available at GitHub, including all data sets and
-           documentation.
+        <p>
+          The full website is open-source and resources to use for your own application are
+          available at GitHub, including all data sets and documentation.
         </p>
       </div>
       <div id="blurb--extra-donate">
         <h3>Donate</h3>
-        <p>Support the developers and maintainers of this project by donating
-          to one of our cryptocurrency addresses.
+        <p>
+          Processing each report takes time. Improving our systems take energy. Keeping the pesky
+          servers online takes money. <br />
+          Donating to our efforts reduces our personal costs and lets us know you value our work.
+          Each donation, no matter how small, is noticed and deeply appreciated.
         </p>
         <ul>
-          <li><DonateEthereum /></li>
-          <li><DonateBitcoin /></li>
+          <li>
+            <DonateEthereum />
+          </li>
+          <li>
+            <DonateBitcoin />
+          </li>
         </ul>
-      </div>      
+      </div>
     </div>
-
   </Layout>
 );
 
