@@ -21,8 +21,10 @@ interface ScamsProps {
 const Scams: React.StatelessComponent<ScamsProps> = ({ data }: ScamsProps) => {
   // Sort out the table data
   const arrTableData: any[] = [];
+  let n = 1;
   data.allCsdbScamDomains.edges.forEach((scam: any) => {
     const objRecord: any = {
+      n: '',
       URL: '',
       status: '',
       category: '',
@@ -32,6 +34,8 @@ const Scams: React.StatelessComponent<ScamsProps> = ({ data }: ScamsProps) => {
     scam = scam.node;
 
     if ([scam.name, scam.category, scam.subcategory].indexOf(null) === -1) {
+      objRecord.n = ['#', n++].join('');
+
       objRecord.URL = (
         <Link to={'/domain/' + scam.csdbId} role="link">
           {scam.name.toLowerCase()}
@@ -68,9 +72,9 @@ const Scams: React.StatelessComponent<ScamsProps> = ({ data }: ScamsProps) => {
 
       <PaginatedTable
         totalRecords={data.allCsdbScamDomains.edges.length}
-        recordsPerPage={10}
+        recordsPerPage={25}
         tableData={arrTableData}
-        tableHeaders={['URL', 'Status', 'Category', 'Subcategory']}
+        tableHeaders={['#', 'URL', 'Status', 'Category', 'Subcategory']}
       />
 
       <ul id="stats">
