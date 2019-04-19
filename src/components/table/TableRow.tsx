@@ -50,7 +50,7 @@ export default class TableRow extends Component<TableRowProps> {
         return (
           <TableRowBase>
             {data.map((d, i) => (
-              <TableHeader key={i} data={d} />
+              <TableHeader key={i} data={d} n={false} />
             ))}
           </TableRowBase>
         );
