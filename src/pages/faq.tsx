@@ -14,12 +14,12 @@ const FAQ_PAGE: React.StatelessComponent = () => (
     <FAQ
       question="How to protect myself against scammers?"
       answer={[
-        `Use cold storage - Buy a Ledger Nano S or Trezor`,
-        `Bookmark your crypto sites - Use those bookmarks and only those`,
+        `Use cold storage - Buy a Ledger Nano S or Trezor.`,
+        `Bookmark your crypto sites - Use those bookmarks and only those.`,
         `Only send funds to trusted addresses - Double-check what address you're 
-        sending ETH to. Lookup the address at etherscan.io and check if there are bad reviews`,
+        sending ETH to. Lookup the address at etherscan.io and check if there are bad reviews.`,
         `Never trust any discord/slack/telegram/reddit message - Don't ever fall for messages that
-        say you can get free ETH or that a hack has occured`
+        say you can get free ETH or that a hack has occured.`
       ]}
     />
     <FAQ
@@ -27,22 +27,22 @@ const FAQ_PAGE: React.StatelessComponent = () => (
       answer={[
         `Report scams to use here`,
         `Report scams to Google: `,
-        `Send abuse reports to the registrar, hosting and SSL provider of the scam domains`,
+        `Send abuse reports to the registrar, hosting and SSL provider of the scam domains.`,
         `Install the <a href="https://harrydenley.com/ethaddresslookup-chrome-extension-release/">EtherAddressLookup</a> 
-        extension on your browser`
+        extension on your browser.`
       ]}
     />
     <FAQ
       question="Can I use the data from this project?"
       answer={[
-        `Yes, you can either download the raw blacklist and whitelist files or take a look at our API`
+        `Yes, you can either download the raw blacklist and whitelist files or take a look at our API.`
       ]}
     />
     <FAQ
       question="Are the reports open source? Where do they go?"
       answer={[
         `All reports end up in a private Slack to protect people's privacy. The reports can be read by
-        all team members of MyCrypto and they can decide whether the report makes it to the blacklist`
+        all team members of MyCrypto and they can decide whether the report makes it to the blacklist.`
       ]}
     />
     <FAQ
@@ -51,7 +51,7 @@ const FAQ_PAGE: React.StatelessComponent = () => (
         `The database was created in July 2017 as EtherScamDB(.info), when trying to find a solution
         to the ethereum scams. In 2019, we migrated to CryptoScamDB(.org) in order to indicate our
         support of the wider cryptocurrency ecosystem. While grouping all the scams won't make
-        them go away, it will make both identifying them and taking them down easier`
+        them go away, it will make both identifying them and taking them down easier.`
       ]}
     />
 
@@ -59,7 +59,7 @@ const FAQ_PAGE: React.StatelessComponent = () => (
 
     <div>
       If you have any other questions and would like to get in contact with us, please shoot us an
-      email at contact@cryptoscamdb.org.
+      email at <a href="mailto:contact@cryptoscamdb.org">contact@cryptoscamdb.org</a>.
     </div>
   </Layout>
 );
