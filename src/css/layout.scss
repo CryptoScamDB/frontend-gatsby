@@ -119,33 +119,6 @@ body {
                 margin: auto auto;
                 margin-left: 15%;
             }
-
-            #stats {
-                list-style-type: none;
-                display: inline;
-                
-                li {
-                    margin: 2em;
-                    display: inline-block;
-                    text-transform: uppercase;
-                    background: radial-gradient(
-                        ellipse at center,  
-                        $backgroundColor 0%,
-                        lighten($backgroundColor, 10%) 37%,
-                        lighten($backgroundColor, 20%) 57%,
-                        lighten($backgroundColor, 30%) 77%,
-                        lighten($backgroundColor, 40%) 97%);
-                    height: 340px;
-                    width: 340px;
-                    border-radius: 170px;
-                    vertical-align: middle;
-                    p {
-                        margin-top: 170px;
-                        margin-left: auto;
-                        text-align: center;
-                    }
-                }
-            }
         }
     }
 
