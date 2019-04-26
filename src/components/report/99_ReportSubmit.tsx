@@ -1,7 +1,7 @@
 import React, { Component, MouseEvent } from 'react';
 import styled from 'styled-components';
 import Axios from 'axios';
-import querystring from 'querystring';
+import * as querystring from 'querystring';
 import { API_ENDPOINT, RECAPTCHA_SITEKEY } from '../../../gatsby/config';
 
 const Recaptcha = require('react-recaptcha');
@@ -62,6 +62,8 @@ export default class ReportSubmit extends Component<Props> {
     report: ''
   };
 
+  recaptcha: any;
+
   state = {
     hasSentReport: false,
     reportId: '',
@@ -85,7 +87,7 @@ export default class ReportSubmit extends Component<Props> {
     });
     const objResponse = await Axios.post(
       `${API_ENDPOINT}/report/`,
-      querystring.encode(reportObject),
+      querystring.stringify(reportObject),
       {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
