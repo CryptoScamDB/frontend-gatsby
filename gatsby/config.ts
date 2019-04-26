@@ -1,9 +1,5 @@
 export const API_ENDPOINT = 'https://api.cryptoscamdb.org/v1';
-
-const { NODE_ENV } = process.env || 'development';
-require('dotenv').config({
-  path: `./.env.${NODE_ENV}`
-});
+export const RECAPTCHA_SITEKEY = '6LfTSysUAAAAAOIYE_x9aZuqBNRlzTRbHlMRpAiK';
 
 export default {
   siteMetadata: {
@@ -62,9 +58,5 @@ export default {
         args: `?render=onload`
       }
     }
-  ],
-  proxy: {
-    prefix: '/api',
-    url: 'http://localhost:3000'
-  }
+  ]
 };
