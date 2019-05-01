@@ -60,6 +60,7 @@ body {
 
         background: url("../images/logo/robot-and-bg.png") no-repeat;
         background-size: cover;
+        height: 100vh;
 
         &--container {
             margin-top: 2em;
@@ -78,8 +79,7 @@ body {
                 display: flex;
 
                 h3 {
-                    text-decoration: underline;
-                    font-weight: normal;
+                    font-weight: 600;
                 }
 
                 p {
@@ -118,33 +118,6 @@ body {
                 text-transform: uppercase;
                 margin: auto auto;
                 margin-left: 15%;
-            }
-
-            #stats {
-                list-style-type: none;
-                display: inline;
-                
-                li {
-                    margin: 2em;
-                    display: inline-block;
-                    text-transform: uppercase;
-                    background: radial-gradient(
-                        ellipse at center,  
-                        $backgroundColor 0%,
-                        lighten($backgroundColor, 10%) 37%,
-                        lighten($backgroundColor, 20%) 57%,
-                        lighten($backgroundColor, 30%) 77%,
-                        lighten($backgroundColor, 40%) 97%);
-                    height: 340px;
-                    width: 340px;
-                    border-radius: 170px;
-                    vertical-align: middle;
-                    p {
-                        margin-top: 170px;
-                        margin-left: auto;
-                        text-align: center;
-                    }
-                }
             }
         }
     }
@@ -224,6 +197,7 @@ body {
                 margin-left: 5%;
                 margin-bottom: 0.5em;
                 width: 751px;	
+                padding: 10px 40px;
 
                 .head {
                     height: 51px;	
