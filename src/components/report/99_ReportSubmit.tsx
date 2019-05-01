@@ -1,6 +1,8 @@
 import React, { Component, MouseEvent } from 'react';
 import styled from 'styled-components';
 import Axios from 'axios';
+import * as querystring from 'querystring';
+import { API_ENDPOINT, RECAPTCHA_SITEKEY } from '../../../gatsby/config';
 
 const Recaptcha = require('react-recaptcha');
 
@@ -60,6 +62,8 @@ export default class ReportSubmit extends Component<Props> {
     report: ''
   };
 
+  recaptcha: any;
+
   state = {
     hasSentReport: false,
     reportId: '',
@@ -71,14 +75,27 @@ export default class ReportSubmit extends Component<Props> {
     this.sendReport = this.sendReport.bind(this);
   }
 
-  async sendReport() {
+  async sendReport(captchaResponse) {
     this.setState({ errorString: '' });
-    const objResponse = await Axios.post(`${process.env.CSDB_EXPRESS_ENDPOINT}/api/report`, {
-      g_recaptcha_response: 'test',
-      full_report: this.props.report
-    })
+    const reportData = JSON.parse(this.props.report);
+    const reportObject = {
+      reportType: 'customReport',
+      'args[captcha]': captchaResponse
+    };
+    Object.keys(reportData).forEach(key => {
+      reportObject[`args[${key}]`] = reportData[key];
+    });
+    const objResponse = await Axios.post(
+      `${API_ENDPOINT}/report/`,
+      querystring.stringify(reportObject),
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+    )
       .then(response => {
-        switch (response.data.status_code) {
+        switch (response.status) {
           case 200:
           case 201:
             return {
@@ -128,7 +145,7 @@ export default class ReportSubmit extends Component<Props> {
           <Container>
             <NoRobots>
               <Recaptcha
-                sitekey={process.env.GOOGLE_RECAPTCHA_SITE_KEY}
+                sitekey={RECAPTCHA_SITEKEY}
                 verifyCallback={this.sendReport}
                 ref={e => (this.recaptcha = e)}
                 expiredCallback={this.resetCaptcha}

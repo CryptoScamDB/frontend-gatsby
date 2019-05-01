@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import LeftArrow from '../../images/navigation/left.svg';
 import RightArrow from '../../images/navigation/right.svg';
 
+interface PageButtonProps {
+  isDisabled: boolean;
+}
+
 const PageNavigationContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -14,12 +18,12 @@ const PageButton = styled.div`
   background: transparent;
   padding: 0 1em;
   height: 19px;
-  color: ${(props: Props) => (props.isDisabled ? '#EBEBEB' : '#FFF')}
+  color: ${(props: PageButtonProps) => (props.isDisabled ? '#EBEBEB' : '#FFF')}
   font-size: 16px;
   letter-spacing: 0.91px;
   line-height: 19px;
   text-align: center;
-  opacity: ${(props: Props) => (props.isDisabled ? '0.5' : '1')}
+  opacity: ${(props: PageButtonProps) => (props.isDisabled ? '0.5' : '1')}
 
   > img {
     display: inline;
@@ -28,7 +32,7 @@ const PageButton = styled.div`
   }
 
   &:hover {
-    cursor: ${(props: Props) => (props.isDisabled ? 'not-allowed' : 'pointer')}
+    cursor: ${(props: PageButtonProps) => (props.isDisabled ? 'not-allowed' : 'pointer')}
   }
 `;
 
@@ -58,11 +62,7 @@ export default class Navigation extends Component<Props> {
   render() {
     return (
       <PageNavigationContainer>
-        <PageButton
-          onClick={this.props.changeStep}
-          value={this.props.previousStep}
-          isDisabled={false}
-        >
+        <PageButton onClick={this.props.changeStep} isDisabled={false}>
           <img src={LeftArrow} alt="Go Back" />
           Back
         </PageButton>
@@ -72,8 +72,6 @@ export default class Navigation extends Component<Props> {
         ) : (
           <PageButton
             onClick={this.props.canContinue ? this.props.changeStep : null}
-            value={this.props.isSendAction ? '99' : '11'}
-            IsSend={this.props.isSendAction ? true : false}
             isDisabled={this.props.canContinue ? false : true}
           >
             {this.props.isSendAction ? 'Send' : 'Continue'}

@@ -1,6 +1,7 @@
 import React, { Component, MouseEvent } from 'react';
 import styled from 'styled-components';
 import Axios from 'axios';
+import { API_ENDPOINT } from '../../../gatsby/config';
 
 import Navigation from './navigation';
 
@@ -125,7 +126,7 @@ export default class Home extends Component<Props, State> {
   }
 
   async doHealthCheck() {
-    const blIsHealthy = await Axios.get(`${process.env.CSDB_EXPRESS_ENDPOINT}/api/heartbeat`)
+    const blIsHealthy = await Axios.get(`${API_ENDPOINT}/stats`)
       .then(response => {
         if (response.status === 200) {
           return true;
