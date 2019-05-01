@@ -5,6 +5,77 @@ import SEO from '../components/SEO';
 import PaginatedTable from '../components/pagination/PaginatedTable';
 import styled from 'styled-components';
 
+const StatsContainer = styled.ul`
+  list-style-type: none;
+  display: block;
+  padding-top: 5%;
+  margin-left: 10%;
+`;
+const Stat = styled.li`
+  text-align: center;
+  margin: 2em;
+  text-transform: uppercase;
+  background: radial-gradient(ellipse at center, #329efc 1%, #288accd4 53%, #0e1f357a 84%);
+  height: 12vw;
+  width: 12vw;
+  border-radius: 100%;
+  display: inline-flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  opacity: 0.9;
+  padding: 1vw;
+  box-sizing: border-box;
+
+  &:after {
+    width: 170%;
+    height: 170%;
+    position: absolute;
+    background: #2b92d836;
+    content: '';
+    border-radius: 100%;
+    left: -35%;
+    top: -35%;
+    z-index: -1;
+  }
+
+  &:before {
+    width: 230%;
+    height: 230%;
+    position: absolute;
+    background: #1d6ba04d;
+    content: '';
+    border-radius: 100%;
+    left: -65%;
+    top: -65%;
+    z-index: -2;
+  }
+
+  &:nth-child(1) {
+    margin-top: 3vw;
+  }
+
+  &:nth-child(2) {
+    width: 11vw;
+    height: 11vw;
+    margin-top: 9vw;
+    margin-left: 8vw;
+  }
+
+  &:nth-child(3) {
+    margin-left: 8vw;
+  }
+
+  &nth-child(4) {
+    margin-top: 13vw;
+    margin-left: 8vw;
+  }
+`;
+const StatText = styled.p`
+  text-align: center;
+`;
+
 interface ScamStatusProps {
   status: string;
 }
