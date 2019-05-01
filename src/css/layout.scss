@@ -230,6 +230,22 @@ body {
         }
     }
 
+    #report-view {
+        &--container {
+            margin-top: 2em;
+            padding: 0em;
+
+            #heading {
+                color: $table-th-color;
+                background: linear-gradient(45deg, #007999 0%, #0C3153 100%);
+                text-transform: uppercase;
+                margin: auto auto;
+                padding-left: 5%;
+                padding: 1em 5%;
+            }
+        }
+    }
+
     footer {
         margin-top: 5em;
         background: url("../images/logo/powered-by-mycrypto.svg");

@@ -1,5 +1,5 @@
 import { API_ENDPOINT } from './config';
-const { NODE_ENV } = process.env;
+const { NODE_ENV } = process.env || 'development';
 
 const createNodeHelpers = require('gatsby-node-helpers').default;
 const Bottleneck = require('bottleneck');

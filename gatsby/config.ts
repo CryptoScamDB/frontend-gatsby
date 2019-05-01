@@ -1,4 +1,5 @@
 export const API_ENDPOINT = 'https://api.cryptoscamdb.org/v1';
+export const RECAPTCHA_SITEKEY = '6LfTSysUAAAAAOIYE_x9aZuqBNRlzTRbHlMRpAiK';
 
 export default {
   siteMetadata: {
@@ -10,6 +11,7 @@ export default {
   plugins: [
     'gatsby-plugin-typescript',
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-recaptcha',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -46,6 +48,14 @@ export default {
         siteId: '2',
         matomoUrl: 'https://analytics.mycryptoapi.com',
         siteUrl: 'https://cryptoscamdb.org'
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-recaptcha',
+      options: {
+        async: true,
+        defer: false,
+        args: `?render=onload`
       }
     }
   ]
