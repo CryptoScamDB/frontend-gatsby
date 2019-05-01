@@ -1,19 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const TableHeadBase = styled.th`
-  padding: 1em 0 1em 1em;
-  width: ${(props: Props) => (props.n ? '5%' : '25%')};
-  text-align: left;
-  color: #ebc561;
-`;
+interface TableHeadBaseProps {
+  n: boolean;
+}
 
-interface Props {
+interface TableHeaderProps {
   data: string;
   n: boolean;
 }
 
-const TableHeader: React.StatelessComponent<Props> = ({ data }: Props) => (
+const TableHeadBase = styled.th`
+  padding: 1em 0 1em 1em;
+  width: ${(props: TableHeadBaseProps) => (props.n ? '5%' : '25%')};
+  text-align: left;
+  color: #ebc561;
+`;
+
+const TableHeader: React.StatelessComponent<TableHeaderProps> = ({ data }: TableHeaderProps) => (
   <TableHeadBase n={data === '#' ? true : false}>{data}</TableHeadBase>
 );
 
