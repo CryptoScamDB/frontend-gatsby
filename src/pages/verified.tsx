@@ -5,60 +5,57 @@ import SEO from '../components/SEO';
 import PaginatedTable from '../components/pagination/PaginatedTable';
 
 interface Props {
-    data: any;
+  data: any;
 }
 
 const Verified: React.StatelessComponent<Props> = ({ data }: Props) => {
-    // Sort out the table data
-    const arrTableData: any[] = [];
-    data.allCsdbFeaturedDomain.edges.forEach((domain: any) => {
+  // Sort out the table data
+  const arrTableData: any[] = [];
+  data.allCsdbFeaturedDomain.edges.forEach((domain: any) => {
+    const objRecord = {
+      name: '',
+      url: '',
+      description: ''
+    };
 
-        const objRecord = {
-            "name": "",
-            "url": "",
-            "description": ""
-        };
+    objRecord.name = domain.node.name;
+    objRecord.url = domain.node.url;
+    objRecord.description = domain.node.description;
 
+    arrTableData.push(objRecord);
+  });
 
-        objRecord.name = domain.node.name
-        objRecord.url = domain.node.url
-        objRecord.description = domain.node.description
-
-        arrTableData.push(objRecord)
-    });
-
-    return (
+  return (
     <Layout id="verified-view">
-        <SEO title="Verified Domains" keywords={[`ethereum`,`verified`,`mycrypto`]} />
+      <SEO title="Verified Domains" keywords={[`ethereum`, `verified`, `mycrypto`]} />
 
-        <h2 id="heading">Verified Domains</h2>
+      <h2 id="heading">Verified Domains</h2>
 
-        <br />
-        
-        <PaginatedTable
-            totalRecords={data.allCsdbFeaturedDomain.edges.length}
-            recordsPerPage={10}
-            tableData={arrTableData}
-            tableHeaders={["Name", "URL", "Description"]}
-        />
+      <br />
 
-      </Layout> 
-    )
-}
+      <PaginatedTable
+        totalRecords={data.allCsdbFeaturedDomain.edges.length}
+        recordsPerPage={25}
+        tableData={arrTableData}
+        tableHeaders={['Name', 'URL', 'Description']}
+      />
+    </Layout>
+  );
+};
 
 export default Verified;
 
 export const pageQuery = graphql`
-    query GetVerifiedDomains {
-        allCsdbFeaturedDomain {
-            totalCount
-            edges {
-                node {
-                    name
-                    url
-                    description
-                }
-            }
+  query GetVerifiedDomains {
+    allCsdbFeaturedDomain {
+      totalCount
+      edges {
+        node {
+          name
+          url
+          description
         }
+      }
     }
-`
+  }
+`;

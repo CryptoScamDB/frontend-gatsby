@@ -92,9 +92,11 @@ interface ScamsProps {
 const Scams: React.StatelessComponent<ScamsProps> = ({ data }: ScamsProps) => {
   // Sort out the table data
   const arrTableData: any[] = [];
+  let n = 1;
   data.allCsdbScamDomains.edges.forEach((scam: any) => {
     const objRecord: any = {
-      title: '',
+      n: '',
+      URL: '',
       status: '',
       category: '',
       subcategory: ''
@@ -103,7 +105,9 @@ const Scams: React.StatelessComponent<ScamsProps> = ({ data }: ScamsProps) => {
     scam = scam.node;
 
     if ([scam.name, scam.category, scam.subcategory].indexOf(null) === -1) {
-      objRecord.title = (
+      objRecord.n = ['#', n++].join('');
+
+      objRecord.URL = (
         <Link to={'/domain/' + scam.csdbId} role="link">
           {scam.name.toLowerCase()}
         </Link>
@@ -139,34 +143,25 @@ const Scams: React.StatelessComponent<ScamsProps> = ({ data }: ScamsProps) => {
 
       <PaginatedTable
         totalRecords={data.allCsdbScamDomains.edges.length}
-        recordsPerPage={10}
+        recordsPerPage={25}
         tableData={arrTableData}
-        tableHeaders={['Title', 'Status', 'Category', 'Subcategory']}
+        tableHeaders={['#', 'URL', 'Status', 'Category', 'Subcategory']}
       />
 
-      <StatsContainer>
-        <Stat>
-          <p>
-            {data.allCsdbStats.edges[0].node.scams.toLocaleString()} <br />
-            TOTAL SCAMS
-          </p>
-        </Stat>
-        <Stat>
-          <p>
-            {data.allCsdbStats.edges[0].node.actives.toLocaleString()} <br /> ACTIVE SCAMS
-          </p>
-        </Stat>
-        <Stat>
-          <p>
-            {data.allCsdbStats.edges[0].node.addresses.toLocaleString()} <br /> ADDRESSES REGISTERED
-          </p>
-        </Stat>
-        <Stat>
-          <p>
-            {data.allCsdbStats.edges[0].node.inactives.toLocaleString()} <br /> INACTIVE SCAMS
-          </p>
-        </Stat>
-      </StatsContainer>
+      <ul id="stats">
+        <li>
+          <p>{data.allCsdbStats.edges[0].node.scams} TOTAL SCAMS</p>
+        </li>
+        <li>
+          <p>{data.allCsdbStats.edges[0].node.actives} ACTIVE SCAMS</p>
+        </li>
+        <li>
+          <p>{data.allCsdbStats.edges[0].node.addresses} ADDRESSES REGISTERED</p>
+        </li>
+        <li>
+          <p>{data.allCsdbStats.edges[0].node.inactives} INACTIVE SCAMS</p>
+        </li>
+      </ul>
     </Layout>
   );
 };
