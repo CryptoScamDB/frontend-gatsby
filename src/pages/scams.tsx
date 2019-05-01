@@ -148,20 +148,28 @@ const Scams: React.StatelessComponent<ScamsProps> = ({ data }: ScamsProps) => {
         tableHeaders={['#', 'URL', 'Status', 'Category', 'Subcategory']}
       />
 
-      <ul id="stats">
-        <li>
-          <p>{data.allCsdbStats.edges[0].node.scams} TOTAL SCAMS</p>
-        </li>
-        <li>
-          <p>{data.allCsdbStats.edges[0].node.actives} ACTIVE SCAMS</p>
-        </li>
-        <li>
-          <p>{data.allCsdbStats.edges[0].node.addresses} ADDRESSES REGISTERED</p>
-        </li>
-        <li>
-          <p>{data.allCsdbStats.edges[0].node.inactives} INACTIVE SCAMS</p>
-        </li>
-      </ul>
+      <StatsContainer>
+        <Stat>
+          <p>
+            {data.allCsdbStats.edges[0].node.scams.toLocaleString()} <br /> TOTAL SCAMS
+          </p>
+        </Stat>
+        <Stat>
+          <p>
+            {data.allCsdbStats.edges[0].node.actives.toLocaleString()} <br /> ACTIVE SCAMS
+          </p>
+        </Stat>
+        <Stat>
+          <p>
+            {data.allCsdbStats.edges[0].node.addresses.toLocaleString()} <br /> ADDRESSES REGISTERED
+          </p>
+        </Stat>
+        <Stat>
+          <p>
+            {data.allCsdbStats.edges[0].node.inactives.toLocaleString()} <br /> INACTIVE SCAMS
+          </p>
+        </Stat>
+      </StatsContainer>
     </Layout>
   );
 };
