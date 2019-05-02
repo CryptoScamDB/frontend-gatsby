@@ -15,7 +15,7 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
   const { allCsdbScamDomains: scam } = data;
   const s = scam.edges;
 
-  const ips = [];
+  const ips: string[] = [];
   const distinctIps = new Set(s.map(record => record.node.ip));
   distinctIps.forEach((value: string, key: string) => ips.push(value));
 
