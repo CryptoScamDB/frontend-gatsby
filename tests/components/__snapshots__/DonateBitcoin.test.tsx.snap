@@ -7,7 +7,7 @@ exports[`DonateBitcoin renders correctly 1`] = `
 }
 
 <a
-  href="https://blockchain.info/address/32oirLEzZRhi33RCXDF9WHJjEb8RsrSss3"
+  href="https://blockchain.info/address/3KLmPYTmiU3HJriRdEBGKCXEPAhagkqbAK"
   rel="noopener noreferrer"
   target="_blank"
 >
@@ -15,7 +15,7 @@ exports[`DonateBitcoin renders correctly 1`] = `
     alt="Donate Bitcoin"
     className="c0"
     src="test-file-stub"
-    title="32oirLEzZRhi33RCXDF9WHJjEb8RsrSss3"
+    title="3KLmPYTmiU3HJriRdEBGKCXEPAhagkqbAK"
   />
 </a>
 `;
