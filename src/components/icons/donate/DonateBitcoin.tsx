@@ -3,9 +3,9 @@ import Icon from '../Icon';
 import LogoBitcoin from '../../../images/coins/bitcoin.png';
 
 const DONATION_ADDR = {
-    "ADDR": "32oirLEzZRhi33RCXDF9WHJjEb8RsrSss3",
-    "HUMAN": "32oirLEzZRhi33RCXDF9WHJjEb8RsrSss3",
-    "EXPLORER": "https://blockchain.info/address/32oirLEzZRhi33RCXDF9WHJjEb8RsrSss3"
+    "ADDR": "3KLmPYTmiU3HJriRdEBGKCXEPAhagkqbAK",
+    "HUMAN": "3KLmPYTmiU3HJriRdEBGKCXEPAhagkqbAK",
+    "EXPLORER": "https://blockchain.info/address/3KLmPYTmiU3HJriRdEBGKCXEPAhagkqbAK"
 }
 
 const DonateBitcoin: React.StatelessComponent = () => (
