@@ -120,11 +120,16 @@ export default class Search extends Component<Props, State> {
         // See if we want to push the data to the table
         const objRegex = new RegExp(strSearchInput, 'gi');
 
+        console.log();
+
         // Match on the domain name
         switch (true) {
-          case !!scam.name.match(objRegex):
-          case !!scam.subcategory.match(objRegex):
-          case scam.ip !== null && !!scam.ip.match(objRegex):
+          case !!scam.name.match(objRegex): //name search
+          case !!scam.subcategory.match(objRegex): //subcategory search
+          case scam.ip !== null && !!scam.ip.match(objRegex): //ip search
+          case scam.addresses &&
+            scam.addresses.length &&
+            !!scam.addresses.map(addr => addr.match(objRegex)).filter(e => e).length: //address search
             console.log('MATCH');
             //console.log(scam);
             arrTableData.push(objRecord);
