@@ -17,7 +17,8 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
 
   const ips: string[] = [];
   const distinctIps = new Set(s.map(record => record.node.ip));
-  distinctIps.forEach((value: string, key: string) => ips.push(value));
+  console.log(distinctIps);
+  distinctIps.forEach((value: string) => ips.push(value));
 
   return (
     <Layout id="domain-view">
