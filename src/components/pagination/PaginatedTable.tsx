@@ -100,8 +100,10 @@ export default class PaginatedTable extends Component<Props, State> {
 
       if (objData.url) {
         strDomain = objData.url;
-      } else if (objData.title.props.children) {
+      } else if (objData.title && objData.title.props.children) {
         strDomain = objData.title.props.children;
+      } else if (objData.URL && objData.URL.props.children) {
+        strDomain = objData.URL.props.children;
       } else {
         console.warn('Cannot filter table - no valid key to filter on.');
         continue;
