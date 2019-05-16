@@ -34,6 +34,7 @@ interface Props {
   recordsPerPage: number;
   tableData: any[];
   tableHeaders: any[];
+  disableSearchInput: boolean;
 }
 
 interface StateSearching {
@@ -52,7 +53,8 @@ export default class PaginatedTable extends Component<Props, State> {
     totalRecords: 0,
     recordsPerPage: 15,
     tableData: [],
-    tableHeaders: []
+    tableHeaders: [],
+    disableSearchInput: false
   };
 
   constructor(props: Props) {
@@ -130,7 +132,11 @@ export default class PaginatedTable extends Component<Props, State> {
 
     return (
       <Container>
-        <Search placeholder="Search" onKeyUp={this.filterResults} />
+        {this.props.disableSearchInput ? (
+          ``
+        ) : (
+          <Search placeholder="Search" onKeyUp={this.filterResults} />
+        )}
         <PageComponent>
           <Pagination currentPage={1} totalPages={totalPages} onClick={this.changePage} />
         </PageComponent>
