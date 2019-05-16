@@ -3,9 +3,9 @@ import Icon from '../Icon';
 import LogoEthereum from '../../../images/coins/ethereum.png';
 
 const DONATION_ADDR = {
-    "ADDR": 0x25a51b3A7163352D4f32D0ED4a012b73fc32C08a,
+    "ADDR": 0x7030B43E821BA34124915bA65B90Dbda7a9E7d09,
     "HUMAN": "cryptoscamdb.eth",
-    "EXPLORER": "https://etherscan.io/address/0x25a51b3A7163352D4f32D0ED4a012b73fc32C08a"
+    "EXPLORER": "https://etherscan.io/address/0x7030B43E821BA34124915bA65B90Dbda7a9E7d09"
 }
 
 const DonateEthereum: React.StatelessComponent = () => (
