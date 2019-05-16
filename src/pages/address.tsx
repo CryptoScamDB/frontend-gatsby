@@ -15,10 +15,7 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
   const { allCsdbScamDomains: scam } = data;
   const s = scam.edges;
 
-  const ips: string[] = [];
-  const distinctIps = new Set(s.map(record => record.node.ip));
-  console.log(distinctIps);
-  distinctIps.forEach((value: string) => ips.push(value));
+  const distinctIps = s.map(record => record.node.ip);
 
   return (
     <Layout id="domain-view">
@@ -50,7 +47,7 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
 
             <span className="heading">Associated IPs:</span>
             <ul>
-              {ips.map((ip: string) => (
+              {distinctIps.map((ip: string) => (
                 <li key={ip}>{ip}</li>
               ))}
             </ul>
