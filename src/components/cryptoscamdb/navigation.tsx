@@ -56,8 +56,13 @@ const Navigation: React.StatelessComponent = () => (
           Search
         </Link>
       </li>
+      <li>
+        <Link to="/mission" role="link" tabIndex={6}>
+          Mission Statement
+        </Link>
+      </li>
       <ReportButton>
-        <Link to="/report" role="link" tabIndex={6}>
+        <Link to="/report" role="link" tabIndex={7}>
           Report Scams
         </Link>
       </ReportButton>
