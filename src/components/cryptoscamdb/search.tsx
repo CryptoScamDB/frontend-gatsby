@@ -69,7 +69,7 @@ export default class Search extends Component<Props, State> {
     };
   }
 
-  searchData = (objEvent: React.KeyboardEvent<FormControl>) => {
+  searchData = (objEvent: React.KeyboardEvent<any>) => {
     const strSearchInput = objEvent.currentTarget.value;
 
     if (objEvent.key.toLowerCase() === 'backspace' && strSearchInput.length > 0) {
