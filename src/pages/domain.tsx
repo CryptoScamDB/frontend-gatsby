@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import FacebookShare from '../components/icons/socials/FacebookShare';
@@ -86,7 +86,13 @@ const Domain: React.StatelessComponent<Props> = ({ data }: Props) => {
             <span className="heading--sub">Related Addresses:</span>
             <ul>
               {s.addresses
-                ? s.addresses.map((ns: string, i: number) => <li key={i}>{ns}</li>)
+                ? s.addresses.map((ns: string, i: number) => (
+                    <li key={i}>
+                      <Link to={'/address/' + ns} role="link">
+                        {ns}
+                      </Link>
+                    </li>
+                  ))
                 : `No Addresses`}
             </ul>
           </div>
