@@ -1,7 +1,7 @@
 {
   "name": "@cryptoscamdb/frontend",
   "description": "Keeping track of all current cryptocurrency scams in an open-source database",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "CryptoScamDB <contact@cryptoscamdb.org> (https://cryptoscamdb.org)",
   "dependencies": {
     "@babel/core": "7.4.0",
