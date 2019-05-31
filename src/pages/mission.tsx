@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import styled from 'styled-components';
@@ -6,7 +6,12 @@ import styled from 'styled-components';
 const SubHeading = styled.h2`
   padding: 0 3.5em;
 `;
-const MissionBlock = styled.p`
+const MissionBlock = styled.div`
+  display: block;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0;
+  margin-right: 0;
   padding: 0 5em;
 
   > ul {
@@ -14,7 +19,7 @@ const MissionBlock = styled.p`
   }
 `;
 
-const MISSION_PAGE: React.StatelessComponent = () => (
+const MISSION_PAGE: FunctionComponent = () => (
   <Layout id="mission-view">
     <SEO title="Misson Statement" keywords={[`ethereum`, `mission statement`, `mycrypto`]} />
 
