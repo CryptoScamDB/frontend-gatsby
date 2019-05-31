@@ -144,12 +144,16 @@ export default class PaginatedTable extends Component<Props, State> {
         </PageComponent>
 
         <Table>
-          <TableRow data={tableHeaders} type="th" />
-          {tableData
-            .slice((currentPage - 1) * recordsPerPage, recordsPerPage * currentPage)
-            .map((row, i) => (
-              <TableRow key={i} data={Object.values(row)} type="td" />
-            ))}
+          <thead>
+            <TableRow data={tableHeaders} type="th" />
+          </thead>
+          <tbody>
+            {tableData
+              .slice((currentPage - 1) * recordsPerPage, recordsPerPage * currentPage)
+              .map((row, i) => (
+                <TableRow key={i} data={Object.values(row)} type="td" />
+              ))}
+          </tbody>
         </Table>
       </Container>
     );
