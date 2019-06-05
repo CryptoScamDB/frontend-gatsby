@@ -38,19 +38,19 @@ const Container = styled.div`
     li {
       display: inline-block;
       padding-left: 2em;
-      margin-bottom: 1em;
+      margin-bottom: 2em;
     }
   }
 
   a {
     &:active {
       padding-bottom: 1em;
-      border-bottom: 1px solid $fontColor;
+      border-bottom: 1px solid #fff;
     }
 
     &:hover {
       padding-bottom: 1em;
-      border-bottom: 1px solid $fontColor;
+      border-bottom: 1px solid #fff;
     }
   }
 `;
