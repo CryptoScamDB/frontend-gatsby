@@ -16,35 +16,19 @@ body {
         text-decoration: none;
     }
 
-    #header {
-        padding: 2em 5em 2em 5em;
-
-        &--container {
-            width: 100%;
-            display: flex;
-
-            &-brand {
-                flex: 0 0 55%;
-            }
-        }
-    }
-
     #main-view {
 
-        background: url("../images/logo/robot-and-bg.png") no-repeat;
+        background: url("../images/logo/robot-and-bg.png") no-repeat center center fixed;
+        background-position: center center;
         background-size: cover;
         height: 100vh;
 
         &--container {
-            margin-top: 2em;
-            padding: 5em;
+            margin-top: -4em;
+            padding: 0em 5em;
         }
 
         #blurb {
-            border-left: 1px solid $fontColor;
-            padding-left: 1em;
-            width: 30%;
-            margin-bottom: 3em;
 
             &--extra {
                 margin-top: 5em;
