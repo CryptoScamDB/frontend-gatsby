@@ -26,33 +26,6 @@ body {
             &-brand {
                 flex: 0 0 55%;
             }
-
-            &-navigation {
-                flex: 1;
-                text-align: right;
-                ul {
-                    text-align: right;
-                    list-style-type: none;
-                    display: inline;
-
-                    li {
-                        display: inline-block;
-                        padding-left: 2em;
-                    }
-                }
-
-                a {
-                    &:active {
-                        padding-bottom: 1em;
-                        border-bottom: 1px solid $fontColor;
-                    }
-            
-                    &:hover {
-                        padding-bottom: 1em;
-                        border-bottom: 1px solid $fontColor;
-                    }
-                }
-            }
         }
     }
 

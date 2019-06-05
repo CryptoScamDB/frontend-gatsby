@@ -27,9 +27,36 @@ const ReportButton = styled.li`
     }
   }
 `;
+const Container = styled.div`
+  flex: 1;
+  text-align: right;
+  ul {
+    text-align: right;
+    list-style-type: none;
+    display: inline;
+
+    li {
+      display: inline-block;
+      padding-left: 2em;
+      margin-bottom: 1em;
+    }
+  }
+
+  a {
+    &:active {
+      padding-bottom: 1em;
+      border-bottom: 1px solid $fontColor;
+    }
+
+    &:hover {
+      padding-bottom: 1em;
+      border-bottom: 1px solid $fontColor;
+    }
+  }
+`;
 
 const Navigation: React.StatelessComponent = () => (
-  <div id="header--container-navigation">
+  <Container>
     <ul>
       <li>
         <Link to="/scams" role="link" tabIndex={1}>
@@ -67,7 +94,7 @@ const Navigation: React.StatelessComponent = () => (
         </Link>
       </ReportButton>
     </ul>
-  </div>
+  </Container>
 );
 
 export default Navigation;
