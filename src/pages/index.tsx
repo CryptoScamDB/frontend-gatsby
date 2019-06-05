@@ -5,6 +5,8 @@ import SEO from '../components/SEO';
 import DonateEthereum from '../components/icons/donate/DonateEthereum';
 import DonateBitcoin from '../components/icons/donate/DonateBitcoin';
 
+import Blurb from '../components/blurb';
+
 const Index: React.StatelessComponent = () => (
   <Layout id="main-view">
     <SEO title="Home" keywords={[`ethereum`, `cryptoscamdb`, `mycrypto`]} />
@@ -12,20 +14,13 @@ const Index: React.StatelessComponent = () => (
     <h1>Stay Safe</h1>
     <h1>Let us help you.</h1>
 
-    <div id="blurb">
-      <p>
-        CryptoScamDB's open-source dataset tracks malicious URLs and their associated addresses to
-        make this entire ecosystem safer for you. It is designed to keep track of malicious URLs and
-        their associated addresses that have the intent of deceiving people for financial gains.
-      </p>
-
-      <p>
-        Each day, new reports are gathered, analyzed, and added to our quickly growing dataset
-        containing more than 6,000 entries. Various companies and projects use these entries to shut
-        down scams, prevent people from visiting phishing websites, track known malicious operators,
-        and ultimately protect users across the cryptocurrency ecosystem.
-      </p>
-    </div>
+    <Blurb
+      type=""
+      blurbs={[
+        "CryptoScamDB's open-source dataset tracks malicious URLs and their associated addresses to make this entire ecosystem safer for you. It is designed to keep track of malicious URLs and their associated addresses that have the intent of deceiving people for financial gains.",
+        'Each day, new reports are gathered, analyzed, and added to our quickly growing dataset containing more than 6,000 entries. Various companies and projects use these entries to shut down scams, prevent people from visiting phishing websites, track known malicious operators, and ultimately protect users across the cryptocurrency ecosystem.'
+      ]}
+    />
 
     <Link
       to="/scams"
