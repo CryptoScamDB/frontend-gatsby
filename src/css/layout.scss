@@ -22,46 +22,7 @@ body {
         background-position: center center;
         background-size: cover;
         height: 100vh;
-
-        &--container {
-            margin-top: -4em;
-            padding: 0em 5em;
-        }
-
-        #blurb {
-
-            &--extra {
-                margin-top: 5em;
-                width: 40%;
-                display: flex;
-
-                h3 {
-                    font-weight: 600;
-                }
-
-                p {
-                    width: 70%;
-                }
-
-                &-opensource {
-                    flex: 0 0 50%;
-                }
-
-                &-donate {
-                    flex: 1;
-
-                    ul {
-                        list-style-type: none;
-                        display: inline;
-
-                        li {
-                            display: inline-block;
-                            padding: 1em;
-                        }
-                    }
-                }
-            }
-        }
+        
     }
 
     #scams-view {
