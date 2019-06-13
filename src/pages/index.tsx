@@ -1,81 +1,131 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import styled from 'styled-components';
+
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import DonateEthereum from '../components/icons/donate/DonateEthereum';
 import DonateBitcoin from '../components/icons/donate/DonateBitcoin';
 
 import Blurb from '../components/blurb';
+import { Heading1, Heading3 } from '../components/html/Headings';
+
+const Container = styled.div`
+  padding: 0 2em;
+  margin-top: -5em;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
+const BlurbContainer = styled.div`
+  margin-top: 5em;
+  width: 40%;
+  display: flex;
+
+  @media (max-width: 1200px) {
+    width: 80%;
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    display: block;
+  }
+
+  > p {
+    width: 70%;
+  }
+`;
+const ContainerOpenSource = styled.div`
+  padding-right: 2em;
+  flex: 0 0 50%;
+`;
+const ContainerDonate = styled.div`
+  flex: 1;
+
+  > ul {
+    list-style-type: none;
+    display: inline;
+
+    > li {
+      display: inline-block;
+      padding: 1em;
+    }
+  }
+`;
 
 const Index: React.StatelessComponent = () => (
   <Layout id="main-view">
     <SEO title="Home" keywords={[`ethereum`, `cryptoscamdb`, `mycrypto`]} />
 
-    <h1>Stay Safe</h1>
-    <h1>Let us help you.</h1>
+    <Container>
+      <Heading1 text="Stay Safe" />
+      <Heading1 text="Let us help you." />
 
-    <Blurb
-      blurbs={[
-        "CryptoScamDB's open-source dataset tracks malicious URLs and their associated addresses to make this entire ecosystem safer for you. It is designed to keep track of malicious URLs and their associated addresses that have the intent of deceiving people for financial gains.",
-        'Each day, new reports are gathered, analyzed, and added to our quickly growing dataset containing more than 6,000 entries. Various companies and projects use these entries to shut down scams, prevent people from visiting phishing websites, track known malicious operators, and ultimately protect users across the cryptocurrency ecosystem.'
-      ]}
-    />
+      <Blurb
+        blurbs={[
+          "CryptoScamDB's open-source dataset tracks malicious URLs and their associated addresses to make this entire ecosystem safer for you. It is designed to keep track of malicious URLs and their associated addresses that have the intent of deceiving people for financial gains.",
+          'Each day, new reports are gathered, analyzed, and added to our quickly growing dataset containing more than 6,000 entries. Various companies and projects use these entries to shut down scams, prevent people from visiting phishing websites, track known malicious operators, and ultimately protect users across the cryptocurrency ecosystem.'
+        ]}
+      />
 
-    <Link
-      to="/scams"
-      style={{
-        color: `#fff`,
-        textDecoration: `none`,
-        background: `#f5c561`,
-        backgroundImage: `linear-gradient(to right, #f5c561, #fcab5b)`,
-        padding: `15px 50px`,
-        width: `100px`,
-        borderRadius: `0.3em`,
-        margin: `1em`
-      }}
-    >
-      See Scams
-    </Link>
+      <Link
+        to="/scams"
+        style={{
+          color: `#fff`,
+          textDecoration: `none`,
+          background: `#f5c561`,
+          backgroundImage: `linear-gradient(to right, #f5c561, #fcab5b)`,
+          padding: `15px 50px`,
+          width: `100px`,
+          borderRadius: `0.3em`,
+          margin: `1em`
+        }}
+      >
+        See Scams
+      </Link>
 
-    <Link
-      to="/report"
-      style={{
-        color: `#fff`,
-        textDecoration: `none`,
-        padding: `15px 50px`,
-        border: `1px solid #fff`,
-        borderRadius: `0.3em`
-      }}
-    >
-      Report Scam
-    </Link>
+      <Link
+        to="/report"
+        style={{
+          color: `#fff`,
+          textDecoration: `none`,
+          padding: `15px 50px`,
+          border: `1px solid #fff`,
+          borderRadius: `0.3em`
+        }}
+      >
+        Report Scam
+      </Link>
 
-    <div id="blurb--extra">
-      <div id="blurb--extra-opensource">
-        <h3>Open-Source</h3>
-        <p>
-          The full website is open-source and resources to use for your own application are
-          available at GitHub, including all data sets and documentation.
-        </p>
-      </div>
-      <div id="blurb--extra-donate">
-        <h3>Donate</h3>
-        <p>
-          Processing each report takes time. Improving our systems take energy. Keeping the pesky
-          servers online takes money. <br />
-          Donating to our efforts reduces our personal costs and lets us know you value our work.
-          Each donation, no matter how small, is noticed and deeply appreciated.
-        </p>
-        <ul>
-          <li>
-            <DonateEthereum />
-          </li>
-          <li>
-            <DonateBitcoin />
-          </li>
-        </ul>
-      </div>
-    </div>
+      <BlurbContainer>
+        <ContainerOpenSource>
+          <Heading3 text="Open-Source" />
+          <p>
+            The full website is open-source and resources to use for your own application are
+            available at GitHub, including all data sets and documentation.
+          </p>
+        </ContainerOpenSource>
+        <ContainerDonate>
+          <Heading3 text="Donate" />
+          <p>
+            Processing each report takes time. Improving our systems take energy. Keeping the pesky
+            servers online takes money. <br />
+            Donating to our efforts reduces our personal costs and lets us know you value our work.
+            Each donation, no matter how small, is noticed and deeply appreciated.
+          </p>
+          <ul>
+            <li>
+              <DonateEthereum />
+            </li>
+            <li>
+              <DonateBitcoin />
+            </li>
+          </ul>
+        </ContainerDonate>
+      </BlurbContainer>
+    </Container>
   </Layout>
 );
 
