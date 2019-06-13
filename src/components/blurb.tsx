@@ -10,6 +10,15 @@ const BlurbContainer = styled.div`
   padding-left: 1em;
   margin-bottom: 3em;
   width: 30%;
+
+  @media (max-width: 1200px) {
+    width: 80%;
+  }
+
+  @media (max-width: 768px) {
+    width: 80%;
+    display: block;
+  }
 `;
 const Segment = styled.p`
   width: 100%;
