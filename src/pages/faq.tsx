@@ -1,13 +1,25 @@
 import React from 'react';
+import styled from 'styled-components';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import FAQ from '../components/FAQ';
+
+const Container = styled.div`
+  margin-top: 2em;
+  padding: 5em;
+`;
+const Heading1 = styled.h1`
+  color: $table-th-color;
+  text-transform: uppercase;
+  margin: auto auto;
+  margin-left: 5%;
+`;
 
 const FAQ_PAGE: React.StatelessComponent = () => (
   <Layout id="faq-view">
     <SEO title="FAQ" keywords={[`ethereum`, `faq`, `mycrypto`]} />
 
-    <h1 id="heading">FAQ</h1>
+    <Heading1>FAQ</Heading1>
 
     <br />
 
