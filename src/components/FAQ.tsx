@@ -34,9 +34,12 @@ const Question = styled.div`
   }
 `;
 const Answer = styled.div`
-  padding: 10px 0;
   margin-bottom: 1em;
   display: inline;
+
+  > ul {
+    padding: 0.5em 0;
+  }
 `;
 
 interface Props {
