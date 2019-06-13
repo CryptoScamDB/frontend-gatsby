@@ -56,7 +56,7 @@ const ContainerDonate = styled.div`
 `;
 
 const Index: React.StatelessComponent = () => (
-  <Layout id="main-view">
+  <Layout imageBg={true} id="main-view">
     <SEO title="Home" keywords={[`ethereum`, `cryptoscamdb`, `mycrypto`]} />
 
     <Container>
