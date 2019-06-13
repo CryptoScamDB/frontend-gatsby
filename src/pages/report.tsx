@@ -8,7 +8,7 @@ interface Props {
 }
 
 const ReportPage: React.StatelessComponent<Props> = ({ data }: Props) => (
-  <Layout id="report-view">
+  <Layout imageBg={false} id="report-view">
     <SEO title="Report a scam" keywords={[`ethereum`, `report`, `mycrypto`]} />
 
     <h2 id="heading">Report</h2>

@@ -16,7 +16,7 @@ const Heading1 = styled.h1`
 `;
 
 const FAQ_PAGE: React.StatelessComponent = () => (
-  <Layout id="faq-view">
+  <Layout imageBg={false} id="faq-view">
     <SEO title="FAQ" keywords={[`ethereum`, `faq`, `mycrypto`]} />
 
     <Heading1>FAQ</Heading1>

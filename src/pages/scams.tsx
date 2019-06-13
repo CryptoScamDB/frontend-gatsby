@@ -136,7 +136,7 @@ const Scams: React.StatelessComponent<ScamsProps> = ({ data }: ScamsProps) => {
   });
 
   return (
-    <Layout id="scams-view">
+    <Layout imageBg={false} id="scams-view">
       <SEO title="Scams" keywords={[`ethereum`, `scams`, `mycrypto`]} />
 
       <h2 id="heading">See Scams</h2>

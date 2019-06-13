@@ -17,7 +17,7 @@ const Domain: React.StatelessComponent<Props> = ({ data }: Props) => {
   const s = scam.edges[0].node;
 
   return (
-    <Layout id="domain-view">
+    <Layout imageBg={false} id="domain-view">
       <SEO title={s.name} keywords={[`cryptoscamdb`, `mycrypto`]} />
       <section id="domain-view--details-container">
         <div id="domain-view--details-container-left">

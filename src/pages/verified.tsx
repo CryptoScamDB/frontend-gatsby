@@ -26,7 +26,7 @@ const Verified: React.StatelessComponent<Props> = ({ data }: Props) => {
   });
 
   return (
-    <Layout id="verified-view">
+    <Layout imageBg={false} id="verified-view">
       <SEO title="Verified Domains" keywords={[`ethereum`, `verified`, `mycrypto`]} />
 
       <h2 id="heading">Verified Domains</h2>

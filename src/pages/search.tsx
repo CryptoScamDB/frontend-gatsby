@@ -15,7 +15,7 @@ interface IProps {
 
 const Search: React.StatelessComponent<IProps> = ({ data }: IProps) => {
   return (
-    <Layout id="domain-view">
+    <Layout imageBg={false} id="domain-view">
       <SEO title="Search CryptoScamDB" keywords={[`cryptoscamdb`, `mycrypto`]} />
       <SearchFunction data={data} />
     </Layout>

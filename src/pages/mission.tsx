@@ -15,7 +15,7 @@ const MissionBlock = styled.p`
 `;
 
 const MISSION_PAGE: React.StatelessComponent = () => (
-  <Layout id="mission-view">
+  <Layout imageBg={false} id="mission-view">
     <SEO title="Misson Statement" keywords={[`ethereum`, `mission statement`, `mycrypto`]} />
 
     <h1 id="heading">Mission Statement</h1>

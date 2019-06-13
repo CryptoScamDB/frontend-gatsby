@@ -18,7 +18,7 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
   const distinctIps = s.map(record => record.node.ip);
 
   return (
-    <Layout id="domain-view">
+    <Layout imageBg={false} id="domain-view">
       <SEO title={s.name} keywords={[`cryptoscamdb`, `mycrypto`]} />
       <section id="domain-view--details-container">
         <div id="domain-view--details-container-left">
