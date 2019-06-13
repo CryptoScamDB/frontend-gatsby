@@ -54,6 +54,18 @@ const ContainerDonate = styled.div`
     }
   }
 `;
+const IndexNav = styled.div`
+  > a {
+    display: inline;
+    width: 100px;
+    margin: 0 1em;
+
+    @media (max-width: 768px) {
+      display: block;
+      margin: 1em 0;
+    }
+  }
+`;
 
 const Index: React.StatelessComponent = () => (
   <Layout imageBg={true} id="main-view">
@@ -70,34 +82,35 @@ const Index: React.StatelessComponent = () => (
         ]}
       />
 
-      <Link
-        to="/scams"
-        style={{
-          color: `#fff`,
-          textDecoration: `none`,
-          background: `#f5c561`,
-          backgroundImage: `linear-gradient(to right, #f5c561, #fcab5b)`,
-          padding: `15px 50px`,
-          width: `100px`,
-          borderRadius: `0.3em`,
-          margin: `1em`
-        }}
-      >
-        See Scams
-      </Link>
+      <IndexNav>
+        <Link
+          to="/scams"
+          style={{
+            color: `#fff`,
+            textDecoration: `none`,
+            background: `#f5c561`,
+            backgroundImage: `linear-gradient(to right, #f5c561, #fcab5b)`,
+            padding: `15px 50px`,
+            width: `100px`,
+            borderRadius: `0.3em`
+          }}
+        >
+          See Scams
+        </Link>
 
-      <Link
-        to="/report"
-        style={{
-          color: `#fff`,
-          textDecoration: `none`,
-          padding: `15px 50px`,
-          border: `1px solid #fff`,
-          borderRadius: `0.3em`
-        }}
-      >
-        Report Scam
-      </Link>
+        <Link
+          to="/report"
+          style={{
+            color: `#fff`,
+            textDecoration: `none`,
+            padding: `15px 50px`,
+            border: `1px solid #fff`,
+            borderRadius: `0.3em`
+          }}
+        >
+          Report Scam
+        </Link>
+      </IndexNav>
 
       <BlurbContainer>
         <ContainerOpenSource>
