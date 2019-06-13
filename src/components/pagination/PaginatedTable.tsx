@@ -3,17 +3,29 @@ import styled from 'styled-components';
 import Pagination from './Pagination';
 import { TableRow } from '../table';
 
-const Container = styled.div``;
+const Container = styled.div`
+  width: 100%;
+`;
+
 const PageComponent = styled.div`
   margin-left: 80%;
   margin-bottom: 1em;
+
+  @media (max-width: 968px) {
+    width: 95%;
+    display: block;
+    margin-right: 0;
+  }
 `;
 const Table = styled.table`
-  width: 80%;
-  margin: auto auto;
+  width: 100%;
   color: #fff;
   background: #0b2e45;
   border-radius: 0.4em;
+
+  @media (max-width: 968px) {
+    width: 100%;
+  }
 
   a {
     color: #fff;
@@ -27,6 +39,12 @@ const Search = styled.input`
   border: 1px solid rgba(0, 187, 236, 0.6);
   border-radius: 0.3em;
   color: #fff;
+
+  @media (max-width: 968px) {
+    width: 95%;
+    display: block;
+    margin: 1em;
+  }
 `;
 
 interface Props {
