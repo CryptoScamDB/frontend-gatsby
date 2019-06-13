@@ -16,21 +16,6 @@ body {
         text-decoration: none;
     }
 
-    #scams-view {
-
-        &--container {
-            margin-top: 2em;
-            padding: 5em;
-
-            #heading {
-                color: $table-th-color;
-                text-transform: uppercase;
-                margin: auto auto;
-                margin-left: 15%;
-            }
-        }
-    }
-
     #domain-view {
         &--container {
             margin-top: 2em;
