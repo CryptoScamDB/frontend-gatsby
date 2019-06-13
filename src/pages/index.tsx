@@ -63,6 +63,7 @@ const IndexNav = styled.div`
     @media (max-width: 768px) {
       display: block;
       margin: 1em 0;
+      width: 80%;
     }
   }
 `;
@@ -91,7 +92,6 @@ const Index: React.StatelessComponent = () => (
             background: `#f5c561`,
             backgroundImage: `linear-gradient(to right, #f5c561, #fcab5b)`,
             padding: `15px 50px`,
-            width: `100px`,
             borderRadius: `0.3em`
           }}
         >
