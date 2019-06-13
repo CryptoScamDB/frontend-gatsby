@@ -69,7 +69,7 @@ const Navigation: React.StatelessComponent = () => (
         </Link>
       </li>
       <li>
-        <a href="https://api.cryptoscamdb.org" tabIndex={3}>
+        <a href="https://api.cryptoscamdb.org" target="_blank" rel="noreferrer" tabIndex={3}>
           API
         </a>
       </li>
