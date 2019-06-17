@@ -42,6 +42,11 @@ const Stat = styled.li`
   padding: 1vw;
   box-sizing: border-box;
 
+  @media (max-width: 968px) {
+    width: 120px;
+    height: 120px;
+  }
+
   &:after {
     width: 170%;
     height: 170%;
@@ -75,20 +80,38 @@ const Stat = styled.li`
     height: 11vw;
     margin-top: 9vw;
     margin-left: 8vw;
+
+    @media (max-width: 968px) {
+      width: 120px;
+      height: 120px;
+      margin-left: 0vw;
+      margin-top: 20vw;
+    }
   }
 
   &:nth-child(3) {
     margin-left: 8vw;
+
+    @media (max-width: 968px) {
+      margin-left: 0vw;
+    }
   }
 
   &nth-child(4) {
     margin-top: 13vw;
     margin-left: 8vw;
+
+    @media (max-width: 968px) {
+      width: 120px;
+      height: 120px;
+      margin-left: 0vw;
+    }
   }
 
   @media (max-width: 968px) {
     display: block;
-    margin: 3em 3em;
+    margin: 0em 0em;
+    margin-top: 20vw;
 
     &nth-child(1) {
       margin: auto auto;
