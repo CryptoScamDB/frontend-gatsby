@@ -6,6 +6,32 @@ import FacebookShare from '../components/icons/socials/FacebookShare';
 import TwitterShare from '../components/icons/socials/TwitterShare';
 import LinkedinShare from '../components/icons/socials/LinkedInShare';
 
+import styled from 'styled-components';
+import { Heading1, Heading2, Heading3 } from '../components/html/Headings';
+
+const Container = styled.div`
+  margin: 0 5%;
+  width: 90%;
+
+  @media (max-width: 968px) {
+    width: 100%;
+    margin: 0;
+  }
+`;
+const ListGroup = styled.ul`
+  padding-top: 0.5em;
+  list-style-type: none;
+
+  > li {
+    display: ${(props: ListGroupProps) => (props.inline ? 'inline' : 'block')};
+    padding-right: ${(props: ListGroupProps) => (props.inline ? '1em' : '0em')};
+  }
+`;
+
+interface ListGroupProps {
+  inline?: boolean;
+}
+
 interface Props {
   data: any;
   pageContext: any;
@@ -20,19 +46,19 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
   return (
     <Layout imageBg={false} id="domain-view">
       <SEO title={s.name} keywords={[`cryptoscamdb`, `mycrypto`]} />
-      <section id="domain-view--details-container">
+      <Container>
         <div id="domain-view--details-container-left">
           <div>
             <div>
-              <span className="heading">Address:</span>
+              <Heading1 text="Address:" />
               <span>{pageContext.slug}</span>
             </div>
 
             <br />
             <br />
 
-            <span className="heading">Associated Domains:</span>
-            <ul>
+            <Heading2 text="Associated Domains:" />
+            <ListGroup inline={false}>
               {s.map((record: any) => (
                 <li key={record.node.name}>
                   <Link to={'/domain/' + record.node.csdbId} role="link">
@@ -40,24 +66,24 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
                   </Link>
                 </li>
               ))}
-            </ul>
+            </ListGroup>
 
             <br />
             <br />
 
-            <span className="heading">Associated IPs:</span>
-            <ul>
+            <Heading2 text="Associated IPs:" />
+            <ListGroup inline={false}>
               {distinctIps.map((ip: string) => (
                 <li key={ip}>{ip}</li>
               ))}
-            </ul>
+            </ListGroup>
 
             <br />
             <br />
 
             <div>
-              <span className="heading--sub">Warn your friends</span>
-              <ul id="social">
+              <Heading3 text="Warn your friends" />
+              <ListGroup inline={true}>
                 <li>
                   <TwitterShare
                     text={
@@ -79,11 +105,11 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
                 <li>
                   <LinkedinShare url={'https://cryptoscamdb.org/address/' + pageContext.slug} />
                 </li>
-              </ul>
+              </ListGroup>
             </div>
           </div>
         </div>
-      </section>
+      </Container>
     </Layout>
   );
 };
