@@ -3,6 +3,19 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import Report from '../components/report/home';
 
+import styled from 'styled-components';
+import { Heading1 } from '../components/html/Headings';
+
+const Container = styled.div`
+  margin: 0 5%;
+  width: 90%;
+
+  @media (max-width: 968px) {
+    width: 100%;
+    margin: 0;
+  }
+`;
+
 interface Props {
   data: any;
 }
@@ -10,10 +23,11 @@ interface Props {
 const ReportPage: React.StatelessComponent<Props> = ({ data }: Props) => (
   <Layout imageBg={false} id="report-view">
     <SEO title="Report a scam" keywords={[`ethereum`, `report`, `mycrypto`]} />
+    <Container>
+      <Heading1 text="Report" />
 
-    <h2 id="heading">Report</h2>
-
-    <Report />
+      <Report />
+    </Container>
   </Layout>
 );
 
