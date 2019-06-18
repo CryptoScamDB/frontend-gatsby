@@ -7,6 +7,59 @@ import TwitterShare from '../components/icons/socials/TwitterShare';
 import LinkedinShare from '../components/icons/socials/LinkedInShare';
 import ScreenshotArea from '../components/domain/ScreenshotArea';
 
+import styled from 'styled-components';
+import { Heading1, Heading2, Heading3 } from '../components/html/Headings';
+
+const Container = styled.div`
+  margin: 0 5%;
+  width: 90%;
+  display: flex;
+
+  @media (max-width: 968px) {
+    width: 100%;
+    margin: 0;
+    display: block;
+  }
+`;
+const ContainerLeft = styled.div`
+  flex-direction: column;
+  flex: 1;
+
+  @media (max-width: 968px) {
+    flex-direction: row;
+  }
+`;
+const ContainerRight = styled.div`
+  flex-direction: column;
+  flex: 1;
+
+  @media (max-width: 968px) {
+    flex-direction: row;
+    margin-top: 5em;
+  }
+`;
+const ListGroup = styled.ul`
+  padding-top: 0.5em;
+  list-style-type: none;
+
+  > li {
+    display: ${(props: ListGroupProps) => (props.inline ? 'inline' : 'block')};
+    padding-right: ${(props: ListGroupProps) => (props.inline ? '1em' : '0em')};
+  }
+`;
+const ScamStatus = styled.span`
+  color: ${(props: ScamStatusProps) =>
+    ['active'].indexOf(props.status.toLowerCase()) ? '#5194A2' : '#FF303E'};
+`;
+
+interface ScamStatusProps {
+  status: string;
+}
+
+interface ListGroupProps {
+  inline?: boolean;
+}
+
 interface Props {
   data: any;
 }
@@ -19,40 +72,68 @@ const Domain: React.StatelessComponent<Props> = ({ data }: Props) => {
   return (
     <Layout imageBg={false} id="domain-view">
       <SEO title={s.name} keywords={[`cryptoscamdb`, `mycrypto`]} />
-      <section id="domain-view--details-container">
-        <div id="domain-view--details-container-left">
+      <Container>
+        <ContainerLeft>
           <div>
-            <span className="heading">Name:</span>
-            <span>{s.name}</span>
+            <Heading1 text="Domain:" />
+            <ListGroup>
+              <li>{s.name}</li>
+            </ListGroup>
           </div>
 
           <br />
           <br />
 
           <div>
-            <span className="heading--sub">URL:</span>
-            <span>{s.url}</span>
+            <Heading2 text="URL:" />
+            <ListGroup>
+              <li>{s.url}</li>
+            </ListGroup>
           </div>
 
-          <div>
-            <span className="heading--sub">Category:</span>
-            <span>
-              {s.category} - {s.subcategory}
-            </span>
-          </div>
+          <br />
+          <br />
 
           <div>
-            <span className="heading--sub">Description:</span>
-            <span>{s.description}</span>
+            <Heading2 text="Category:" />
+            <ListGroup>
+              <li>
+                {s.category} - {s.subcategory}
+              </li>
+            </ListGroup>
           </div>
 
-          <div>
-            <span className="heading--sub">Status:</span>
-            <span>{s.status}</span>
-          </div>
+          <br />
+          <br />
 
           <div>
-            <span className="heading--sub">IP:</span>
+            <Heading2 text="Description:" />
+            <ListGroup>
+              <li>{s.description}</li>
+            </ListGroup>
+          </div>
+
+          <br />
+          <br />
+
+          <div>
+            <Heading2 text="Status:" />
+            <ListGroup>
+              <li>
+                {s.status.toLowerCase() === 'active' ? (
+                  <ScamStatus status="active">Active</ScamStatus>
+                ) : (
+                  <ScamStatus status="inactive">{s.status}</ScamStatus>
+                )}
+              </li>
+            </ListGroup>
+          </div>
+
+          <br />
+          <br />
+
+          <div>
+            <Heading2 text="IP:" />
             <span>
               {s.lookups &&
               s.lookups.URLScan &&
@@ -63,7 +144,7 @@ const Domain: React.StatelessComponent<Props> = ({ data }: Props) => {
                     .filter((ip: any, index: number, arr: any) => arr.indexOf(ip) === index)
                     .sort()
                     .join(', ')
-                : `No IP (domain not resolving)`}
+                : `No IP (domain not resolving?)`}
             </span>
           </div>
 
@@ -71,20 +152,20 @@ const Domain: React.StatelessComponent<Props> = ({ data }: Props) => {
           <br />
 
           <div>
-            <span className="heading--sub">Nameservers:</span>
-            <ul>
+            <Heading2 text="Nameservers:" />
+            <ListGroup>
               {s.nameservers
                 ? s.nameservers.map((ns: string, i: number) => <li key={i}>{ns}</li>)
                 : `No Nameservers found (domain not resolving at lookup time)`}
-            </ul>
+            </ListGroup>
           </div>
 
           <br />
           <br />
 
           <div>
-            <span className="heading--sub">Related Addresses:</span>
-            <ul>
+            <Heading2 text="Related Addresses:" />
+            <ListGroup>
               {s.addresses
                 ? s.addresses.map((ns: string, i: number) => (
                     <li key={i}>
@@ -94,15 +175,15 @@ const Domain: React.StatelessComponent<Props> = ({ data }: Props) => {
                     </li>
                   ))
                 : `No Addresses`}
-            </ul>
+            </ListGroup>
           </div>
 
           <br />
           <br />
 
           <div>
-            <span className="heading--sub">Warn your friends</span>
-            <ul id="social">
+            <Heading3 text="Warn your friends" />
+            <ListGroup inline={true}>
               <li>
                 <TwitterShare
                   text={
@@ -134,11 +215,11 @@ const Domain: React.StatelessComponent<Props> = ({ data }: Props) => {
               <li>
                 <LinkedinShare url={'https://cryptoscamdb.org/scam/' + s.id} /* TODO: fix id */ />
               </li>
-            </ul>
+            </ListGroup>
           </div>
-        </div>
+        </ContainerLeft>
 
-        <div id="domain-view--details-container-right">
+        <ContainerRight>
           <div id="domain-view--details-container-right--screenshot-area">
             {s.lookups && s.lookups.URLScan && s.lookups.URLScan.results ? (
               <ScreenshotArea
@@ -152,8 +233,8 @@ const Domain: React.StatelessComponent<Props> = ({ data }: Props) => {
               <ScreenshotArea images={[]} />
             )}
           </div>
-        </div>
-      </section>
+        </ContainerRight>
+      </Container>
     </Layout>
   );
 };
