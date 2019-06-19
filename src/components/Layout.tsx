@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import Header from './Header';
+import Footer from '../components/cryptoscamdb/footer';
 import '../css/layout.scss';
 
 import RobotBg from '../images/logo/robot-and-bg.png';
@@ -54,7 +55,7 @@ const Layout: React.StatelessComponent<Props> = ({ id, children, imageBg }: Prop
         <Header siteTitle={data.site.siteMetadata.title} />
         <Container>
           {children}
-          <footer />
+          <Footer />
         </Container>
       </PageView>
     )}
