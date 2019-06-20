@@ -4,12 +4,26 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import PaginatedTable from '../components/pagination/PaginatedTable';
 import styled from 'styled-components';
+import { Heading1 } from '../components/html/Headings';
 
+const Container = styled.div`
+  margin: 0 5%;
+  width: 90%;
+
+  @media (max-width: 968px) {
+    width: 100%;
+    margin: 0;
+  }
+`;
 const StatsContainer = styled.ul`
   list-style-type: none;
   display: block;
   padding-top: 5%;
   margin-left: 10%;
+
+  @media (max-width: 968px) {
+    margin: 3em 35%;
+  }
 `;
 const Stat = styled.li`
   text-align: center;
@@ -27,6 +41,11 @@ const Stat = styled.li`
   opacity: 0.9;
   padding: 1vw;
   box-sizing: border-box;
+
+  @media (max-width: 968px) {
+    width: 120px;
+    height: 120px;
+  }
 
   &:after {
     width: 170%;
@@ -61,15 +80,51 @@ const Stat = styled.li`
     height: 11vw;
     margin-top: 9vw;
     margin-left: 8vw;
+
+    @media (max-width: 968px) {
+      width: 120px;
+      height: 120px;
+      margin-left: 0vw;
+      margin-top: 20vw;
+    }
   }
 
   &:nth-child(3) {
     margin-left: 8vw;
+
+    @media (max-width: 968px) {
+      margin-left: 0vw;
+    }
   }
 
   &nth-child(4) {
     margin-top: 13vw;
     margin-left: 8vw;
+
+    @media (max-width: 968px) {
+      width: 120px;
+      height: 120px;
+      margin-left: 0vw;
+    }
+  }
+
+  @media (max-width: 968px) {
+    display: block;
+    margin: 0em 0em;
+    margin-top: 20vw;
+
+    &nth-child(1) {
+      margin: auto auto;
+    }
+    &nth-child(2) {
+      margin: auto auto;
+    }
+    &nth-child(3) {
+      margin: auto auto;
+    }
+    &nth-child(4) {
+      margin: auto auto;
+    }
   }
 `;
 const StatText = styled.p`
@@ -136,17 +191,19 @@ const Scams: React.StatelessComponent<ScamsProps> = ({ data }: ScamsProps) => {
   });
 
   return (
-    <Layout id="scams-view">
+    <Layout imageBg={false} id="scams-view">
       <SEO title="Scams" keywords={[`ethereum`, `scams`, `mycrypto`]} />
 
-      <h2 id="heading">See Scams</h2>
+      <Container>
+        <Heading1 text="See Scams" />
 
-      <PaginatedTable
-        totalRecords={data.allCsdbScamDomains.edges.length}
-        recordsPerPage={25}
-        tableData={arrTableData}
-        tableHeaders={['#', 'URL', 'Status', 'Category', 'Subcategory']}
-      />
+        <PaginatedTable
+          totalRecords={data.allCsdbScamDomains.edges.length}
+          recordsPerPage={25}
+          tableData={arrTableData}
+          tableHeaders={['#', 'URL', 'Status', 'Category', 'Subcategory']}
+        />
+      </Container>
 
       <StatsContainer>
         <Stat>

@@ -2,8 +2,18 @@ import React from 'react';
 import { graphql, Link } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-
+import styled from 'styled-components';
 import SearchFunction from '../components/cryptoscamdb/search';
+
+const Container = styled.div`
+  margin: 0 5%;
+  width: 90%;
+
+  @media (max-width: 968px) {
+    width: 100%;
+    margin: 0;
+  }
+`;
 
 interface ScamStatusProps {
   status: string;
@@ -15,9 +25,11 @@ interface IProps {
 
 const Search: React.StatelessComponent<IProps> = ({ data }: IProps) => {
   return (
-    <Layout id="domain-view">
+    <Layout imageBg={false} id="domain-view">
       <SEO title="Search CryptoScamDB" keywords={[`cryptoscamdb`, `mycrypto`]} />
-      <SearchFunction data={data} />
+      <Container>
+        <SearchFunction data={data} />
+      </Container>
     </Layout>
   );
 };
