@@ -43,6 +43,17 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
 
   const distinctIps = s.map(record => record.node.ip);
 
+  let strChain = 'UNKNOWN';
+  if (s[0].node.grouped_addresses && Object.keys(s[0].node.grouped_addresses).length > 0) {
+    Object.keys(s[0].node.grouped_addresses).map(key => {
+      if (s[0].node.grouped_addresses[key] && s[0].node.grouped_addresses[key].length > 0) {
+        if (strChain === 'UNKNOWN') {
+          strChain = s[0].node.grouped_addresses[key].includes(pageContext.slug) ? key : 'UNKNOWN';
+        }
+      }
+    });
+  }
+
   return (
     <Layout imageBg={false} id="domain-view">
       <SEO title={s.name} keywords={[`cryptoscamdb`, `mycrypto`]} />
@@ -53,6 +64,12 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
               <Heading1 text="Address:" />
               <span>{pageContext.slug}</span>
             </div>
+
+            <br />
+            <br />
+
+            <Heading2 text="Chain:" />
+            <ListGroup inline={false}>{strChain}</ListGroup>
 
             <br />
             <br />
@@ -73,9 +90,9 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
 
             <Heading2 text="Associated IPs:" />
             <ListGroup inline={false}>
-              {distinctIps.map((ip: string) => (
-                <li key={ip}>{ip}</li>
-              ))}
+              {distinctIps.filter(ip => ip !== '').length > 0
+                ? distinctIps.map((ip: string) => <li key={ip}>{ip}</li>)
+                : `No IPs found.`}
             </ListGroup>
 
             <br />
@@ -130,7 +147,6 @@ export const pageQuery = graphql`
           reporter
           severity
           path
-          coin
           hostname
           ip
           nameservers
@@ -138,20 +154,20 @@ export const pageQuery = graphql`
           statusCode
           updated
           type
-          lookups {
-            URLScan {
-              total
-              results {
-                page {
-                  ip
-                }
-                _id
-              }
-            }
-          }
+          lookups
           abusereport
           csdbId
           addresses
+          grouped_addresses {
+            ETH
+            BTC
+            BCH
+            XRP
+            TRX
+            NEO
+            XMR
+            LTC
+          }
         }
       }
     }
