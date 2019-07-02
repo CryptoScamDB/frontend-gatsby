@@ -81,6 +81,7 @@ interface IUserReport {
   badDomain: string;
   badPersonalMessage: string;
   badSomethingElse: string;
+  badAddress: string;
 }
 
 interface State {
@@ -116,7 +117,8 @@ export default class Home extends Component<Props, State> {
         badAddresses: [],
         badDomain: '',
         badPersonalMessage: '',
-        badSomethingElse: ''
+        badSomethingElse: '',
+        badAddress: ''
       }
     };
   }
@@ -361,7 +363,7 @@ export default class Home extends Component<Props, State> {
       case 22: // They are reporting a malicious address
         return (
           <Container>
-            <Step22 />
+            <Step22 stepCompleted={this.stepCompleted} stepInvalid={this.stepInvalid} />
             <Navigation
               canContinue={this.state.canContinue}
               changeStep={this.changeStep}

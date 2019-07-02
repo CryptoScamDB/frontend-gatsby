@@ -93,6 +93,9 @@ export default class ReportAddress extends Component<Props, State> {
       strInput.match(new RegExp('^[A-z0-9-]{7,}.eth$', 'g'))
     ) {
       this.setState({ inputValidated: true });
+      this.props.stepCompleted({
+        badAddress: strInput
+      });
       this.props.stepCompleted();
       return;
     } else {
