@@ -57,9 +57,9 @@ export default class ReportPersonalMessage extends Component<Props, State> {
     };
   }
 
-  validateInput(event: React.KeyboardEvent<HTMLElement>) {
+  validateInput(event: React.ChangeEvent<HTMLTextAreaElement>) {
     const { target } = event;
-    let strInput = (target as HTMLInputElement).value;
+    let strInput = (target as HTMLTextAreaElement).value;
     strInput = strInput.trim();
 
     if (strInput.length > 0) {
