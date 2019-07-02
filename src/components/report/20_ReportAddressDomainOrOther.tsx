@@ -66,9 +66,9 @@ export default class ReportAddressDomainOrOther extends Component<Props> {
           <Option onClick={this.props.changeStep} value="22">
             Address
           </Option>
-          <Option onClick={this.props.changeStep} value="23">
+          {/* <Option onClick={this.props.changeStep} value="23">
             Something else
-          </Option>
+          </Option> */}
         </OptionList>
       </Container>
     );
