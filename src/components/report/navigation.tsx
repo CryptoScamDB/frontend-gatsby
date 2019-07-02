@@ -42,7 +42,7 @@ interface Props {
   changeStep: any;
   onlyShowBack: boolean;
   previousStep: number;
-  nextStep: number;
+  nextStep?: number;
   isSendAction: boolean;
   isDisabled: boolean;
 }

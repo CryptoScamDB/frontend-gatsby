@@ -144,7 +144,7 @@ export default class Home extends Component<Props, State> {
   changeStep(event: MouseEvent<HTMLElement>) {
     const { target } = event;
     const intStep = (target as HTMLElement).getAttribute('value');
-    if (intStep) {
+    if (intStep && parseInt(intStep, 10) >= 0) {
       this.setState({ previousStep: this.state.currentStep });
       this.setState({ currentStep: parseInt(intStep, 10) });
       this.setState({ canContinue: false });
@@ -228,6 +228,7 @@ export default class Home extends Component<Props, State> {
               canContinue={this.state.canContinue}
               changeStep={this.changeStep}
               previousStep={this.state.previousStep}
+              nextStep={11}
             />
           </Container>
         );
@@ -294,6 +295,7 @@ export default class Home extends Component<Props, State> {
               onlyShowBack={false}
               previousStep={this.state.previousStep}
               isSendAction={true}
+              nextStep={99}
             />
           </Container>
         );
@@ -308,6 +310,7 @@ export default class Home extends Component<Props, State> {
               onlyShowBack={false}
               previousStep={this.state.previousStep}
               isSendAction={true}
+              nextStep={99}
             />
           </Container>
         );
@@ -322,6 +325,7 @@ export default class Home extends Component<Props, State> {
               onlyShowBack={false}
               previousStep={this.state.previousStep}
               isSendAction={true}
+              nextStep={99}
             />
           </Container>
         );
@@ -349,6 +353,7 @@ export default class Home extends Component<Props, State> {
               onlyShowBack={false}
               previousStep={this.state.previousStep}
               isSendAction={true}
+              nextStep={99}
             />
           </Container>
         );
@@ -363,6 +368,7 @@ export default class Home extends Component<Props, State> {
               onlyShowBack={false}
               previousStep={this.state.previousStep}
               isSendAction={true}
+              nextStep={99}
             />
           </Container>
         );
@@ -377,6 +383,7 @@ export default class Home extends Component<Props, State> {
               onlyShowBack={false}
               previousStep={this.state.previousStep}
               isSendAction={true}
+              nextStep={99}
             />
           </Container>
         );

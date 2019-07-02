@@ -96,7 +96,7 @@ export default class ReportAddress extends Component<Props, State> {
       this.setState({ inputValidated: true });
       this.props.stepCompleted({
         userAddress: strInput,
-        badAddresses: ''
+        badAddresses: '' //@todo - get value of MoreAddresses
       });
       return;
     } else {
