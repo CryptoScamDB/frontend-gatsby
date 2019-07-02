@@ -256,7 +256,6 @@ export const pageQuery = graphql`
           verified
           featured
           addresses
-          ips
           actives
           inactives
         }
