@@ -50,7 +50,6 @@ export const pageQuery = graphql`
           reporter
           severity
           path
-          coin
           hostname
           ip
           nameservers
@@ -58,17 +57,7 @@ export const pageQuery = graphql`
           statusCode
           updated
           type
-          lookups {
-            URLScan {
-              total
-              results {
-                page {
-                  ip
-                }
-                _id
-              }
-            }
-          }
+          lookups
           abusereport
           csdbId
           addresses
