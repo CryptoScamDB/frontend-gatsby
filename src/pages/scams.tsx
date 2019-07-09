@@ -179,7 +179,11 @@ const Scams: React.StatelessComponent<ScamsProps> = ({ data }: ScamsProps) => {
         default:
         case 'offline':
         case 'suspended':
-          objRecord.status = <ScamStatus status="inactive">{objRecord.status}</ScamStatus>;
+          objRecord.status = (
+            <ScamStatus status="inactive">
+              {objRecord.status === '' ? 'Unknown' : objRecord.status}
+            </ScamStatus>
+          );
           break;
       }
 
@@ -256,7 +260,6 @@ export const pageQuery = graphql`
           verified
           featured
           addresses
-          ips
           actives
           inactives
         }

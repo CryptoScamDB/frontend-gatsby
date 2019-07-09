@@ -27,7 +27,7 @@ export default async ({ graphql, actions }: any) => {
     });
 
     if (node.addresses !== null && node.addresses.length) {
-      node.addresses.forEach(addr => {
+      node.addresses.forEach((addr, key) => {
         console.log(`\tCreating page /address/${addr}`);
         createPage({
           path: `/address/${addr}`,

@@ -28,6 +28,11 @@ const ContainerLeft = styled.div`
   @media (max-width: 968px) {
     flex-direction: row;
   }
+
+  > div {
+    overflow-wrap: break-word;
+    max-width: 70%;
+  }
 `;
 const ContainerRight = styled.div`
   flex-direction: column;
@@ -123,7 +128,9 @@ const Domain: React.StatelessComponent<Props> = ({ data }: Props) => {
                 {s.status.toLowerCase() === 'active' ? (
                   <ScamStatus status="active">Active</ScamStatus>
                 ) : (
-                  <ScamStatus status="inactive">{s.status}</ScamStatus>
+                  <ScamStatus status="inactive">
+                    {s.status === '' ? 'Unknown' : s.status}
+                  </ScamStatus>
                 )}
               </li>
             </ListGroup>
@@ -195,7 +202,7 @@ const Domain: React.StatelessComponent<Props> = ({ data }: Props) => {
                     s.url.replace('.', '[.]') +
                     '\r\n#cryptoscamdb'
                   }
-                  url={'https://cryptoscamdb.org/scam/' + s.id} /* TODO: fix id */
+                  url={'https://cryptoscamdb.org/domain/' + s.csdbId}
                 />
               </li>
               <li>
@@ -209,11 +216,11 @@ const Domain: React.StatelessComponent<Props> = ({ data }: Props) => {
                     s.url.replace('.', '[.]') +
                     '\r\n#cryptoscamdb'
                   }
-                  url={'https://cryptoscamdb.org/scam/' + s.id} /* TODO: fix id */
+                  url={'https://cryptoscamdb.org/scam/' + s.csdbId}
                 />
               </li>
               <li>
-                <LinkedinShare url={'https://cryptoscamdb.org/scam/' + s.id} /* TODO: fix id */ />
+                <LinkedinShare url={'https://cryptoscamdb.org/scam/' + s.csdbId} />
               </li>
             </ListGroup>
           </div>
@@ -255,7 +262,6 @@ export const pageQuery = graphql`
           reporter
           severity
           path
-          coin
           hostname
           ip
           nameservers
@@ -263,20 +269,20 @@ export const pageQuery = graphql`
           statusCode
           updated
           type
-          lookups {
-            URLScan {
-              total
-              results {
-                page {
-                  ip
-                }
-                _id
-              }
-            }
-          }
+          lookups
           abusereport
           csdbId
           addresses
+          grouped_addresses {
+            ETH
+            BTC
+            BCH
+            XRP
+            TRX
+            NEO
+            XMR
+            LTC
+          }
         }
       }
     }

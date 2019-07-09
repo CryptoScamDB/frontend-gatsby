@@ -50,27 +50,19 @@ export default class ReportPersonalMessage extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    this.validateAddressInput = this.validateAddressInput.bind(this);
+    this.validateInput = this.validateInput.bind(this);
 
     this.state = {
       inputValidated: false
     };
   }
 
-  validateAddressInput(event: React.KeyboardEvent<HTMLElement>) {
+  validateInput(event: React.ChangeEvent<HTMLTextAreaElement>) {
     const { target } = event;
-    let strInput = (target as HTMLInputElement).value;
+    let strInput = (target as HTMLTextAreaElement).value;
     strInput = strInput.trim();
-    strInput.replace(/https?:\/\//g, '');
 
-    if (
-      strInput.match(
-        new RegExp(
-          '^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$',
-          'g'
-        )
-      )
-    ) {
+    if (strInput.length > 0) {
       this.setState({ inputValidated: true });
       this.props.stepCompleted({
         badPersonalMessage: strInput
@@ -91,7 +83,7 @@ export default class ReportPersonalMessage extends Component<Props, State> {
         </Description>
 
         <InputContainer>
-          <TextareaMoreDetails rows={10} cols={50} />
+          <TextareaMoreDetails rows={10} cols={50} onChange={this.validateInput} />
         </InputContainer>
       </Container>
     );

@@ -6,6 +6,7 @@ import RightArrow from '../../images/navigation/right.svg';
 
 interface PageButtonProps {
   isDisabled: boolean;
+  value: number;
 }
 
 const PageNavigationContainer = styled.div`
@@ -41,6 +42,7 @@ interface Props {
   changeStep: any;
   onlyShowBack: boolean;
   previousStep: number;
+  nextStep?: number;
   isSendAction: boolean;
   isDisabled: boolean;
 }
@@ -62,7 +64,11 @@ export default class Navigation extends Component<Props> {
   render() {
     return (
       <PageNavigationContainer>
-        <PageButton onClick={this.props.changeStep} isDisabled={false}>
+        <PageButton
+          onClick={this.props.changeStep}
+          isDisabled={false}
+          value={this.props.previousStep ? this.props.previousStep : 0}
+        >
           <img src={LeftArrow} alt="Go Back" />
           Back
         </PageButton>
@@ -73,6 +79,7 @@ export default class Navigation extends Component<Props> {
           <PageButton
             onClick={this.props.canContinue ? this.props.changeStep : null}
             isDisabled={this.props.canContinue ? false : true}
+            value={this.props.nextStep ? this.props.nextStep : -1}
           >
             {this.props.isSendAction ? 'Send' : 'Continue'}
             <img src={RightArrow} alt="Continue" />

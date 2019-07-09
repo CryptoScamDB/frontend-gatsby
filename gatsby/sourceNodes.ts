@@ -29,9 +29,17 @@ export default async ({ actions: { createNode } }: any) => {
   /***************************************************************
    ********************** G E T   S C A M S **********************
    ***************************************************************/
-  console.log(`\r\n\r\n[*] Fetching domains -- ${API_ENDPOINT}/scams`);
-  const objScams = await axios.get(`${API_ENDPOINT}/scams`);
+  let strScamApiEndpoint = `${API_ENDPOINT}/scams`;
+  if (NODE_ENV === 'development') {
+    console.log(`\r\n\t[+] Development mode so only getting the most recent 250 records`);
+    strScamApiEndpoint += `?skip=6250&limit=250`;
+  }
+  console.log(`\r\n\r\n[*] Fetching domains -- ${strScamApiEndpoint}`);
+  const objScams = await axios.get(`${strScamApiEndpoint}`);
+
+  console.log(`\r\n\r\n[*] Fetching domains -- ${API_ENDPOINT}/featured`);
   const objFeatured = await axios.get(`${API_ENDPOINT}/featured`);
+  console.log(`\r\n\r\n[*] Fetching domains -- ${API_ENDPOINT}/stats`);
   const objStats = await axios.get(`${API_ENDPOINT}/stats`);
 
   const objBuildStats = {
@@ -58,6 +66,55 @@ export default async ({ actions: { createNode } }: any) => {
             objResponse.data.success
           ) {
             objBuildStats.success += 1;
+
+            objResponse.data.result[0].grouped_addresses = [];
+            if (Object.keys(objResponse.data.result[0].addresses).length > 0) {
+              objResponse.data.result[0].grouped_addresses = objResponse.data.result[0].addresses;
+              // Flatten the addresses arrays - this is temp logic
+              // @todo - create some relationship between this node and an addresses node
+              const objAddressesTmp = objResponse.data.result[0].addresses;
+              objResponse.data.result[0].addresses = [];
+              Object.keys(objAddressesTmp).forEach(strKey => {
+                objAddressesTmp[strKey].forEach(addr => {
+                  objResponse.data.result[0].addresses.push(addr);
+                });
+              });
+            }
+
+            // Adding some data sanity checks
+            // @todo - port logic into a model?
+            objResponse.data.result[0].ip =
+              objResponse.data.result[0].ip && objResponse.data.result[0].ip !== null
+                ? objResponse.data.result[0].ip
+                : '';
+            objResponse.data.result[0].ips =
+              objResponse.data.result[0].ips && objResponse.data.result[0].ips !== null
+                ? objResponse.data.result[0].ips
+                : [''];
+            objResponse.data.result[0].status =
+              objResponse.data.result[0].status && objResponse.data.result[0].status !== null
+                ? objResponse.data.result[0].status
+                : '';
+            objResponse.data.result[0].statusCode =
+              objResponse.data.result[0].statusCode &&
+              objResponse.data.result[0].statusCode !== null
+                ? objResponse.data.result[0].statusCode
+                : '';
+            objResponse.data.result[0].abusereport =
+              objResponse.data.result[0].abusereport &&
+              objResponse.data.result[0].abusereport !== null
+                ? objResponse.data.result[0].abusereport
+                : '';
+            objResponse.data.result[0].nameservers =
+              objResponse.data.result[0].nameservers &&
+              objResponse.data.result[0].nameservers.length > 0
+                ? objResponse.data.result[0].nameservers
+                : [''];
+            objResponse.data.result[0].lookups =
+              objResponse.data.result[0].lookups && objResponse.data.result[0].lookups.length > 0
+                ? objResponse.data.result[0].lookups
+                : [''];
+
             createNode(ScamDomainNode(objResponse.data.result[0]));
           } else {
             console.log(`\r\n\t[-] Build error - cannot get domain: ${data.name}`);
@@ -81,7 +138,7 @@ export default async ({ actions: { createNode } }: any) => {
     await Promise.all(
       arrResults.map(async (data: any) => {
         if (data.url) {
-          const strDomain = data.url.replace(/https?\:\/\//, '');
+          const strDomain = data.name.replace(/https?\:\/\//, '');
           const objResponse = await get(`/domain/${strDomain.toLowerCase()}`).catch(() => {});
           if (
             objResponse &&
@@ -91,14 +148,48 @@ export default async ({ actions: { createNode } }: any) => {
           ) {
             objBuildStats.success += 1;
 
+            objResponse.data.result[0].grouped_addresses = [];
+            if (Object.keys(objResponse.data.result[0].addresses).length > 0) {
+              objResponse.data.result[0].grouped_addresses = objResponse.data.result[0].addresses;
+              // Flatten the addresses arrays - this is temp logic
+              // @todo - create some relationship between this node and an addresses node
+              const objAddressesTmp = objResponse.data.result[0].addresses;
+              objResponse.data.result[0].addresses = [];
+              Object.keys(objAddressesTmp).forEach(strKey => {
+                objAddressesTmp[strKey].forEach(addr => {
+                  objResponse.data.result[0].addresses.push(addr);
+                });
+              });
+            }
+
+            // Adding some data sanity checks
+            // @todo - port logic into a model?
+            objResponse.data.result[0].ip =
+              objResponse.data.result[0].ip && objResponse.data.result[0].ip !== null
+                ? objResponse.data.result[0].ip
+                : '';
+            objResponse.data.result[0].ips =
+              objResponse.data.result[0].ips && objResponse.data.result[0].ips !== null
+                ? objResponse.data.result[0].ips
+                : [''];
+            objResponse.data.result[0].status =
+              objResponse.data.result[0].status && objResponse.data.result[0].status !== null
+                ? objResponse.data.result[0].status
+                : '';
+            objResponse.data.result[0].statusCode =
+              objResponse.data.result[0].statusCode &&
+              objResponse.data.result[0].statusCode !== null
+                ? objResponse.data.result[0].statusCode
+                : '';
+
             //Add the CSDB ID to it - hack until included in the GET /v1/domain/<domain>
             objResponse.data.result[0].id = data.name;
             // Normalise the record @todo make this much prettier, maybe using a data model?
             if (!objResponse.data.result[0].hasOwnProperty('description')) {
               objResponse.data.result[0].description = '';
             }
+
             createNode(FeaturedDomainNode(objResponse.data.result[0]));
-            console.log(objResponse.data.result[0]);
           } else {
             console.log(`\r\n\t[-] Build error - cannot get domain: ${strDomain}`);
             objBuildStats.fail += 1;

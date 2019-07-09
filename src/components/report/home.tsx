@@ -81,6 +81,7 @@ interface IUserReport {
   badDomain: string;
   badPersonalMessage: string;
   badSomethingElse: string;
+  badAddress: string;
 }
 
 interface State {
@@ -116,7 +117,8 @@ export default class Home extends Component<Props, State> {
         badAddresses: [],
         badDomain: '',
         badPersonalMessage: '',
-        badSomethingElse: ''
+        badSomethingElse: '',
+        badAddress: ''
       }
     };
   }
@@ -144,7 +146,7 @@ export default class Home extends Component<Props, State> {
   changeStep(event: MouseEvent<HTMLElement>) {
     const { target } = event;
     const intStep = (target as HTMLElement).getAttribute('value');
-    if (intStep) {
+    if (intStep && parseInt(intStep, 10) >= 0) {
       this.setState({ previousStep: this.state.currentStep });
       this.setState({ currentStep: parseInt(intStep, 10) });
       this.setState({ canContinue: false });
@@ -228,6 +230,7 @@ export default class Home extends Component<Props, State> {
               canContinue={this.state.canContinue}
               changeStep={this.changeStep}
               previousStep={this.state.previousStep}
+              nextStep={11}
             />
           </Container>
         );
@@ -294,6 +297,7 @@ export default class Home extends Component<Props, State> {
               onlyShowBack={false}
               previousStep={this.state.previousStep}
               isSendAction={true}
+              nextStep={99}
             />
           </Container>
         );
@@ -308,6 +312,7 @@ export default class Home extends Component<Props, State> {
               onlyShowBack={false}
               previousStep={this.state.previousStep}
               isSendAction={true}
+              nextStep={99}
             />
           </Container>
         );
@@ -322,6 +327,7 @@ export default class Home extends Component<Props, State> {
               onlyShowBack={false}
               previousStep={this.state.previousStep}
               isSendAction={true}
+              nextStep={99}
             />
           </Container>
         );
@@ -349,6 +355,7 @@ export default class Home extends Component<Props, State> {
               onlyShowBack={false}
               previousStep={this.state.previousStep}
               isSendAction={true}
+              nextStep={99}
             />
           </Container>
         );
@@ -356,13 +363,14 @@ export default class Home extends Component<Props, State> {
       case 22: // They are reporting a malicious address
         return (
           <Container>
-            <Step22 />
+            <Step22 stepCompleted={this.stepCompleted} stepInvalid={this.stepInvalid} />
             <Navigation
               canContinue={this.state.canContinue}
               changeStep={this.changeStep}
               onlyShowBack={false}
               previousStep={this.state.previousStep}
               isSendAction={true}
+              nextStep={99}
             />
           </Container>
         );
@@ -377,6 +385,7 @@ export default class Home extends Component<Props, State> {
               onlyShowBack={false}
               previousStep={this.state.previousStep}
               isSendAction={true}
+              nextStep={99}
             />
           </Container>
         );

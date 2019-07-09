@@ -54,6 +54,10 @@ export default class PrivateKeyNotSure extends Component<Props, State> {
           <br />
           See if you notice any domains that are slightly different than expected. Things like
           mycrypto.co instead of mycrypto.com or mycyrpto.com instead of mycrypto.com.
+          <br />
+          <br />
+          Remember to use a read-only block explorer to just check your balance, no need to unlock
+          your wallet to just check your balances.
         </SubText>
       </Container>
     );

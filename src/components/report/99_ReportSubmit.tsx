@@ -98,11 +98,19 @@ export default class ReportSubmit extends Component<Props> {
         switch (response.status) {
           case 200:
           case 201:
-            return {
-              sentReport: true,
-              reportId: response.data.report_id,
-              errorString: ''
-            };
+            if (response.data.success) {
+              return {
+                sentReport: true,
+                reportId: response.data.report_id,
+                errorString: ''
+              };
+            } else {
+              return {
+                sentReport: false,
+                reportId: null,
+                errorString: `Please try again, or tweet us @CryptoScamDB if the problem persists.`
+              };
+            }
             break;
           default:
             return {
