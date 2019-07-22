@@ -5,6 +5,7 @@ const HeadingTag1 = styled.h1`
   color: #ebc561;
   text-transform: uppercase;
   margin: auto auto;
+  font-family: 'Unna', serif;
 `;
 const HeadingTag2 = styled.h2`
   color: #ffffff;

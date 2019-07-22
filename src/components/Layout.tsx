@@ -10,11 +10,11 @@ import RobotBg from '../images/logo/robot-and-bg.png';
 
 const PageView = styled.div`
   width: 100%;
-  background: #000d15;
+  background: #001629;
   color: #ffffff;
   height: 100%;
   width: 100%;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Lato', sans-serif;
 
   ${(props: Props) =>
     props.imageBg &&
@@ -52,6 +52,10 @@ const Layout: React.StatelessComponent<Props> = ({ id, children, imageBg }: Prop
     `}
     render={data => (
       <PageView imageBg={imageBg} id={id}>
+        <link
+          href="https://fonts.googleapis.com/css?family=Lato|Unna&display=swap"
+          rel="stylesheet"
+        />
         <Header siteTitle={data.site.siteMetadata.title} />
         <Container>
           {children}
