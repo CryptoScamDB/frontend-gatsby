@@ -6,9 +6,7 @@ import ReactHtmlParser from 'react-html-parser';
 
 const Container = styled.div`
   margin-left: 5%;
-  margin-bottom: 0.5em;
   width: 751px;
-  padding: 10px 40px;
 `;
 const Question = styled.div`
   height: 51px;
@@ -38,7 +36,7 @@ const Answer = styled.div`
   display: inline;
 
   > ul {
-    padding: 0.5em 0;
+    padding: 0.5em 1em;
   }
 `;
 
