@@ -20,10 +20,10 @@ const PageView = styled.div`
     props.imageBg &&
     `
     @media (min-width: 1200px) {
-      background: url(${RobotBg}) no-repeat center center fixed;
+      background: url(${RobotBg}) no-repeat center center;
       background-position: center center;
       background-size: cover;
-      height: 100vh;
+      min-height: 100vh;
     }
   `}
 `;
