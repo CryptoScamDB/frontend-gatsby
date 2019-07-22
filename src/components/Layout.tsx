@@ -6,7 +6,7 @@ import Header from './Header';
 import Footer from '../components/cryptoscamdb/footer';
 import '../css/layout.scss';
 
-import RobotBg from '../images/logo/robot-and-bg.png';
+import RobotBg from '../images/background-big.jpg';
 
 const PageView = styled.div`
   width: 100%;
