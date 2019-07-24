@@ -21,7 +21,7 @@ const Description = styled.h3`
   margin-bottom: 2em;
 
   > ul {
-    padding-left: 35%;
+    padding-left: 25%;
     text-align: left;
 
     > li {
@@ -222,6 +222,37 @@ export default class ReportSubmit extends Component<Props> {
                 <strong>Continue to help the community!</strong> <br />
                 Spread the word about this scam. Blog about it, tweet about it, scream it from the
                 rooftops! Let's make sure other people can keep their funds safe too.
+                <br />
+                <br />
+                <strong>Report to the authorities:</strong> <br />
+                <ul>
+                  <li>
+                    Make an internet fraud report to IC3:{' '}
+                    <a
+                      href="https://www.ic3.gov/complaint/default.aspx"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      https://www.ic3.gov/complaint/default.aspx
+                    </a>
+                  </li>
+                  <li>
+                    Make an internet fraud report to EC3:{' '}
+                    <a
+                      href="https://www.europol.europa.eu/report-a-crime"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      https://www.europol.europa.eu/report-a-crime
+                    </a>
+                  </li>
+                  <li>
+                    Make an internet fraud report to the UK Police:{' '}
+                    <a href="https://www.actionfraud.police.uk/" target="_blank" rel="noreferrer">
+                      https://www.actionfraud.police.uk/
+                    </a>
+                  </li>
+                </ul>
               </p>
             </SubText>
           </Container>
