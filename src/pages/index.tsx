@@ -13,6 +13,7 @@ import { Heading1, Heading3 } from '../components/html/Headings';
 const Container = styled.div`
   padding: 0 2em;
   margin-top: -5em;
+  margin-left: 2em;
 
   @media (max-width: 768px) {
     width: 100%;

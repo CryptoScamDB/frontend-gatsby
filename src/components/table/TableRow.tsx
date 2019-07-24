@@ -10,13 +10,15 @@ interface TableRowBaseProps {
 const TableRowBase = styled.tr`
   &:hover {
     background: ${(props: TableRowBaseProps) => (props.type === 'td' ? '#0f3d5b' : '')};
+    cursor: pointer;
   }
 
   &:nth-child(even) {
-    background: rgb(15, 61, 91);
+    background: rgb(14, 52, 76);
 
     &:hover {
-      background: rgb(19, 79, 118);
+      background: #0f3d5b;
+      cursor: pointer;
     }
   }
 `;
