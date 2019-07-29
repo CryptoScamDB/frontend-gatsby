@@ -52,7 +52,7 @@ export default async ({ actions: { createNode } }: any) => {
 
     if (NODE_ENV === 'development') {
       console.log(`\r\n\t[+] Development mode so only getting the most recent 250 records`);
-      arrResults = objScams.data.result.reverse().slice(1, 250);
+      arrResults = objScams.data.result.reverse().slice(0, 250);
     }
 
     await Promise.all(
