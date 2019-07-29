@@ -83,7 +83,7 @@ export default class ReportDomain extends Component<Props, State> {
     if (
       strInput.match(
         new RegExp(
-          '^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]$',
+          '^(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/?$',
           'g'
         )
       )
