@@ -41,6 +41,12 @@ const BlurbContainer = styled.div`
 const ContainerOpenSource = styled.div`
   padding-right: 2em;
   flex: 0 0 50%;
+
+  a {
+    color: #fff;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+  }
 `;
 const ContainerDonate = styled.div`
   flex: 1;
@@ -117,8 +123,11 @@ const Index: React.StatelessComponent = () => (
         <ContainerOpenSource>
           <Heading3 text="Open-Source" />
           <p>
-            The full website is open-source and resources to use for your own application are
-            available at GitHub, including all data sets and documentation.
+            The full website is open-source and resources to use for your own application are{' '}
+            <a href="https://github.com/cryptoscamdb" target="_blank" rel="noreferrer">
+              available at GitHub
+            </a>
+            , including all data sets and documentation.
           </p>
         </ContainerOpenSource>
         <ContainerDonate>
