@@ -96,12 +96,12 @@ const Container = styled.div`
 
         &:first-child { /** The hamburger icon */
           display: block;
-          padding: 5%;
+          padding: ${props => (props.isMobileMenuExtended ? '5%' : '0')};
         }
 
         &:not(:first-child) {
           text-align: left;
-          display: ${props => (props.isMobileMenuExtended ? 'block' : 'none')};
+          display: ${props => (props.isMobileMenuExtended ? 'block' : 'none')}
         }
 
         &:last-child { /** The report button */
@@ -148,7 +148,7 @@ export default class Navigation extends Component<Props, State> {
       <Container isMobileMenuExtended={this.state.mobileExpanded}>
         <ul>
           <li onClick={this.handleClick}>
-            <img alt="Menu" src={Hamburger} />
+            {this.state.mobileExpanded ? `X` : <img alt="Menu" src={Hamburger} />}
           </li>
           <li>
             <Link to="/scams" role="link" tabIndex={1}>
