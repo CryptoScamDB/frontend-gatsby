@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
@@ -31,39 +31,56 @@ const PageView = styled.div`
 const Container = styled.div`
   margin-top: 2em;
   padding: 0em;
+
+  @media screen and (max-width: 900px) {
+    display: ${props => (props.isMobileMenuExtended ? 'none' : 'block')};
+  }
 `;
 
 interface Props {
   id?: any;
   children: any;
   imageBg: boolean;
+  isMobileMenuExtended: boolean;
 }
 
-const Layout: React.StatelessComponent<Props> = ({ id, children, imageBg }: Props) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
-        }
-      }
-    `}
-    render={data => (
-      <PageView imageBg={imageBg} id={id}>
+interface State {
+  isMobileMenuExtended: boolean;
+}
+
+export default class Layout extends Component<Props, State> {
+  static defaultProps = {
+    mobileExpanded: false
+  };
+
+  constructor(props: Props) {
+    super(props);
+
+    this.handleMobileMenuExpand = this.handleMobileMenuExpand.bind(this);
+
+    this.state = {
+      isMobileMenuExtended: false
+    };
+  }
+
+  handleMobileMenuExpand(event: React.MouseEvent) {
+    event.preventDefault();
+    this.setState({ isMobileMenuExtended: !this.state.isMobileMenuExtended });
+  }
+
+  render() {
+    return (
+      <PageView imageBg={this.props.imageBg} id={this.props.id}>
         <link
           href="https://fonts.googleapis.com/css?family=Lato|Unna&display=swap"
           rel="stylesheet"
         />
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <Container>
-          {children}
+        <Header siteTitle="CryptoScamDB" handleMobileMenuExtend={this.handleMobileMenuExpand} />
+        <Container isMobileMenuExtended={this.state.isMobileMenuExtended}>
+          {this.props.children}
           <Footer />
         </Container>
       </PageView>
-    )}
-  />
-);
-
-export default Layout;
+    );
+  }
+}
