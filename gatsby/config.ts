@@ -58,6 +58,23 @@ export default {
         defer: false,
         args: `?render=onload`
       }
+    },
+    {
+      resolve: 'gatsby-plugin-csp',
+      options: {
+        disableOnDev: false,
+        reportOnly: false,
+        mergeScriptHashes: true,
+        mergeStyleHashes: true,
+        mergeDefaultDirectives: true,
+        directives: {
+          'script-src': "'self' www.google.com google.com www.gstatic.com gstatic.com",
+          'style-src': "'self' 'unsafe-inline' blob: fonts.googleapis.com",
+          'img-src': "'self' data: urlscan.io",
+          'font-src': "'self' fonts.gstatic.com",
+          'connect-src': "'self' api.cryptoscamdb.org"
+        }
+      }
     }
   ]
 };
