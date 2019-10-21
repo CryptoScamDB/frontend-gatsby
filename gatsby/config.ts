@@ -64,8 +64,8 @@ export default {
       options: {
         disableOnDev: false,
         reportOnly: false,
-        mergeScriptHashes: true,
-        mergeStyleHashes: true,
+        mergeScriptHashes: false,
+        mergeStyleHashes: false,
         mergeDefaultDirectives: true,
         directives: {
           'script-src':
@@ -73,7 +73,8 @@ export default {
           'style-src': "'self' 'unsafe-inline' blob: fonts.googleapis.com",
           'img-src': "'self' data: urlscan.io analytics.mycryptoapi.com",
           'font-src': "'self' fonts.gstatic.com",
-          'connect-src': "'self' api.cryptoscamdb.org"
+          'connect-src': "'self' api.cryptoscamdb.org",
+          'frame-src': 'www.google.com google.com'
         }
       }
     }
