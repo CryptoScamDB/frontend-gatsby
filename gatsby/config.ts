@@ -5,7 +5,8 @@ export default {
   siteMetadata: {
     title: 'CryptoScamDB',
     siteUrl: 'https://cryptoscamdb.org',
-    description: 'Keeping track of all current cryptocurrency scams in an open-source database',
+    description:
+      'Keeping track of all current cryptocurrency scams in an open-source database - Brought to you by MyCrypto',
     author: '@CryptoScamDB'
   },
   plugins: [
