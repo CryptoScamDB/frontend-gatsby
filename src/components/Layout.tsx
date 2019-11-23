@@ -1,13 +1,10 @@
 import React from 'react';
 import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
-import { Helmet } from 'react-helmet';
 
 import Header from './Header';
 import Footer from '../components/cryptoscamdb/footer';
 import '../css/layout.scss';
-
-import TwitterCsdbImage from '../images/csdb-twitter.png';
 
 import RobotBg from '../images/background-big.png';
 
@@ -55,9 +52,6 @@ const Layout: React.StatelessComponent<Props> = ({ id, children, imageBg }: Prop
     `}
     render={data => (
       <PageView imageBg={imageBg} id={id}>
-        <Helmet>
-          <meta name="twitter:image" content={TwitterCsdbImage} />
-        </Helmet>
         <link
           href="https://fonts.googleapis.com/css?family=Lato|Unna&display=swap"
           rel="stylesheet"
