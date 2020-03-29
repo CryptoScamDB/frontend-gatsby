@@ -20,16 +20,18 @@ const Brand = styled.div`
 `;
 
 const Header: React.StatelessComponent<Props> = ({ siteTitle }: Props) => (
-  <HeaderContainer>
-    <Container>
-      <Brand>
-        <Link to="/">
-          <img title={siteTitle} alt={siteTitle} src={siteLogo} />
-        </Link>
-      </Brand>
-      <Navigation />
-    </Container>
-  </HeaderContainer>
+  <>
+    <HeaderContainer>
+      <Container>
+        <Brand>
+          <Link to="/">
+            <img title={siteTitle} alt={siteTitle} src={siteLogo} />
+          </Link>
+        </Brand>
+        <Navigation />
+      </Container>
+    </HeaderContainer>
+  </>
 );
 
 export default Header;

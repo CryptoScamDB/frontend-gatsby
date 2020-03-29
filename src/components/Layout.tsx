@@ -3,6 +3,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import Header from './Header';
+import Banner from './Banner';
 import Footer from '../components/cryptoscamdb/footer';
 import '../css/layout.scss';
 
@@ -51,17 +52,20 @@ const Layout: React.StatelessComponent<Props> = ({ id, children, imageBg }: Prop
       }
     `}
     render={data => (
-      <PageView imageBg={imageBg} id={id}>
-        <link
-          href="https://fonts.googleapis.com/css?family=Lato|Unna&display=swap"
-          rel="stylesheet"
-        />
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <Container>
-          {children}
-          <Footer />
-        </Container>
-      </PageView>
+      <>
+        <Banner />
+        <PageView imageBg={imageBg} id={id}>
+          <link
+            href="https://fonts.googleapis.com/css?family=Lato|Unna&display=swap"
+            rel="stylesheet"
+          />
+          <Header siteTitle={data.site.siteMetadata.title} />
+          <Container>
+            {children}
+            <Footer />
+          </Container>
+        </PageView>
+      </>
     )}
   />
 );
