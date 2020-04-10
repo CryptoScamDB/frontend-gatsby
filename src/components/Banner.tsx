@@ -29,7 +29,7 @@ const Banner: React.StatelessComponent = () => (
         <a href="https://gitcoin.co/grants/347/cryptoscamdb" target="_blank" rel="noreferrer">
           CryptoScamDB's Gitcoin grant
         </a>
-        ! Right now, all contributions are being matched. Thank you!
+        ! Thank you!
       </p>
     </Container>
   </BannerContainer>
