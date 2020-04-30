@@ -5,6 +5,7 @@ import SEO from '../components/SEO';
 import FacebookShare from '../components/icons/socials/FacebookShare';
 import TwitterShare from '../components/icons/socials/TwitterShare';
 import LinkedinShare from '../components/icons/socials/LinkedInShare';
+import BlockExplorerLink from '../components/BlockExplorerLink';
 
 import styled from 'styled-components';
 import { Heading1, Heading2, Heading3 } from '../components/html/Headings';
@@ -62,7 +63,10 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
           <div>
             <div>
               <Heading1 text="Address:" />
-              <span>{pageContext.slug}</span>
+              <span>
+                {pageContext.slug} <br />
+                <br /> <BlockExplorerLink address={pageContext.slug} chain={strChain} />
+              </span>
             </div>
 
             <br />
