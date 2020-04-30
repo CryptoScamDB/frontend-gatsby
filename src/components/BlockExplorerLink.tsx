@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import ReactHtmlParser from 'react-html-parser';
 
 interface Props {
-  address: string[];
-  chain: string[];
+  address: string;
+  chain: string;
 }
 
 const LinkContainer = styled.div`
