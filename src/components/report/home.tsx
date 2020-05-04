@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Axios from 'axios';
 import { API_ENDPOINT } from '../../../gatsby/config';
 
+import { Container, Description } from './styles';
 import Navigation from './navigation';
 
 import Step10 from './10_ReportUserAddress';
@@ -18,23 +19,9 @@ import Step20 from './20_ReportAddressDomainOrOther';
 import Step21 from './21_ReportDomain';
 import Step22 from './22_ReportAddress';
 import Step23 from './23_ReportSomethingElse';
+import Step24 from './24_ReportBrowserExtension';
 
 import Step99 from './99_ReportSubmit';
-
-const Container = styled.div`
-  background: #0c3153;
-  width: 100%;
-  height: 100%;
-  min-height: 20em;
-`;
-
-const Description = styled.h3`
-  padding-top: 2em;
-  color: #ffd166;
-  text-align: center;
-  font-weight: 400;
-  margin-bottom: 2em;
-`;
 
 const OptionList = styled.ul`
   text-align: right;
@@ -58,6 +45,9 @@ const Option = styled.li`
 
   &:hover {
     cursor: pointer;
+    background: rgb(245, 197, 97);
+    border: 2px solid rgb(245, 197, 97);
+    color: #000;
   }
 `;
 
@@ -82,6 +72,7 @@ interface IUserReport {
   badPersonalMessage: string;
   badSomethingElse: string;
   badAddress: string;
+  badExtension: string;
 }
 
 interface State {
@@ -118,7 +109,8 @@ export default class Home extends Component<Props, State> {
         badDomain: '',
         badPersonalMessage: '',
         badSomethingElse: '',
-        badAddress: ''
+        badAddress: '',
+        badExtension: ''
       }
     };
   }
@@ -213,7 +205,7 @@ export default class Home extends Component<Props, State> {
                 Yes, it was
               </Option>
               <Option onClick={this.changeStep} value="20">
-                No, I want to report an address/website
+                No, I want to report an address/website/browser extension
               </Option>
               <Option onClick={this.changeStep} value="17">
                 I'm not sure
@@ -379,6 +371,21 @@ export default class Home extends Component<Props, State> {
         return (
           <Container>
             <Step23 />
+            <Navigation
+              canContinue={this.state.canContinue}
+              changeStep={this.changeStep}
+              onlyShowBack={false}
+              previousStep={this.state.previousStep}
+              isSendAction={true}
+              nextStep={99}
+            />
+          </Container>
+        );
+        break;
+      case 24: // They are reporting a malicious browser extension
+        return (
+          <Container>
+            <Step24 stepCompleted={this.stepCompleted} stepInvalid={this.stepInvalid} />
             <Navigation
               canContinue={this.state.canContinue}
               changeStep={this.changeStep}
