@@ -11,6 +11,7 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   min-height: 20em;
+  padding-bottom: 1em;
 `;
 
 const Description = styled.h3`

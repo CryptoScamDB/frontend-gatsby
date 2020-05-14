@@ -13,7 +13,7 @@ const PageNavigationContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 2em;
+  padding-bottom: 2em;
 `;
 const PageButton = styled.div`
   background: transparent;
@@ -24,16 +24,16 @@ const PageButton = styled.div`
   letter-spacing: 0.91px;
   line-height: 19px;
   text-align: center;
-  opacity: ${(props: PageButtonProps) => (props.isDisabled ? '0.5' : '1')}
+  opacity: ${(props: PageButtonProps) => (props.isDisabled ? '0.5' : '1')};
 
   > img {
     display: inline;
-    padding: 0 1em;
+    padding: 0.5em 1em;
     vertical-align: middle;
   }
 
   &:hover {
-    cursor: ${(props: PageButtonProps) => (props.isDisabled ? 'not-allowed' : 'pointer')}
+    cursor: ${(props: PageButtonProps) => (props.isDisabled ? 'not-allowed' : 'pointer')};
   }
 `;
 

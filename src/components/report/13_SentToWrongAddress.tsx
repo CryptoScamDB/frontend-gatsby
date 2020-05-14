@@ -1,56 +1,5 @@
-import React, { Component, MouseEvent } from 'react';
-import styled from 'styled-components';
-
-const Container = styled.div`
-  background: #0c3153;
-  width: 100%;
-  height: 100%;
-  min-height: 20em;
-`;
-
-const Description = styled.h3`
-  padding-top: 2em;
-  color: #ffd166;
-  text-align: center;
-  font-weight: 400;
-  margin-bottom: 2em;
-`;
-
-const OptionList = styled.ul`
-  text-align: right;
-  list-style-type: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Option = styled.li`
-  display: inline-block;
-  list-style-position: inside;
-  border-radius: 2px;
-  border: 2px solid #fff;
-  color: #fff;
-  letter-spacing: 0.1px;
-  line-height: 17px;
-  text-align: center;
-  margin-left: 2em;
-  padding: 1em 1em 1em 1em;
-
-  &:hover {
-    cursor: pointer;
-  }
-`;
-
-const SubText = styled.p`
-  color: #fff;
-  text-align: center;
-
-  a {
-    text-decoration: underline;
-    text-decoration-style: dotted;
-    color: #fff;
-  }
-`;
+import React, { Component } from 'react';
+import { Container, Description, OptionList, Option, SubTextLink } from './styles';
 
 interface Props {
   inputValidated: boolean;
@@ -75,7 +24,7 @@ export default class SentToWrongAddress extends Component<Props> {
           Where did you find the address you sent funds to?
         </Description>
 
-        <SubText>
+        <SubTextLink>
           If anybody claims they can recover your funds, get them to{' '}
           <a
             href="https://support.mycrypto.com/how-to/getting-started/how-to-sign-and-verify-messages-on-ethereum"
@@ -85,7 +34,7 @@ export default class SentToWrongAddress extends Component<Props> {
             sign a message you can verify
           </a>
           . Please do not trust anybody offering a refund service!
-        </SubText>
+        </SubTextLink>
 
         <OptionList>
           <Option onClick={this.props.changeStep} value="14">
