@@ -11,6 +11,10 @@ interface Props {
 
 const HeaderContainer = styled.div`
   padding: 2em 5em 2em 5em;
+
+  @media screen and (max-width: 415px) {
+    padding: 2em;
+  }
 `;
 const Container = styled.div`
   width: 100%;
