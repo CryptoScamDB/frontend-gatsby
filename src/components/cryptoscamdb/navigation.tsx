@@ -41,10 +41,6 @@ const Container = styled.div`
       display: inline-block;
       padding-left: 2em;
       margin-bottom: 2em;
-
-      &:first-child {
-        display: none;
-      }
     }
   }
 
@@ -90,22 +86,15 @@ const Container = styled.div`
           width: 100vw;
           height: 100vh;
           margin-bottom: 0.5em;
+          text-align: left;
       `}
 
       li {
 
+        display: ${props => (props.isMobileMenuExtended ? 'block' : 'none')};
+
         &:hover {
           cursor: hand;
-        }
-
-        &:first-child { /** The hamburger icon */
-          display: block;
-          padding: ${props => (props.isMobileMenuExtended ? '5%' : '0')};
-        }
-
-        &:not(:first-child) {
-          text-align: left;
-          display: ${props => (props.isMobileMenuExtended ? 'block' : 'none')};
         }
 
         &:last-child { /** The report button */
@@ -114,6 +103,16 @@ const Container = styled.div`
           margin: 2.5vw;
         }
     }
+  }
+`;
+
+const MobileButtons = styled.div`
+  display: none;
+
+  @media screen and (max-width: 900px) {
+    display: block;
+    padding: ${props => (props.isMobileMenuExtended ? '5%' : '0')};
+    text-align: right;
   }
 `;
 
@@ -148,10 +147,10 @@ export default class Navigation extends Component<Props, State> {
   render() {
     return (
       <Container isMobileMenuExtended={this.state.mobileExpanded}>
+        <MobileButtons isMobileMenuExtended={this.state.mobileExpanded} onClick={this.handleClick}>
+          {this.state.mobileExpanded ? `X` : <img alt="Menu" src={Hamburger} />}
+        </MobileButtons>
         <ul>
-          <li onClick={this.handleClick}>
-            {this.state.mobileExpanded ? `X` : <img alt="Menu" src={Hamburger} />}
-          </li>
           <li>
             <Link to="/scams" role="link" tabIndex={1}>
               See Scams
