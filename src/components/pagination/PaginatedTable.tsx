@@ -12,9 +12,9 @@ const PageComponent = styled.div`
   margin-bottom: 1em;
 
   @media (max-width: 968px) {
-    width: 95%;
+    text-align: center;
+    margin-left: 0;
     display: block;
-    margin-right: 0;
   }
 `;
 const Table = styled.table`
@@ -25,6 +25,7 @@ const Table = styled.table`
 
   @media (max-width: 968px) {
     width: 100%;
+    border-collapse: collapse;
   }
 
   a {
@@ -158,7 +159,7 @@ export default class PaginatedTable extends Component<Props, State> {
           <Search placeholder="Search" onKeyUp={this.filterResults} />
         )}
         <PageComponent>
-          <Pagination currentPage={1} totalPages={totalPages} onClick={this.changePage} />
+          <Pagination currentPage={currentPage} totalPages={totalPages} onClick={this.changePage} />
         </PageComponent>
 
         <Table>
