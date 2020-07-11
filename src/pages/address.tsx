@@ -6,8 +6,12 @@ import FacebookShare from '../components/icons/socials/FacebookShare';
 import TwitterShare from '../components/icons/socials/TwitterShare';
 import LinkedinShare from '../components/icons/socials/LinkedInShare';
 
+import { AnalysisTools } from '../constants';
+
 import styled from 'styled-components';
 import { Heading1, Heading2, Heading3 } from '../components/html/Headings';
+
+import IconOpenLink from '../images/navigation/open-link.svg';
 
 const Container = styled.div`
   margin: 0 5%;
@@ -15,7 +19,7 @@ const Container = styled.div`
 
   @media (max-width: 968px) {
     width: 100%;
-    margin: 0;
+    margin: 5%;
   }
 `;
 const ListGroup = styled.ul`
@@ -27,6 +31,10 @@ const ListGroup = styled.ul`
     padding-right: ${(props: ListGroupProps) => (props.inline ? '1em' : '0em')};
   }
 `;
+const ExternalLink = styled.img`
+  height: 15px;
+  width: 15px;
+`;
 
 interface ListGroupProps {
   inline?: boolean;
@@ -37,6 +45,25 @@ interface Props {
   pageContext: any;
 }
 
+function getAnalysisToolLinks(ticker: string, address: string) {
+  if (!AnalysisTools[ticker]) {
+    return <li key={0}>None</li>;
+  }
+
+  return (
+    AnalysisTools[ticker] &&
+    AnalysisTools[ticker].map(e => {
+      return (
+        <li key={e.title}>
+          <a href={e.link.replace('{address}', address)} target="_blank" rel="noreferrer">
+            {e.title} <ExternalLink src={IconOpenLink} />
+          </a>
+        </li>
+      );
+    })
+  );
+}
+
 const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) => {
   const { allCsdbScamDomains: scam } = data;
   const s = scam.edges;
@@ -44,15 +71,12 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
   const distinctIps = s.map(record => record.node.ip);
 
   let strChain = 'UNKNOWN';
-  if (s[0].node.grouped_addresses && Object.keys(s[0].node.grouped_addresses).length > 0) {
-    Object.keys(s[0].node.grouped_addresses).map(key => {
-      if (s[0].node.grouped_addresses[key] && s[0].node.grouped_addresses[key].length > 0) {
-        if (strChain === 'UNKNOWN') {
-          strChain = s[0].node.grouped_addresses[key].includes(pageContext.slug) ? key : 'UNKNOWN';
-        }
-      }
-    });
-  }
+  s[0].node.labelled_addresses.forEach(addr => {
+    const parsedAddress = addr.split(':');
+    if (parsedAddress[1] && parsedAddress[1].toLowerCase() === pageContext.slug.toLowerCase()) {
+      strChain = parsedAddress[0].toUpperCase();
+    }
+  });
 
   return (
     <Layout imageBg={false} id="domain-view">
@@ -64,6 +88,12 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
               <Heading1 text="Address:" />
               <span>{pageContext.slug}</span>
             </div>
+
+            <br />
+            <br />
+
+            <Heading2 text="Analysis Tools:" />
+            <ListGroup>{getAnalysisToolLinks(strChain, pageContext.slug)}</ListGroup>
 
             <br />
             <br />
@@ -158,16 +188,7 @@ export const pageQuery = graphql`
           abusereport
           csdbId
           addresses
-          grouped_addresses {
-            ETH
-            BTC
-            BCH
-            XRP
-            TRX
-            NEO
-            XMR
-            LTC
-          }
+          labelled_addresses
         }
       }
     }
