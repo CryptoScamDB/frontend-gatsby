@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { StaticQuery, graphql } from 'gatsby';
 import styled from 'styled-components';
 
 import Header from './Header';
@@ -9,7 +8,6 @@ import '../css/layout.scss';
 import RobotBg from '../images/background-big.png';
 
 const PageView = styled.div`
-  width: 100%;
   background: #001629;
   color: #ffffff;
   height: 100%;
