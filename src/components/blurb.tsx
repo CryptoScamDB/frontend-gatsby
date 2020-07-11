@@ -14,11 +14,6 @@ const BlurbContainer = styled.div`
   @media (max-width: 1200px) {
     width: 80%;
   }
-
-  @media (max-width: 768px) {
-    width: 80%;
-    display: block;
-  }
 `;
 const Segment = styled.p`
   width: 100%;
