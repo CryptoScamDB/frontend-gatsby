@@ -94,6 +94,10 @@ const Container = styled.div`
 
       li {
 
+        &:hover {
+          cursor: hand;
+        }
+
         &:first-child { /** The hamburger icon */
           display: block;
           padding: ${props => (props.isMobileMenuExtended ? '5%' : '0')};
@@ -101,7 +105,7 @@ const Container = styled.div`
 
         &:not(:first-child) {
           text-align: left;
-          display: ${props => (props.isMobileMenuExtended ? 'block' : 'none')}
+          display: ${props => (props.isMobileMenuExtended ? 'block' : 'none')};
         }
 
         &:last-child { /** The report button */
@@ -115,7 +119,6 @@ const Container = styled.div`
 
 interface Props {
   isMobileMenuExtended: boolean;
-  handleMobileMenuClick: any;
 }
 
 interface State {
@@ -140,7 +143,6 @@ export default class Navigation extends Component<Props, State> {
   handleClick(event: React.MouseEvent) {
     event.preventDefault();
     this.setState({ mobileExpanded: !this.state.mobileExpanded });
-    this.props.handleMobileMenuClick(event);
   }
 
   render() {
