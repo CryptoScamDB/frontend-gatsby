@@ -8,6 +8,10 @@ import { Heading1 } from '../components/html/Headings';
 const Container = styled.div`
   margin-top: 2em;
   padding: 5em;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const FAQ_PAGE: React.StatelessComponent = () => (
