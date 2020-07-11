@@ -8,10 +8,9 @@ import { Heading1 } from '../components/html/Headings';
 
 const Container = styled.div`
   margin: 0 5%;
-  width: 90%;
 
   @media (max-width: 968px) {
-    width: 100%;
+    padding: 0;
     margin: 0;
   }
 `;
