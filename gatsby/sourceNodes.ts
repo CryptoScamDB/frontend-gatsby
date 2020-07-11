@@ -29,11 +29,7 @@ export default async ({ actions: { createNode } }: any) => {
   /***************************************************************
    ********************** G E T   S C A M S **********************
    ***************************************************************/
-  let strScamApiEndpoint = `${API_ENDPOINT}/scams`;
-  if (NODE_ENV === 'development') {
-    console.log(`\r\n\t[+] Development mode so only getting the most recent 250 records`);
-    strScamApiEndpoint += `?skip=6250&limit=250`;
-  }
+  const strScamApiEndpoint = `${API_ENDPOINT}/scams`;
   console.log(`\r\n\r\n[*] Fetching domains -- ${strScamApiEndpoint}`);
   const objScams = await axios.get(`${strScamApiEndpoint}`);
 
@@ -67,9 +63,17 @@ export default async ({ actions: { createNode } }: any) => {
           ) {
             objBuildStats.success += 1;
 
-            objResponse.data.result[0].grouped_addresses = [];
+            objResponse.data.result[0].labelled_addresses = [];
             if (Object.keys(objResponse.data.result[0].addresses).length > 0) {
-              objResponse.data.result[0].grouped_addresses = objResponse.data.result[0].addresses;
+              let labelledAddresses: string[] = [''];
+              Object.keys(objResponse.data.result[0].addresses).forEach((ticker: string) => {
+                objResponse.data.result[0].addresses[ticker].map((address: string) => {
+                  const res: string = [ticker, address].join(':');
+                  labelledAddresses.push(res);
+                });
+              });
+              objResponse.data.result[0].labelled_addresses = labelledAddresses;
+
               // Flatten the addresses arrays - this is temp logic
               // @todo - create some relationship between this node and an addresses node
               const objAddressesTmp = objResponse.data.result[0].addresses;
@@ -148,9 +152,17 @@ export default async ({ actions: { createNode } }: any) => {
           ) {
             objBuildStats.success += 1;
 
-            objResponse.data.result[0].grouped_addresses = [];
+            objResponse.data.result[0].labelled_addresses = [];
             if (Object.keys(objResponse.data.result[0].addresses).length > 0) {
-              objResponse.data.result[0].grouped_addresses = objResponse.data.result[0].addresses;
+              let labelledAddresses: string[] = [''];
+              Object.keys(objResponse.data.result[0].addresses).forEach((ticker: string) => {
+                objResponse.data.result[0].addresses[ticker].map((address: string) => {
+                  const res: string = [ticker, address].join(':');
+                  labelledAddresses.push(res);
+                });
+              });
+              objResponse.data.result[0].labelled_addresses = labelledAddresses;
+
               // Flatten the addresses arrays - this is temp logic
               // @todo - create some relationship between this node and an addresses node
               const objAddressesTmp = objResponse.data.result[0].addresses;
