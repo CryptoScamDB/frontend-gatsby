@@ -42,7 +42,6 @@ const Search = styled.input`
   color: #fff;
 
   @media (max-width: 968px) {
-    width: 95%;
     display: block;
     margin: 1em;
   }
