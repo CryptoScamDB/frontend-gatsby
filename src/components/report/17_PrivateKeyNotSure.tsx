@@ -1,20 +1,6 @@
-import React, { Component, MouseEvent } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
-
-const Container = styled.div`
-  background: #0c3153;
-  width: 100%;
-  height: 100%;
-  min-height: 20em;
-`;
-
-const Description = styled.h3`
-  padding-top: 2em;
-  color: #ffd166;
-  text-align: center;
-  font-weight: 400;
-  margin-bottom: 2em;
-`;
+import { Container, Description } from './styles';
 
 const SubText = styled.p`
   color: #fff;

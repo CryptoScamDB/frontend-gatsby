@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Header from './Header';
+import Banner from './Banner';
 import Footer from '../components/cryptoscamdb/footer';
 import '../css/layout.scss';
 

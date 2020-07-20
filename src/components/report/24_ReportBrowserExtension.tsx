@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Container, Description } from './styles';
+import { Container, Description, SubTextLink } from './styles';
 
 const InputContainer = styled.div`
   display: flex;
@@ -31,7 +31,7 @@ interface Props {
 }
 
 interface IInputValid {
-  maliciousAddress: boolean;
+  input: boolean;
 }
 
 interface State {
@@ -47,35 +47,31 @@ export default class ReportAddress extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
-    this.validateAddressInput = this.validateAddressInput.bind(this);
+    this.validateInput = this.validateInput.bind(this);
 
     this.state = {
       inputValidated: false,
       inputValid: {
-        maliciousAddress: false
+        input: false
       }
     };
   }
 
-  validateAddressInput(event: React.KeyboardEvent<HTMLElement>) {
+  validateInput(event: React.KeyboardEvent<HTMLElement>) {
     const { target } = event;
     let strInput = (target as HTMLInputElement).value;
     strInput = strInput.trim();
 
-    this.setState({ inputValid: { maliciousAddress: true } });
-
-    if (
-      strInput.match(new RegExp('^0x[a-fA-F0-9]{40}$', 'g')) ||
-      strInput.match(new RegExp('^[A-z0-9-]{7,}.eth$', 'g'))
-    ) {
+    if (strInput) {
+      this.setState({ inputValid: { input: true } });
       this.setState({ inputValidated: true });
       this.props.stepCompleted({
-        badAddress: strInput
+        badExtension: strInput
       });
       this.props.stepCompleted();
       return;
     } else {
-      this.setState({ inputValid: { maliciousAddress: false } });
+      this.setState({ inputValid: { input: false } });
     }
 
     this.props.stepInvalid();
@@ -85,15 +81,27 @@ export default class ReportAddress extends Component<Props, State> {
   render() {
     return (
       <Container>
-        <Description>What malicious address would you like to report?</Description>
+        <Description>What malicious browser extension would you like to report?</Description>
+        <SubTextLink>
+          Help the community be aware of this problem by reading and sharing research on these
+          malicious extensions! <br />
+          <a
+            href="https://medium.com/mycrypto/discovering-fake-browser-extensions-that-target-users-of-ledger-trezor-mew-metamask-and-more-e281a2b80ff9"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Discovering Fake Browser Extensions That Target Users of Ledger, Trezor, MEW, Metamask,
+            and More
+          </a>
+        </SubTextLink>
 
         <InputContainer>
-          <InputLabel>Address:</InputLabel>
+          <InputLabel>Extension Link:</InputLabel>
           <InputField
-            onKeyUp={this.validateAddressInput}
+            onKeyUp={this.validateInput}
             type="text"
-            placeholder="0x0000000000000000000000000000000000000000"
-            maxLength={42}
+            placeholder="https://chrome.google.com/webstore/detail/ledger-live/kphogdpmodamipjcohopkabelaknhmij"
+            maxLength={250}
           />
         </InputContainer>
       </Container>
