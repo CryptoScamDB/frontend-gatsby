@@ -65,7 +65,7 @@ export default async ({ actions: { createNode } }: any) => {
 
             objResponse.data.result[0].labelled_addresses = [];
             if (Object.keys(objResponse.data.result[0].addresses).length > 0) {
-              let labelledAddresses: string[] = [''];
+              const labelledAddresses: string[] = [''];
               Object.keys(objResponse.data.result[0].addresses).forEach((ticker: string) => {
                 objResponse.data.result[0].addresses[ticker].map((address: string) => {
                   const res: string = [ticker, address].join(':');
@@ -154,7 +154,7 @@ export default async ({ actions: { createNode } }: any) => {
 
             objResponse.data.result[0].labelled_addresses = [];
             if (Object.keys(objResponse.data.result[0].addresses).length > 0) {
-              let labelledAddresses: string[] = [''];
+              const labelledAddresses: string[] = [''];
               Object.keys(objResponse.data.result[0].addresses).forEach((ticker: string) => {
                 objResponse.data.result[0].addresses[ticker].map((address: string) => {
                   const res: string = [ticker, address].join(':');
