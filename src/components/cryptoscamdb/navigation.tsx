@@ -111,13 +111,14 @@ const MobileButtons = styled.div`
 
   @media screen and (max-width: 900px) {
     display: block;
-    padding: ${props => (props.isMobileMenuExtended ? '5%' : '0')};
+    padding: ${(props: Props) => (props.isMobileMenuExtended ? '5%' : '0')};
     text-align: right;
   }
 `;
 
 interface Props {
   isMobileMenuExtended: boolean;
+  handleMobileMenuClick?: any;
 }
 
 interface State {

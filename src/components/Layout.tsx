@@ -40,7 +40,7 @@ interface Props {
   id?: any;
   children: any;
   imageBg: boolean;
-  isMobileMenuExtended: boolean;
+  isMobileMenuExtended?: boolean;
 }
 
 interface State {
