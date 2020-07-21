@@ -32,7 +32,7 @@ const Container = styled.div`
   padding: 0em;
 
   @media screen and (max-width: 900px) {
-    display: ${props => (props.isMobileMenuExtended ? 'none' : 'block')};
+    display: ${(props: Props) => (props.isMobileMenuExtended ? 'none' : 'block')};
   }
 `;
 
@@ -68,14 +68,17 @@ export default class Layout extends Component<Props, State> {
   }
 
   render() {
+    const { isMobileMenuExtended } = this.state;
+    const { imageBg } = this.props;
+
     return (
-      <PageView imageBg={this.props.imageBg} id={this.props.id}>
+      <PageView isMobileMenuExtended={isMobileMenuExtended} imageBg={imageBg} id={this.props.id}>
         <link
           href="https://fonts.googleapis.com/css?family=Lato|Unna&display=swap"
           rel="stylesheet"
         />
         <Header siteTitle="CryptoScamDB" handleMobileMenuExtend={this.handleMobileMenuExpand} />
-        <Container isMobileMenuExtended={this.state.isMobileMenuExtended}>
+        <Container imageBg={imageBg} isMobileMenuExtended={isMobileMenuExtended}>
           {this.props.children}
           <Footer />
         </Container>
