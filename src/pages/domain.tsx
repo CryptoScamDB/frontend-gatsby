@@ -27,6 +27,7 @@ const ContainerLeft = styled.div`
 
   @media (max-width: 968px) {
     flex-direction: row;
+    margin: 5%;
   }
 
   > div {
@@ -273,16 +274,6 @@ export const pageQuery = graphql`
           abusereport
           csdbId
           addresses
-          grouped_addresses {
-            ETH
-            BTC
-            BCH
-            XRP
-            TRX
-            NEO
-            XMR
-            LTC
-          }
         }
       }
     }

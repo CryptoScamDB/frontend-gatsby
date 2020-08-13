@@ -12,11 +12,10 @@ import { Heading1, Heading3 } from '../components/html/Headings';
 
 const Container = styled.div`
   padding: 0 2em;
-  margin-top: -5em;
   margin-left: 2em;
 
   @media (max-width: 768px) {
-    width: 100%;
+    margin: 0;
   }
 `;
 
@@ -70,7 +69,6 @@ const IndexNav = styled.div`
     @media (max-width: 768px) {
       display: block;
       margin: 1em 0;
-      width: 80%;
     }
   }
 `;

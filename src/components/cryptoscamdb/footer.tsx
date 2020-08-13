@@ -9,8 +9,11 @@ const Container = styled.div`
   padding-bottom: 40px;
 
   @media (max-width: 968px) {
-    width: 100%;
-    margin: 0;
+    margin: 5%;
+  }
+
+  @media (max-width: 768px) {
+    margin: 5%;
   }
 `;
 

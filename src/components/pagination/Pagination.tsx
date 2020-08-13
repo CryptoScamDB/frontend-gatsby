@@ -12,8 +12,8 @@ const PageUnit = styled.div`
   display: inline-block;
 
   border-radius: 0.25em;
-  border: ${(props: PageUnitProps) => (props.currentPage ? '1px solid #FFD166 !important' : '')};
-  color: ${(props: PageUnitProps) => (props.currentPage ? '#FFD166 !important' : '#FFF')};
+  border: ${(props: PageUnitProps) => (props.currentPage ? '1px solid #FFD166' : '')};
+  color: ${(props: PageUnitProps) => (props.currentPage ? '#FFD166' : '#FFF')};
 
   user-select: none;
   -webkit-user-select: none;
@@ -47,7 +47,7 @@ export default class Pagination extends Component<PaginationProps, PaginationSta
     super(props);
     this.movePage = this.movePage.bind(this);
     this.state = {
-      currentPage: 1
+      currentPage: this.props.currentPage
     };
   }
 

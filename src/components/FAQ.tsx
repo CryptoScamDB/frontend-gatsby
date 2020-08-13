@@ -7,25 +7,39 @@ import ReactHtmlParser from 'react-html-parser';
 const Container = styled.div`
   margin-left: 5%;
   width: 751px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 5px;
+    height: auto;
+  }
 `;
 const Question = styled.div`
-  height: 51px;
+  min-height: 51px;
+  height: auto;
   border-radius: 2px;
+  overflow: auto;
   background: linear-gradient(
     180.01deg,
     rgba(250, 250, 253, 0.1) 0%,
     rgba(247, 248, 252, 0.1) 28.22%,
     rgba(243, 244, 250, 0.05) 100%
   );
-  line-height: 3;
+  padding: 5px;
 
-  > span {
+  > div {
+    width: 80%;
     opacity: 1;
     color: #ebc561;
     padding-left: 0.5em;
+    display: inline-block;
+    vertical-align: middle;
   }
 
   > img {
+    position: relative;
+    z-index: 2;
+    right: 0;
     float: right;
     margin-right: 2em;
     margin-top: 1.3em;
@@ -76,8 +90,8 @@ export default class Faq extends Component<Props, State> {
     return (
       <Container>
         <Question onClick={this.toggleFaq}>
-          <span>{question}</span>
           <img alt="Expand" src={Arrow} />
+          <div>{question}</div>
         </Question>
         <Answer style={{ display: expanded ? 'inline' : 'none' }}>
           <ul>

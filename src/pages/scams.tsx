@@ -8,11 +8,10 @@ import { Heading1 } from '../components/html/Headings';
 
 const Container = styled.div`
   margin: 0 5%;
-  width: 90%;
 
   @media (max-width: 968px) {
-    width: 100%;
-    margin: 0;
+    padding: 5px;
+    margin: 5px;
   }
 `;
 const StatsContainer = styled.ul`
@@ -199,7 +198,7 @@ const Scams: React.StatelessComponent<ScamsProps> = ({ data }: ScamsProps) => {
       <SEO title="Scams" keywords={[`ethereum`, `scams`, `mycrypto`]} />
 
       <Container>
-        <Heading1 text="See Scams" />
+        <Heading1 text="Known Scams" />
 
         <PaginatedTable
           totalRecords={data.allCsdbScamDomains.edges.length}
