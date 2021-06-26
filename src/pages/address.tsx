@@ -74,7 +74,12 @@ const Address: React.StatelessComponent<Props> = ({ data, pageContext }: Props) 
   let strChain = 'UNKNOWN';
   s[0].node.labelled_addresses.forEach(addr => {
     const parsedAddress = addr.split(':');
-    if (parsedAddress[1] && parsedAddress[1].toLowerCase() === pageContext.slug.toLowerCase()) {
+    if (
+      parsedAddress[1] &&
+      pageContext &&
+      pageContext.slug &&
+      parsedAddress[1].toLowerCase() === pageContext.slug.toLowerCase()
+    ) {
       strChain = parsedAddress[0].toUpperCase();
     }
   });
