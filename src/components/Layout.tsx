@@ -77,6 +77,7 @@ export default class Layout extends Component<Props, State> {
           href="https://fonts.googleapis.com/css?family=Lato|Unna&display=swap"
           rel="stylesheet"
         />
+        <Banner />
         <Header siteTitle="CryptoScamDB" handleMobileMenuExtend={this.handleMobileMenuExpand} />
         <Container imageBg={imageBg} isMobileMenuExtended={isMobileMenuExtended}>
           {this.props.children}
