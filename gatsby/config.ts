@@ -60,6 +60,25 @@ export default {
         defer: false,
         args: `?render=onload`
       }
+    },
+    {
+      resolve: 'gatsby-plugin-csp',
+      options: {
+        disableOnDev: false,
+        reportOnly: false,
+        mergeScriptHashes: false,
+        mergeStyleHashes: false,
+        mergeDefaultDirectives: true,
+        directives: {
+          'script-src':
+            "'self' 'unsafe-inline' www.google.com google.com www.gstatic.com gstatic.com analytics.mycryptoapi.com",
+          'style-src': "'self' 'unsafe-inline' blob: fonts.googleapis.com",
+          'img-src': "'self' data: urlscan.io analytics.mycryptoapi.com",
+          'font-src': "'self' fonts.gstatic.com",
+          'connect-src': "'self' api.cryptoscamdb.org",
+          'frame-src': 'www.google.com google.com'
+        }
+      }
     }
   ]
 };
